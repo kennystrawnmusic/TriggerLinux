@@ -125,9 +125,9 @@ compileaurpkgs() {
     cp *.pkg.tar.* ../../x86_64
     #work around dependency problems
     repo-add customrepo.db.tar.gz *.pkg.tar.*
-    echo "[customrepo]" | sudo tee --append ./workingdir/pacman.conf > /dev/null
-    echo "SigLevel = Never" | sudo tee --append ./workingdir/pacman.conf > /dev/null
-    echo "Server = file://$(pwd)/customrepo/$(echo '$arch')" | sudo tee --append ./workingdir/pacman.conf > /dev/null
+    echo "[customrepo]" | sudo tee --append ../../../workingdir/pacman.conf > /dev/null
+    echo "SigLevel = Never" | sudo tee --append ../../../workingdir/pacman.conf > /dev/null
+    echo "Server = file://$(pwd)/customrepo/$(echo '$arch')" | sudo tee --append ../../../workingdir/pacman.conf > /dev/null
     sudo pacman -Syyuu
     cat /etc/pacman.conf > ./pacman.backup
     echo "[customrepo]" | sudo tee --append /etc/pacman.conf > /dev/null
