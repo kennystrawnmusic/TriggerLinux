@@ -37,9 +37,13 @@ Triggerbox makes use of a systemd timer to automatically run a system update com
 
 # Build Instructions (if you already have Arch Linux installed)
 The `autobuild.sh` script runs everything else for you. So simply:
+
     git clone https://github.com/realKennyStrawn93/Triggerbox
     cd Triggerbox
     ./autobuild.sh
+
 It is also possible to pass a version number and a codename to this script as parameters. For example:
+
     ./autobuild.sh 0.3.2019.01.23.1 alpha1
+
 I should have the first public beta release built within hours of uploading this, so that shouldn't be an issue (I would assume).
