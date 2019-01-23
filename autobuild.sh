@@ -121,7 +121,7 @@ compileaurpkgs() {
     for d in * ; do
       cd "$d"
     done
-    makepkg -si
+    makepkg -s
     cp *.pkg.tar.* ../../x86_64
     #work around dependency problems
     if [ $currentpkg == "automoc4" ]; then
