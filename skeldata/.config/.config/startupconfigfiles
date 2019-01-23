@@ -1,0 +1,60 @@
+kcminputrc Mouse cursorTheme 'breeze_cursors'
+!/home/realkstrawn93/.config/kcminputrc
+!/etc/xdg/kcminputrc
+!/home/realkstrawn93/.local/share/config/kcminputrc
+!/home/realkstrawn93/.local/share/flatpak/exports/share/config/kcminputrc
+!/var/lib/flatpak/exports/share/config/kcminputrc
+!/usr/local/share/config/kcminputrc
+!/usr/share/config/kcminputrc
+!/var/lib/snapd/desktop/config/kcminputrc
+*
+kcminputrc Mouse cursorSize ''
+!/home/realkstrawn93/.config/kcminputrc
+!/etc/xdg/kcminputrc
+!/home/realkstrawn93/.local/share/config/kcminputrc
+!/home/realkstrawn93/.local/share/flatpak/exports/share/config/kcminputrc
+!/var/lib/flatpak/exports/share/config/kcminputrc
+!/usr/local/share/config/kcminputrc
+!/usr/share/config/kcminputrc
+!/var/lib/snapd/desktop/config/kcminputrc
+*
+ksplashrc KSplash Theme Breeze
+!/home/realkstrawn93/.config/ksplashrc
+!/etc/xdg/ksplashrc
+!/home/realkstrawn93/.local/share/config/ksplashrc
+!/home/realkstrawn93/.local/share/flatpak/exports/share/config/ksplashrc
+!/var/lib/flatpak/exports/share/config/ksplashrc
+!/usr/local/share/config/ksplashrc
+!/usr/share/config/ksplashrc
+!/var/lib/snapd/desktop/config/ksplashrc
+*
+ksplashrc KSplash Engine KSplashQML
+!/home/realkstrawn93/.config/ksplashrc
+!/etc/xdg/ksplashrc
+!/home/realkstrawn93/.local/share/config/ksplashrc
+!/home/realkstrawn93/.local/share/flatpak/exports/share/config/ksplashrc
+!/var/lib/flatpak/exports/share/config/ksplashrc
+!/usr/local/share/config/ksplashrc
+!/usr/share/config/ksplashrc
+!/var/lib/snapd/desktop/config/ksplashrc
+*
+kdeglobals KScreen ScreenScaleFactors ''
+/home/realkstrawn93/.config/kdeglobals
+!/etc/xdg/kdeglobals
+!/home/realkstrawn93/.local/share/config/kdeglobals
+!/home/realkstrawn93/.local/share/flatpak/exports/share/config/kdeglobals
+!/var/lib/flatpak/exports/share/config/kdeglobals
+!/usr/local/share/config/kdeglobals
+!/usr/share/config/kdeglobals
+!/var/lib/snapd/desktop/config/kdeglobals
+*
+kcmfonts General forceFontDPI 0
+!/home/realkstrawn93/.config/kcmfonts
+!/etc/xdg/kcmfonts
+!/home/realkstrawn93/.local/share/config/kcmfonts
+!/home/realkstrawn93/.local/share/flatpak/exports/share/config/kcmfonts
+!/var/lib/flatpak/exports/share/config/kcmfonts
+!/usr/local/share/config/kcmfonts
+!/usr/share/config/kcmfonts
+!/var/lib/snapd/desktop/config/kcmfonts
+*

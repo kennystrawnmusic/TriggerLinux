@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<description
+ xmlns="http://openoffice.org/extensions/description/2006"
+ xmlns:dep="http://openoffice.org/extensions/description/2006"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<identifier value="vnd.svkppua.exportimages"/>
+	<version value="0.9.3"/>
+	<!-- <dependencies>
+		<OpenOffice.org-minimal-version value="2.1" dep:name="OpenOffice.org 2.1"/>
+	</dependencies> -->
+	<registration>
+		<simple-license  accept-by="admin" default-license-id="ID0" suppress-on-update="true" >
+			<license-text xlink:href="registration/gpl-3.0.txt" lang="en" license-id="ID0" />
+			<license-text xlink:href="registration/gpl-3.0.txt" lang="en-US" />
+			<license-text xlink:href="registration/gpl3rus_utf.txt" lang="ru" />
+		</simple-license>
+	</registration>
+	<icon>
+        <default xlink:href="icons/eai_26x26.png"/>
+    </icon>
+	<publisher>
+        <name lang="en" xlink:href="http://www.svk.pp.ua">Sergii Kuznietsov</name>
+    </publisher>
+	<display-name>
+      <name lang="en">Export As Images</name>
+      <name lang="ru">Экспорт в изображения</name>
+      <name lang="zh-CN">导出为图像</name>
+   </display-name>
+  <extension-description>
+    <src xlink:href="pkg-desc/pkg-description.en" lang="en" />
+    <src xlink:href="pkg-desc/pkg-description.ru" lang="ru" />
+    <src xlink:href="pkg-desc/pkg-description.zh_CN" lang="zh-CN" />
+  </extension-description>
+  <release-notes>
+    <src xlink:href="pkg-desc/release-notes_en.txt" lang="en" />
+  </release-notes>
+</description>

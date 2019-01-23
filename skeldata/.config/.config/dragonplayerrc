@@ -1,0 +1,29 @@
+[General]
+Recent Urls[$e]=file:$HOME/Desktop/IMG_1780.MOV
+TimeFormat=1
+Volume=1
+
+[MainWindow]
+Height 900=220
+MenuBar=Disabled
+State=AAAA/wAAAAD9AAAAAAAAAosAAACbAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAA
+ToolBarsMovable=Disabled
+Width 1600=651
+
+[camera:/Apple%2520iPhone%25205%2520(PTP%2520mode)@usb:002,006/store_00010001/DCIM/101APPLE/IMG_1780.MOV]
+Brightness=0
+Contrast=0
+Date=2019,1,8
+Hue=0
+IsVideo=false
+Preferred Size=100,30
+Saturation=0
+
+[file:///home/realkstrawn93/Desktop/IMG_1780.MOV]
+Brightness=0
+Contrast=0
+Date=2019,1,8
+Hue=0
+IsVideo=false
+Preferred Size=100,30
+Saturation=0

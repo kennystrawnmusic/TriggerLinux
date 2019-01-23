@@ -1,0 +1,28 @@
+###### Progress log entry 2019-01-08 16:39:55 ######
+Reinstalling all deployed packages...
+###### Progress log entry 2019-01-08 16:40:06 ######
+###### Progress log entry 2019-01-08 16:40:13 ######
+###### Progress log entry 2019-01-08 17:53:18 ######
+###### Progress log entry 2019-01-08 17:53:55 ######
+###### Progress log entry 2019-01-08 20:11:16 ######
+###### Progress log entry 2019-01-08 20:11:26 ######
+###### Progress log entry 2019-01-08 20:22:32 ######
+###### Progress log entry 2019-01-09 11:53:19 ######
+###### Progress log entry 2019-01-09 15:22:01 ######
+###### Progress log entry 2019-01-09 15:22:35 ######
+###### Progress log entry 2019-01-09 15:57:36 ######
+###### Progress log entry 2019-01-09 16:10:52 ######
+###### Progress log entry 2019-01-09 16:38:03 ######
+###### Progress log entry 2019-01-09 17:20:16 ######
+###### Progress log entry 2019-01-09 21:40:45 ######
+###### Progress log entry 2019-01-10 21:35:58 ######
+###### Progress log entry 2019-01-10 21:45:03 ######
+ERROR: (com.sun.star.lang.IllegalArgumentException) { { { Message = "There is no such extension deployed: vnd.svkppua.exportimages", Context = (com.sun.star.uno.XInterface) @5628afcc75e0 } }, ArgumentPosition = (short) -1 }
+ERROR: (com.sun.star.lang.IllegalArgumentException) { { { Message = "There is no such extension deployed: vnd.svkppua.exportimages", Context = (com.sun.star.uno.XInterface) @5628afcc75e0 } }, ArgumentPosition = (short) -1 }
+ERROR: (com.sun.star.ucb.InteractiveAugmentedIOException) { { { { Message = "an error occurred during file opening", Context = (com.sun.star.uno.XInterface) @7f52e800b528 (ImplementationName = "com.sun.star.comp.ucb.FileContent") }, Classification = (com.sun.star.task.InteractionClassification) ERROR }, Code = (com.sun.star.ucb.IOErrorCode) NOT_EXISTING }, Arguments = ([]any) { { (com.sun.star.beans.PropertyValue) { Name = "Uri", Handle = (long) -1, Value = (any) { "file:///tmp/mozilla_realkstrawn930/exportasimages-0-9-3.oxt" }, State = (com.sun.star.beans.PropertyState) DIRECT_VALUE } }, { (com.sun.star.beans.PropertyValue) { Name = "ResourceName", Handle = (long) -1, Value = (any) { "/tmp/mozilla_realkstrawn930/exportasimages-0-9-3.oxt" }, State = (com.sun.star.beans.PropertyState) DIRECT_VALUE } } } }
+ERROR: (com.sun.star.lang.IllegalArgumentException) { { { Message = "There is no such extension deployed: vnd.svkppua.exportimages", Context = (com.sun.star.uno.XInterface) @5628afcc75e0 } }, ArgumentPosition = (short) -1 }
+###### Progress log entry 2019-01-10 21:56:46 ######
+ERROR: (com.sun.star.lang.IllegalArgumentException) { { { Message = "There is no such extension deployed: vnd.svkppua.exportimages", Context = (com.sun.star.uno.XInterface) @55f2c1278120 } }, ArgumentPosition = (short) -1 }
+ERROR: (com.sun.star.lang.IllegalArgumentException) { { { Message = "There is no such extension deployed: vnd.svkppua.exportimages", Context = (com.sun.star.uno.XInterface) @55f2c1278120 } }, ArgumentPosition = (short) -1 }
+Copying: exportasimages-0-9-3.oxt
+###### Progress log entry 2019-01-10 21:58:05 ######

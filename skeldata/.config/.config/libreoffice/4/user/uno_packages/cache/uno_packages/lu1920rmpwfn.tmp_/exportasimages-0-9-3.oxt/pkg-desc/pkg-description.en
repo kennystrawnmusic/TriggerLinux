@@ -1,0 +1,6 @@
+This extension lets you export all the Impress slides or Draw pages as images of JPG, PNG, GIF, BMP and TIFF format.
+A menu entry "Export as images..." is added to File menu. You can choose a file name for exported images, define image size and some other parameters.
+
+Copyright (c) 2016 Сергей Кузнецов  (www.svk.pp.ua)
+Special thanks to Клио from  forumooo.ru
+Thanks to 锁琨珑 Kevin Suo, Voip: 6000@sip.suokunlong.cn, http://suokunlong.cn for Simplified Chinese (zh_CN) translation.

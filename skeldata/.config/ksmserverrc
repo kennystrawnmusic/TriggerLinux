@@ -1,0 +1,33 @@
+[General]
+screenCount=1
+
+[LegacySession: saved at previous logout]
+count=0
+
+[Session: saved at previous logout]
+clientId1=1021e21721f1df000154699286900000005180006
+clientId2=1021e21721f1df000154699287000000005180009
+clientId3=1021e21721f1df000154757168800000008250008
+clientId4=1021e21721f1df000154782279300000006740009
+count=4
+discardCommand1[$e]=rm,$HOME/.config/session/kwin_1021e21721f1df000154699286900000005180006_1547822951_524036
+program1=/usr/bin/kwin_x11
+program2=/usr/lib/org_kde_powerdevil
+program3=/usr/bin/korgac
+program4=pulseaudio
+restartCommand1=/usr/bin/kwin_x11,-session,1021e21721f1df000154699286900000005180006_1547822951_524036
+restartCommand2=/usr/lib/org_kde_powerdevil,-session,1021e21721f1df000154699287000000005180009_1547822951_473529
+restartCommand3=/usr/bin/korgac,-session,1021e21721f1df000154757168800000008250008_1547822951_473546
+restartCommand4=
+restartStyleHint1=0
+restartStyleHint2=0
+restartStyleHint3=0
+restartStyleHint4=0
+userId1=realkstrawn93
+userId2=realkstrawn93
+userId3=realkstrawn93
+userId4=realkstrawn93
+wasWm1=true
+wasWm2=false
+wasWm3=false
+wasWm4=false

@@ -1,0 +1,8 @@
+# GIMP gimp-text-tool options
+
+(foreground (color-rgb 0.988235 0.584314 0.188235))
+(palette "Color History")
+(font "Cantarell")
+(font-size 48.000000)
+
+# end of gimp-text-tool options

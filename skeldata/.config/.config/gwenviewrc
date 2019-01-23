@@ -1,0 +1,18 @@
+[$Version]
+update_info=gwenview.upd:SideBar_StatusBar_Rename,gwenview.upd:ImageView_AlphaBackgroundMode_Update
+
+[MainWindow]
+Height 900=480
+MenuBar=Disabled
+State=AAAA/wAAAAD9AAAAAAAAAvkAAAG6AAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAA
+ToolBarsMovable=Disabled
+Width 1600=761
+
+[Recent Files]
+File1[$e]=$HOME/Desktop/Discover.png
+File2[$e]=$HOME/Desktop/V-drums-2.jpg
+Name1[$e]=Discover.png
+Name2[$e]=V-drums-2.jpg
+
+[SideBar]
+SideBarSplitterSizes=242,516

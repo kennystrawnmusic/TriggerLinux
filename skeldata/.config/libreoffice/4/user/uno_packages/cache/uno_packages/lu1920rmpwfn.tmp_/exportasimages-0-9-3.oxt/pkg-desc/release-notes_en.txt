@@ -1,0 +1,9 @@
+Change Log
+
+0.9.3:
+    - Created Simplified Chinese translations (thanks to 锁琨珑 Kevin Suo, Voip: 6000@sip.suokunlong.cn, http://suokunlong.cn )
+    - Updated the package description.
+	- confirmed to work with LibreOffice 5.1
+0.9.2:
+    - Added the menu entry to File menu
+    - Added the default path for unsaved documents

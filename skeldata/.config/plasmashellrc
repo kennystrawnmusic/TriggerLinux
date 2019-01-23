@@ -1,0 +1,96 @@
+[PlasmaRunnerManager]
+LaunchCounts=1 services_org.kde.spectacle.desktop
+pluginWhiteList=services,places,desktopsessions,PowerDevil,shell,bookmarks,recentdocuments,locations,baloosearch
+
+[PlasmaViews][Panel 2][Horizontal2048]
+thickness=50
+
+[PlasmaViews][Panel 2][Horizontal1920]
+thickness=50
+
+[PlasmaViews][Panel 2][Horizontal1916]
+thickness=50
+
+[PlasmaViews][Panel 2][Horizontal1900]
+thickness=50
+
+[PlasmaViews][Panel 2][Horizontal1680]
+thickness=50
+
+[PlasmaViews][Panel 2][Horizontal1600]
+thickness=50
+
+[PlasmaViews][Panel 2][Horizontal1440]
+thickness=50
+
+[PlasmaViews][Panel 2][Horizontal1200]
+thickness=50
+
+[PlasmaViews][Panel 2][Horizontal1280]
+thickness=50
+
+[PlasmaViews][Panel 2][Horizontal1360]
+thickness=50
+
+[PlasmaViews][Panel 2][Horizontal1366]
+thickness=50
+
+[PlasmaViews][Panel 2][Horizontal1152]
+thickness=50
+
+[PlasmaViews][Panel 2][Horizontal1024]
+thickness=50
+
+[PlasmaViews][Panel 2][Horizontal864]
+thickness=50
+
+[PlasmaViews][Panel 2][Horizontal800]
+thickness=50
+
+[PlasmaViews][Panel 21][Horizontal2048]
+thickness=27
+
+[PlasmaViews][Panel 21][Horizontal1920]
+thickness=27
+
+[PlasmaViews][Panel 21][Horizontal1916]
+thickness=27
+
+[PlasmaViews][Panel 21][Horizontal1900]
+thickness=27
+
+[PlasmaViews][Panel 21][Horizontal1680]
+thickness=27
+
+[PlasmaViews][Panel 21][Horizontal1600]
+thickness=27
+
+[PlasmaViews][Panel 21][Horizontal1440]
+thickness=27
+
+[PlasmaViews][Panel 21][Horizontal1200]
+thickness=27
+
+[PlasmaViews][Panel 21][Horizontal1280]
+thickness=27
+
+[PlasmaViews][Panel 21][Horizontal1360]
+thickness=27
+
+[PlasmaViews][Panel 21][Horizontal1366]
+thickness=27
+
+[PlasmaViews][Panel 21][Horizontal1152]
+thickness=27
+
+[PlasmaViews][Panel 21][Horizontal1024]
+thickness=27
+
+[PlasmaViews][Panel 21][Horizontal864]
+thickness=27
+
+[PlasmaViews][Panel 21][Horizontal800]
+thickness=27
+
+[Updates]
+performed=/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/obsolete_kickoffrc.js
