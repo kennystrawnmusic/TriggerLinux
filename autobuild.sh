@@ -174,6 +174,6 @@ copyskel
 createlsbrelease
 compilecalamares
 compileaurpkgs
-setuprepo
+#setuprepo
 buildtheiso
 cleanup
