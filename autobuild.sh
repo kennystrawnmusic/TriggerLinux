@@ -121,7 +121,7 @@ compileaurpkgs() {
     for d in * ; do
       cd "$d"
     done
-    makepkg -s
+    makepkg -si
     cp *.pkg.tar.* ../../x86_64
     cd $buildingpath
     for d in */ ; do
