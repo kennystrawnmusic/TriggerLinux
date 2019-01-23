@@ -123,19 +123,6 @@ compileaurpkgs() {
     done
     makepkg -s
     cp *.pkg.tar.* ../../x86_64
-    #work around dependency problems
-    if [ $currentpkg == "automoc4" ]; then
-      repo-add customrepo.db.tar.gz *.pkg.tar.*
-      echo "[customrepo]" | sudo tee --append ../../../workingdir/pacman.conf > /dev/null
-      echo "SigLevel = Never" | sudo tee --append ../../../workingdir/pacman.conf > /dev/null
-      echo "Server = file://$(pwd)/customrepo/$(echo '$arch')" | sudo tee --append ../../../workingdir/pacman.conf > /dev/null
-      sudo pacman -Syyuu
-      cat /etc/pacman.conf > ./pacman.backup
-      echo "[customrepo]" | sudo tee --append /etc/pacman.conf > /dev/null
-      echo "SigLevel = Never" | sudo tee --append /etc/pacman.conf > /dev/null
-      echo "Server = file://$(pwd)/customrepo/$(echo '$arch')" | sudo tee --append /etc/pacman.conf > /dev/null
-      sudo pacman -Syyuu
-    fi
     cd $buildingpath
     for d in */ ; do
       rm -rf "$d"
@@ -145,11 +132,21 @@ compileaurpkgs() {
   rm -rf customrepo/custompkgs
   unset repopath buildingpath
 }
+#Unfortunately there are dependencies of calamares in the AUR or I wouldn't have to run this
 setuprepo() {
   cd customrepo/x86_64
   echo "Adding packages to repository..."
   repo-add customrepo.db.tar.gz *.pkg.tar.*
   cd ../..
+  echo "[customrepo]" | sudo tee --append ./workingdir/pacman.conf > /dev/null
+  echo "SigLevel = Never" | sudo tee --append ./workingdir/pacman.conf > /dev/null
+  echo "Server = file://$(pwd)/customrepo/$(echo '$arch')" | sudo tee --append ./workingdir/pacman.conf > /dev/null
+  sudo pacman -Syyuu
+  cat /etc/pacman.conf > ./pacman.backup
+  echo "[customrepo]" | sudo tee --append /etc/pacman.conf > /dev/null
+  echo "SigLevel = Never" | sudo tee --append /etc/pacman.conf > /dev/null
+  echo "Server = file://$(pwd)/customrepo/$(echo '$arch')" | sudo tee --append /etc/pacman.conf > /dev/null
+  sudo pacman -Syyuu
 }
 buildtheiso() {
   sudo rm -rf ./workingdir/airootfs/etc/systemd/system/getty*
