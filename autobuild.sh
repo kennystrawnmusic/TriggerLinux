@@ -95,7 +95,7 @@ compilecalamares() {
   echo "Building qt5-styleplugins-git..."
   git clone https://aur.archlinux.org/qt5-styleplugins-git
   cd qt5-styleplugins-git
-  makepkg -si
+  makepkg -s
   cp *.pkg.tar.* ../x86_64
   cd ../
   echo "Building calamares..."
