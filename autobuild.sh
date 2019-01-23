@@ -18,7 +18,8 @@ else
 fi
 createdir() {
   sudo mkdir workingdir
-  sudo cp -r config/* ./workingdir
+  sudo cp -r config/* workingdir
+  sudo mkdir -p workingdir/usr/share/plymouth/themes/
 }
 copypackages() {
   sudo cp -f ./packages ./workingdir/packages.x86_64
