@@ -95,7 +95,7 @@ compilecalamares() {
   echo "Building qt5-styleplugins-git..."
   git clone https://aur.archlinux.org/qt5-styleplugins-git
   cd qt5-styleplugins-git
-  makepkg -s
+  makepkg --noconfirm -si
   cp *.pkg.tar.* ../x86_64
   cd ../
   echo "Building calamares..."
@@ -141,12 +141,12 @@ setuprepo() {
   echo "[customrepo]" | sudo tee --append ./workingdir/pacman.conf > /dev/null
   echo "SigLevel = Never" | sudo tee --append ./workingdir/pacman.conf > /dev/null
   echo "Server = file://$(pwd)/customrepo/$(echo '$arch')" | sudo tee --append ./workingdir/pacman.conf > /dev/null
-  sudo pacman -Syyuu
+  sudo pacman --noconfirm -Syyuu
   cat /etc/pacman.conf > ./pacman.backup
   echo "[customrepo]" | sudo tee --append /etc/pacman.conf > /dev/null
   echo "SigLevel = Never" | sudo tee --append /etc/pacman.conf > /dev/null
   echo "Server = file://$(pwd)/customrepo/$(echo '$arch')" | sudo tee --append /etc/pacman.conf > /dev/null
-  sudo pacman -Syyuu
+  sudo pacman --noconfirm -Syyuu
 }
 buildtheiso() {
   sudo rm -rf ./workingdir/airootfs/etc/systemd/system/getty*
