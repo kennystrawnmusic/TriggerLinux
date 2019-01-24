@@ -69,9 +69,6 @@ pacman-key --populate archlinux
 su tempuser -c "gpg --recv-keys FE0784117FBCE11D F5675605C74E02CF EAAF29B42A678C20 EC94D18F7F05997E"
 su tempuser -c "gpg --recv-keys EC94D18F7F05997E"
 
-# #Install remaining AUR packages that are not dependencies of calamares using AUR helper as temporary user; also need to ensure the AUR helper autoupdates (hence why I install it twice)
-su tempuser -c "yay -Syu --devel --timeupdate yay-git archmaker plymouth-git ocs-url snapd-git discover-snap opencl-amd autoupdate"
-
 systemctl enable autoupdate.service autoupdate.timer
 
 #Autologin to root account upon live image boot
