@@ -24,7 +24,6 @@ arch-install-scripts
 archiso
 archlinux-appstream-data
 archlinux-keyring
-archmaker
 argon2
 ark
 artikulate
@@ -40,7 +39,6 @@ audit
 autoconf
 automake
 automoc4
-autoupdate
 avahi
 avogadrolibs
 baloo
@@ -97,7 +95,6 @@ device-mapper
 dhcpcd
 diffutils
 discount
-discover-snap
 djvulibre
 dmraid
 docbook-xml
@@ -743,12 +740,10 @@ noto-fonts-emoji
 npth
 nspr
 nss
-ocs-url
 okular
 openal
 openbabel
 opencl-nvidia
-opencl-amd
 opencore-amr
 openexr
 openjpeg2
@@ -800,7 +795,6 @@ plasma-vault
 plasma-wayland-session
 plasma-workspace
 plasma-workspace-wallpapers
-plymouth-git
 polkit
 polkit-kde-agent
 polkit-qt4
@@ -918,8 +912,6 @@ signon-ui
 signond
 slang
 smbclient
-snapd-glib-git
-snapd-git
 snappy
 socat
 solid
