@@ -24,6 +24,7 @@ arch-install-scripts
 archiso
 archlinux-appstream-data
 archlinux-keyring
+archmaker
 argon2
 ark
 artikulate
@@ -31,12 +32,15 @@ at-spi2-atk
 at-spi2-core
 atk
 attica
+attica-qt4
 attr
 audiocd-kio
 audiofile
 audit
 autoconf
 automake
+automoc4
+autoupdate
 avahi
 avogadrolibs
 baloo
@@ -93,6 +97,7 @@ device-mapper
 dhcpcd
 diffutils
 discount
+discover-snap
 djvulibre
 dmraid
 docbook-xml
@@ -277,12 +282,14 @@ kde-cli-tools
 kde-dev-scripts
 kde-dev-utils
 kde-gtk-config
+kdebase-runtime
 kdebugsettings
 kdeclarative
 kdecoration
 kded
 kdeedu-data
 kdegraphics-mobipocket
+kdelibs
 kdelibs4support
 kdenetwork-filesharing
 kdenlive
@@ -736,10 +743,12 @@ noto-fonts-emoji
 npth
 nspr
 nss
+ocs-url
 okular
 openal
 openbabel
 opencl-nvidia
+opencl-amd
 opencore-amr
 openexr
 openjpeg2
@@ -769,6 +778,7 @@ perl
 perl-error
 perl-mailtools
 perl-timedate
+phonon-qt4
 phonon-qt5
 phonon-qt5-gstreamer
 picmi
@@ -790,8 +800,10 @@ plasma-vault
 plasma-wayland-session
 plasma-workspace
 plasma-workspace-wallpapers
+plymouth-git
 polkit
 polkit-kde-agent
+polkit-qt4
 polkit-qt5
 poppler
 poppler-qt5
@@ -906,6 +918,8 @@ signon-ui
 signond
 slang
 smbclient
+snapd-glib-git
+snapd-git
 snappy
 socat
 solid
@@ -1029,6 +1043,7 @@ xorgproto
 xterm
 xvidcore
 xz
+yay-git
 zeroconf-ioslave
 zeromq
 zip
