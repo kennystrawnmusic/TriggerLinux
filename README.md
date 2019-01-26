@@ -46,4 +46,5 @@ It is also possible to pass a version number and a codename to this script as pa
 
     ./autobuild.sh 0.3.2019.01.23.1 alpha1
 
-I should have the first public beta release built within hours of uploading this, so that shouldn't be an issue (I would assume).
+# Releases
+Due to GitHub's 2GB file size limit, all binary (monthly) ISO images are [here](https://mega.nz/#!RI1xXCgK!XbH-hchloLsuaeY6iMnASIB8kVT0_MkX1GMJKBaMnJs)
