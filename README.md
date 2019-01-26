@@ -33,7 +33,9 @@ The custom [KDE](https://www.kde.org) Plasma 5 desktop is laid out the way it is
 Hence, the layout that we have. It borrows from the best of both the Windows (menu/icons on bottom-left) and macOS (global menu) user interfaces while simultaneously ensuring that, no matter what device you are using, the status icons, clock, and favorite apps will always remain in the same position relative to the screen.
 
 ## Rolling release with silent updates
-Triggerbox makes use of a systemd timer to automatically run a system update command silently in the background every 20 minutes, ensuring the system is up to date before Discover has a chance to nag you. The result is that we're one-upping even Chrome OS with this one, since Triggerbox also has livepatch support which means that it won't nag you about rebooting either.
+Triggerbox makes use of a systemd timer to automatically run a system update command silently in the background every 20 minutes, ensuring the system is up to date before Discover has a chance to nag you. The result is that although the system will update frequently in the background, all you have to do is reboot.
+
+Rolling release is also important because it means that you always get the newest version of both the apps and the system without the need to upgrade to a major new release. Features simply get installed each and every time you install updates to existing software; kind of like Windows 10, but even more frequently.
 
 # Build Instructions (if you already have Arch Linux installed)
 The `autobuild.sh` script runs everything else for you. So simply:
