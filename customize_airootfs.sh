@@ -104,6 +104,6 @@ echo -e "Name=Gab" >> /usr/share/applications/gab.desktop
 echo -e "Type=Link" >> /usr/share/applications/gab.desktop
 echo -e "URL[\$e]=https://gab.ai/" >> /usr/share/applications/gab.desktop
 
-#Add Gab by default to pinned apps
-sed -i "45s/$/,gab.desktop/" /root/.config/plasma-org.kde.plasma.desktop-appletsrc
-sed -i "45s/$/,gab.desktop/" /etc/skel/.config/plasma-org.kde.plasma.desktop-appletsrc
+#Add Gab by default to desktops of all users
+cp /usr/share/applications/gab.desktop /root/Desktop/
+cp /usr/share/applications/gab.desktop /etc/skel/Desktop/

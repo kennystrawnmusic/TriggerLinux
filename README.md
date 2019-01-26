@@ -37,6 +37,11 @@ Triggerbox makes use of a systemd timer to automatically run a system update com
 
 Rolling release is also important because it means that you always get the newest version of both the apps and the system without the need to upgrade to a major new release. Features simply get installed each and every time you install updates to existing software; kind of like Windows 10, but even more frequently.
 
+## Develop without preconfiguring
+Triggerbox comes with [Qt Creator](https://doc.qt.io/qtcreator) out of the box. This powerful IDE provides you with all the necessary tools to design, develop, and/or distribute native apps for Triggerbox, which should work both on phones (when I, the lead developer, can get my hands on a developer-mode Android device, which might be as early as next year) and on desktop computers using the same codebase (just compiled for different architectures).
+
+Distribution of your projects is also rather straightforward, as [this fantastic Arch Linux wiki page](https://wiki.archlinux.org/index.php/Creating_packages) explains; because `PKGBUILD` files essentially provide instructions for the makepkg command to run on a target device, this will enable you to very easily and quickly compile your code for different architectures just by running `makepkg -si` on multiple devices and saving the resulting .pkg.tar.xz file from each device. This also makes for fantastic sideloadability; you can simply distribute a systemd timer along with the `PKGBUILD` file for what you are developing that automatically updates said `PKGBUILD` every given number of days (or hours). Again, the beauty of Arch Linux is decentralization; you don't have to rely on repository maintainers making decisions for you if you don't want to.
+
 # Build Instructions (if you already have Arch Linux installed)
 The `autobuild.sh` script runs everything else for you. So simply:
 
