@@ -157,7 +157,7 @@ buildtheiso() {
 cleanup() {
   echo "Cleaning up..."
   cat ./pacman.backup | sudo tee /etc/pacman.conf > /dev/null
-  sudo pacman -Syyuu
+  sudo pacman --noconfirm -Syyuu
   rm ./pacman.backup
   sudo rm -rf /var/cache/pacman/pkg/triggerbox-calamares*
   sudo rm -rf /var/cache/pacman/pkg/qt5-styleplugins-git*
