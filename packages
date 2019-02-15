@@ -839,7 +839,7 @@ python-progressbar
 python-pycparser
 python-pygments
 python-pyhamcrest
-python-pymacaroons-pynacl
+python-pymacaroons
 python-pynacl
 python-pyparsing
 python-pyqt5
