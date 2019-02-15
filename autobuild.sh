@@ -26,6 +26,9 @@ copypackages() {
 }
 copyskel() {
   sudo mkdir -p ./workingdir/airootfs/etc/fonts
+  if [ ! -d skeldata/Desktop ]; then
+    mkdir -p skeldata/{Desktop,Documents,Downloads,Pictures,Videos}
+  fi
   sudo cp -r skeldata ./workingdir/airootfs/etc/skel
   sudo bash -c 'echo -e "PROMPT=\"%n@%m:%~%# \"" >> ./workingdir/airootfs/etc/skel/.zshrc'
   sudo cp fonts.conf workingdir/airootfs/etc/skel/.config/fontconfig
