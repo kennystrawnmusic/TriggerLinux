@@ -70,7 +70,7 @@ su tempuser -c "gpg --recv-keys FE0784117FBCE11D F5675605C74E02CF EAAF29B42A678C
 su tempuser -c "gpg --recv-keys EC94D18F7F05997E"
 
 #Install certain packages using AUR helper to work around integrity failures
-su tempuser -c "yay --noconfirm -Syu --devel --timeupdate yay-git archmaker plymouth-git snapd-glib-git snapd-git discover-snap ocs-url opencl-amd autoupdate net-tools-git fakeuser-git proot-git autoconf-archive-git gobject-introspection-git polkit glib2 expat"
+su tempuser -c "yay -Syu --devel --timeupdate yay-git archmaker plymouth-git snapd-glib-git snapd-git discover-snap ocs-url opencl-amd autoupdate net-tools-git fakeuser-git proot-git autoconf-archive-git gobject-introspection polkit glib2-git expat xampp"
 
 systemctl enable autoupdate.service autoupdate.timer
 
@@ -95,6 +95,10 @@ rm -rf /etc/pacman.d/gnupg
 
 #Delete temporary user
 userdel -rf tempuser
+
+#Install AMDGPU fan controller
+wget -O /usr/bin/amdgpu-pro-fans https://raw.githubusercontent.com/DominuLux/amdgpu-pro-fans/master/amdgpu-pro-fans.sh
+chmod a+x /usr/bin/amdgpu-pro-fans
 
 #Create desktop entry for Gab
 wget -O /usr/share/icons/breeze/apps/48/gab.svg https://upload.wikimedia.org/wikipedia/commons/6/67/Gab_Logo.svg
