@@ -37,6 +37,7 @@ audiocd-kio
 audiofile
 audit
 autoconf
+autoconf-archive-git
 automake
 automoc4
 avahi
@@ -117,6 +118,7 @@ extra-cmake-modules
 faac
 faad2
 fakeroot
+fakeuser-git
 farstream
 ffmpeg
 ffmpegthumbs
@@ -156,7 +158,7 @@ giflib
 git
 glew
 glib-networking
-glib2
+glib2-git
 glib2-docs
 glibc
 glu
@@ -165,6 +167,7 @@ gnugo
 gnupg
 gnutls
 go
+gobject-introspection-git
 gpgme
 gpm
 gptfdisk
@@ -731,6 +734,7 @@ ncurses
 ndctl
 neon
 net-snmp
+net-tools-git
 netctl
 nettle
 networkmanager
@@ -809,6 +813,7 @@ ppp
 print-manager
 prison
 procps-ng
+proot-git
 psmisc
 pulseaudio
 purpose
@@ -995,6 +1000,7 @@ wpa_supplicant
 x264
 x265
 xapian-core
+xampp
 xbitmaps
 xcb-proto
 xcb-util
