@@ -70,7 +70,7 @@ su tempuser -c "gpg --recv-keys FE0784117FBCE11D F5675605C74E02CF EAAF29B42A678C
 su tempuser -c "gpg --recv-keys EC94D18F7F05997E"
 
 #Install certain packages using AUR helper to work around integrity failures
-su tempuser -c "yay -Syu --devel --timeupdate yay-git archmaker plymouth-git snapd-glib-git snapd-git discover-snap ocs-url opencl-amd autoupdate"
+su tempuser -c "yay --noconfirm -Syu --devel --timeupdate yay-git archmaker plymouth-git snapd-glib-git snapd-git discover-snap ocs-url opencl-amd autoupdate"
 
 systemctl enable autoupdate.service autoupdate.timer
 
