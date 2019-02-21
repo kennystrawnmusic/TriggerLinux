@@ -172,7 +172,7 @@ cleanup() {
   sudo rm -rf $finalfiles
   rm -rf ./customrepo
   echo "Saving iso file..."
-  cp ./workingdir/out/*.iso ./output.iso
+  cp ./workingdir/out/*.iso ./triggerbox-$distroversion-$(uname -m).iso
   echo "Removing archiso directory..."
   sudo rm -rf workingdir
 }
