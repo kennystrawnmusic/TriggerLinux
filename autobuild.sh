@@ -11,10 +11,8 @@ if [ "$1" != "" ]; then
   distroversion="$1"
   distrocodename="$2"
 else
-  echo -n "Please enter the current version of Triggerbox > "
-  read distroversion
-  echo -n "Please enter the current codename of Triggerbox > "
-  read distrocodename
+  distroversion="$(date +%Y.%m.%d)"
+  distrocodename="monthly-stable-$(uname -m)"
 fi
 createdir() {
   sudo mkdir workingdir
