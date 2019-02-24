@@ -158,7 +158,6 @@ giflib
 git
 glew
 glib-networking
-glib2-git
 glib2-docs
 glibc
 glu
@@ -167,7 +166,6 @@ gnugo
 gnupg
 gnutls
 go
-gobject-introspection-git
 gpgme
 gpm
 gptfdisk
@@ -1000,7 +998,6 @@ wpa_supplicant
 x264
 x265
 xapian-core
-xampp
 xbitmaps
 xcb-proto
 xcb-util

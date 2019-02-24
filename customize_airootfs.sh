@@ -93,11 +93,17 @@ plymouth-set-default-theme -R triggerbox-breeze
 #Delete pacman-key directory to work around bug in which calamares tries to create directory that already exists
 rm -rf /etc/pacman.d/gnupg
 
+
+#work around failure to delete temporary user
+if kill -0 4406; then
+  kill -9 4406
+fi
+
 #Delete temporary user
 userdel -rf tempuser
 
 #Install AMDGPU fan controller
-wget -O /usr/bin/amdgpu-pro-fans https://raw.githubusercontent.com/DominuLux/amdgpu-pro-fans/master/amdgpu-pro-fans.sh
+wget -O /usr/bin/amdgpu-pro-fans https://raw.githubusercontent.com/DominiLux/amdgpu-pro-fans/master/amdgpu-pro-fans.sh
 chmod a+x /usr/bin/amdgpu-pro-fans
 
 #Customize GRUB to remove last vestiges of Arch branding
