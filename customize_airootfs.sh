@@ -108,7 +108,7 @@ chmod a+x /usr/bin/amdgpu-pro-fans
 
 #Customize GRUB to remove last vestiges of Arch branding
 sed -i "s/GRUB_DISTRIBUTOR=\"Arch\"/GRUB_DISTRIBUTOR=\"Triggerbox\"/" /etc/default/grub
-sed -i "s/OS=\"${GRUB_DISTRIBUTOR} Linux\"/OS=\"${GRUB_DISTRIBUTOR}\"/" /etc/grub.d/10_linux
+sed -i "s/OS=\"\${GRUB_DISTRIBUTOR} Linux\"/OS=\"\${GRUB_DISTRIBUTOR}\"/" /etc/grub.d/10_linux
 
 #Create desktop entry for Gab
 wget -O /usr/share/icons/breeze/apps/48/gab.svg https://upload.wikimedia.org/wikipedia/commons/6/67/Gab_Logo.svg
