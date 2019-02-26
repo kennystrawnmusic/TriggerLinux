@@ -3,6 +3,7 @@ if [ "$EUID" = 0 ]; then
   echo "Please don't run this script as root!"
   exit
 fi
+basedistroversion="$(date +%Y.%m.%d)"
 distroversion=""
 distrocodename=""
 echo "Welcome to the generation script for Triggerbox"
@@ -11,7 +12,7 @@ if [ "$1" != "" ]; then
   distroversion="$1"
   distrocodename="$2"
 else
-  distroversion="$(date +%Y.%m.%d)"
+  distroversion="${basedistroversion:2:5}"
   distrocodename="monthly-stable-$(uname -m)"
 fi
 createdir() {
