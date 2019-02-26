@@ -93,15 +93,6 @@ plymouth-set-default-theme -R triggerbox-breeze
 #Delete pacman-key directory to work around bug in which calamares tries to create directory that already exists
 rm -rf /etc/pacman.d/gnupg
 
-
-#work around failure to delete temporary user
-if kill -0 4406; then
-  kill -9 4406
-fi
-
-#Delete temporary user
-userdel -rf tempuser
-
 #Install AMDGPU fan controller
 wget -O /usr/bin/amdgpu-pro-fans https://raw.githubusercontent.com/DominiLux/amdgpu-pro-fans/master/amdgpu-pro-fans.sh
 chmod a+x /usr/bin/amdgpu-pro-fans
@@ -121,3 +112,6 @@ echo -e "URL[\$e]=https://gab.ai/" >> /usr/share/applications/gab.desktop
 #Add Gab by default to desktops of all users
 cp /usr/share/applications/gab.desktop /root/Desktop/
 cp /usr/share/applications/gab.desktop /etc/skel/Desktop/
+
+#Delete temporary user after all processes finish
+wait $(pgrep tempuser) && userdel -rf tempuser
