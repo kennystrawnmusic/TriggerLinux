@@ -113,5 +113,5 @@ echo -e "URL[\$e]=https://gab.ai/" >> /usr/share/applications/gab.desktop
 cp /usr/share/applications/gab.desktop /root/Desktop/
 cp /usr/share/applications/gab.desktop /etc/skel/Desktop/
 
-#Delete temporary user after all processes finish
-wait $(pgrep tempuser) && userdel -rf tempuser
+#Disable temporary user account to prep for later deletion
+usermod -Le 1970-01-02 tempuser
