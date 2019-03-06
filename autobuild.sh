@@ -16,6 +16,7 @@ else
   distrocodename="monthly-stable-$(uname -m)"
 fi
 createdir() {
+  sudo pacman --noconfirm -Scc #prevent AUR package signature errors
   sudo mkdir workingdir
   sudo cp -r config/* workingdir
   sudo mkdir -p workingdir/airootfs/usr/share/plymouth/themes/
