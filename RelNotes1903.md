@@ -3,10 +3,10 @@ Although it is rolling release (as is upstream Arch Linux, whose repositories it
 
 ## Feature Changes and Bug Fixes
 
-[*] Linux Kernel 5.0
-[*] Gab icon on desktop now works
-[*] Gab [Dissenter](https://dissenter.com) extension now bundled
-[*] Builds work properly after quite a bit of trial and error due to upstream package issues
+* Linux Kernel 5.0
+* Gab icon on desktop now works
+* Gab [Dissenter](https://dissenter.com) extension now bundled
+* Builds work properly after quite a bit of trial and error due to upstream package issues
 
 ## Known Issues
 
