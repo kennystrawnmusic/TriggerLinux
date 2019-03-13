@@ -8,6 +8,11 @@ locale-gen
 ln -sf /usr/share/zoneinfo/UTC /etc/localtime
 
 usermod -s /usr/bin/zsh root
+
+#add XAMPP installer to all desktops, including root's
+wget -O /etc/skel/Desktop/server-install.run https://www.apachefriends.org/xampp-files/7.3.2/xampp-linux-x64-7.3.2-2-installer.run
+chmod a+x /etc/skel/Desktop/server-install.run
+
 cp -aT /etc/skel/ /root/
 cp /root/calamares.desktop /root/Desktop/
 
@@ -96,6 +101,9 @@ rm -rf /etc/pacman.d/gnupg
 #Install AMDGPU fan controller
 wget -O /usr/bin/amdgpu-pro-fans https://raw.githubusercontent.com/DominiLux/amdgpu-pro-fans/master/amdgpu-pro-fans.sh
 chmod a+x /usr/bin/amdgpu-pro-fans
+
+#Auto-update needs to be fixed
+sudo sed -i "s/ExecStart/ExecStart=\/usr\/bin\/pacman  --noconfirm -Syuwq/g" /lib/systemd/system/autoupdate.service
 
 #Customize GRUB to remove last vestiges of Arch branding
 sed -i "s/GRUB_DISTRIBUTOR=\"Arch\"/GRUB_DISTRIBUTOR=\"Triggerbox\"/" /etc/default/grub
