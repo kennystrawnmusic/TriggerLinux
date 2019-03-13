@@ -103,7 +103,7 @@ wget -O /usr/bin/amdgpu-pro-fans https://raw.githubusercontent.com/DominiLux/amd
 chmod a+x /usr/bin/amdgpu-pro-fans
 
 #Auto-update needs to be fixed
-sudo sed -i "s/ExecStart/ExecStart=\/usr\/bin\/pacman  --noconfirm -Syuwq/g" /lib/systemd/system/autoupdate.service
+sed -i "s/ExecStart/ExecStart=\/usr\/bin\/pacman  --noconfirm -Syuwq/g" /lib/systemd/system/autoupdate.service
 
 #Customize GRUB to remove last vestiges of Arch branding
 sed -i "s/GRUB_DISTRIBUTOR=\"Arch\"/GRUB_DISTRIBUTOR=\"Triggerbox\"/" /etc/default/grub
