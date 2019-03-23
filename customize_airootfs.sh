@@ -75,7 +75,7 @@ su tempuser -c "gpg --recv-keys FE0784117FBCE11D F5675605C74E02CF EAAF29B42A678C
 su tempuser -c "gpg --recv-keys EC94D18F7F05997E"
 
 #Install certain packages using AUR helper to work around integrity failures
-su tempuser -c "yay --noconfirm -Syu --devel --timeupdate yay-git archmaker plymouth-git snapd-glib-git snapd-git discover-snap ocs-url opencl-amd autoupdate"
+su tempuser -c "yay --noconfirm -Syu --devel --timeupdate yay-git archmaker plymouth-git snapd-glib-git snapd-git discover-snap ocs-url opencl-amd"
 
 systemctl enable autoupdate.service autoupdate.timer
 
@@ -103,7 +103,7 @@ wget -O /usr/bin/amdgpu-pro-fans https://raw.githubusercontent.com/DominiLux/amd
 chmod a+x /usr/bin/amdgpu-pro-fans
 
 #Auto-update needs to be fixed
-sed -i "s/ExecStart/ExecStart=\/usr\/bin\/pacman  --noconfirm -Syuwq/g" /lib/systemd/system/autoupdate.service
+sed -i "s/ExecStart\=\/usr\/bin\/nice -n 19 \/usr\/bin\/pacman -Syuwq --noconfirm/ExecStart\=\/usr\/bin\/pacman  --noconfirm -Syuq/g" /lib/systemd/system/autoupdate.service
 
 #Customize GRUB to remove last vestiges of Arch branding
 sed -i "s/GRUB_DISTRIBUTOR=\"Arch\"/GRUB_DISTRIBUTOR=\"Triggerbox\"/" /etc/default/grub
