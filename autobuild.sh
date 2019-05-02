@@ -36,7 +36,10 @@ copyskel() {
   sudo ln -s /usr/lib/systemd/system/sddm-plymouth.service ./workingdir/airootfs/etc/systemd/system/display-manager.service
   sudo cp -f ./customize_airootfs.sh ./workingdir/airootfs/root/customize_airootfs.sh
   sudo cp -r triggerbox-breeze ./workingdir/airootfs/usr/share/plymouth/themes/
-  sudo cp autoupdate.{service,timer} ./workingdir/airootfs/lib/systemd/system/autoupdate.{service,timer}
+  if [ ! -d workingdir/airootfs/lib/systemd/system ]; then
+    sudo mkdir -p workingdir/airootfs/lib/systemd/system
+  fi
+  sudo cp autoupdate.{service,timer} ./workingdir/airootfs/lib/systemd/system/
 }
 createlsbrelease() {
   echo "lsb-release" | sudo tee --append ./workingdir/packages.x86_64 > /dev/null
