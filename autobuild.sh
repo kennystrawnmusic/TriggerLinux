@@ -16,7 +16,7 @@ else
   distrocodename="monthly-stable-$(uname -m)"
 fi
 createdir() {
-  sudo pacman --noconfirm -Scc #prevent AUR package signature errors
+  yes | sudo pacman -Scc #prevent AUR package signature errors
   sudo mkdir workingdir
   sudo cp -r config/* workingdir
   sudo mkdir -p workingdir/airootfs/usr/share/plymouth/themes/
@@ -117,6 +117,7 @@ compilecalamares() {
 
 #Unfortunately there are dependencies of calamares in the AUR or I wouldn't have to run this
 compileaurpkgs() {
+  yes | sudo pacman -Scc #prevent package signature errors, part 2
   mkdir customrepo/custompkgs
   repopath="$(readlink -f .)"
   buildingpath="$(readlink -f ./customrepo/custompkgs)"
