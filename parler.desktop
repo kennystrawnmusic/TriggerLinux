@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Icon=/usr/share/icons/breeze/apps/48/parler.jpg
+Type=Application
+Categories=Internet
+Exec=parler
+Name=Parler
+GenericName=Parler
+Comment=Parler.com
+Keywords=social;web;internet
+StartupNotify=true

@@ -109,15 +109,21 @@ sed -i "s/ExecStart\=\/usr\/bin\/nice -n 19 \/usr\/bin\/pacman -Syuwq --noconfir
 sed -i "s/GRUB_DISTRIBUTOR=\"Arch\"/GRUB_DISTRIBUTOR=\"Triggerbox\"/" /etc/default/grub
 sed -i "s/OS=\"\${GRUB_DISTRIBUTOR} Linux\"/OS=\"\${GRUB_DISTRIBUTOR}\"/" /etc/grub.d/10_linux
 
-#Create desktop entry for Gab
-wget -O /usr/share/icons/breeze/apps/48/gab.svg https://upload.wikimedia.org/wikipedia/commons/6/67/Gab_Logo.svg
-echo -e "[Desktop Entry]" >> /usr/share/applications/gab.desktop
-echo -e "Icon=gab.svg" >> /usr/share/applications/gab.desktop
-echo -e "Name=Gab" >> /usr/share/applications/gab.desktop
-echo -e "Type=Link" >> /usr/share/applications/gab.desktop
-echo -e "URL[\$e]=https://gab.ai/" >> /usr/share/applications/gab.desktop
+#Create JAK webapp for Gab
+wget -O /usr/share/icons/breeze/apps/48/gab.png https://gab.com/assets/icon/apple-touch-icon.png
 
-#Add Gab by default to desktops of all users
+#Create /usr/share/icons/breeze/apps/scalable if it doesn't exist
+if [ ! -d /usr/share/icons/breeze/apps/scalable ]; then
+  mkdir /usr/share/icons/breeze/apps/scalable
+fi
+
+#Create JAK webapp for Minds
+wget -O /usr/share/icons/breeze/apps/scalable/minds.svg https://cdn-assets.minds.com/front/dist/en/assets/logos/bulb.svg
+
+#Create JAK webapp for Parler
+wget -O /usr/share/icons/breeze/apps/48/parler.jpg https://images.parler.com/a078092e6e2df507bfd12db4710e8621_128
+
+#Add Gab and Minds by default to desktops of all users
 cp /usr/share/applications/gab.desktop /root/Desktop/
 cp /usr/share/applications/gab.desktop /etc/skel/Desktop/
 

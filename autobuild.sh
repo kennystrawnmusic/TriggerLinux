@@ -40,6 +40,9 @@ copyskel() {
     sudo mkdir -p workingdir/airootfs/lib/systemd/system
   fi
   sudo cp autoupdate.{service,timer} ./workingdir/airootfs/lib/systemd/system/
+  sudo mkdir ./workingdir/airootfs/usr/bin
+  sudo mkdir -p ./workingdir/airootfs/usr/share/applications
+  sudo cp {minds,gab,parler} ./workingdir/airootfs/usr/bin
 }
 createlsbrelease() {
   echo "lsb-release" | sudo tee --append ./workingdir/packages.x86_64 > /dev/null
@@ -140,7 +143,7 @@ compileaurpkgs() {
   rm -rf customrepo/custompkgs
   unset repopath buildingpath
 }
-#Unfortunately there are dependencies of calamares in the AUR or I wouldn't have to run this
+
 setuprepo() {
   cd customrepo/x86_64
   echo "Adding packages to repository..."

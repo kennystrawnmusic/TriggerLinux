@@ -1,0 +1,9 @@
+#!/usr/bin/env python
+from JAK.Application import JWebApp
+
+url = "https://parler.com"
+icon = "/usr/share/icons/breeze/apps/48/parler.jpg"
+
+webapp = JWebApp(title="Parler", icon=icon, online=True, web_contents=url)
+
+webapp.run()
