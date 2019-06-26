@@ -20,6 +20,7 @@ createdir() {
   sudo mkdir workingdir
   sudo cp -r config/* workingdir
   sudo mkdir -p workingdir/airootfs/usr/share/plymouth/themes/
+  sudo mkdir -p workingdir/airootfs/usr/share/applications
 }
 copypackages() {
   sudo cp -f ./packages ./workingdir/packages.x86_64
@@ -58,7 +59,13 @@ compilecalamares() {
   mkdir customrepo/i686
   mkdir customrepo/triggerbox-calamares
   echo "Preparing Calamares-build..."
+  
   curl http://archmaker.guidedlinux.org/PKGBUILD > customrepo/triggerbox-calamares/PKGBUILD
+  
+  #Fix out-of-date calamares dependencies
+  sed -i "s/depends.*/depends=('kconfig' 'kcoreaddons' 'kiconthemes' 'ki18n' 'kio' 'solid' 'yaml-cpp' 'kpmcore3>=3.3.0' 'mkinitcpio-openswap' 'boost-libs' 'ckbcomp' 'hwinfo' 'qt5-svg' 'polkit-qt5' 'gtk-update-icon-cache' 'pythonqt>=3.2' 'plasma-framework' 'qt5-xmlpatterns')/" customrepo/triggerbox-calamares/PKGBUILD
+  sed -i "s/makedepends.*/makedepends=('extra-cmake-modules' 'qt5-tools' 'qt5-translations' 'git' 'boost')/" customrepo/triggerbox-calamares/PKGBUILD
+
   echo "    echo '    ' >> src/branding/custombranding/show.qml" >> slideshowchanges
   echo "    echo '    BackButton {' >> src/branding/custombranding/show.qml" >> slideshowchanges
   echo "    echo '        width: 50' >> src/branding/custombranding/show.qml" >> slideshowchanges
@@ -106,12 +113,12 @@ compilecalamares() {
   git clone https://aur.archlinux.org/qt5-styleplugins-git
   cd qt5-styleplugins-git
   yes | makepkg -si
-  cp *.pkg.tar.* ../x86_64
+  cp *.pkg.tar.* customrepo/x86_64
   cd ../
   echo "Building calamares..."
   cd triggerbox-calamares
   makepkg -s
-  cp *.pkg.tar.* ../x86_64
+  cp *.pkg.tar.* customrepo/x86_64
   cd ../
   rm -rf qt5-styleplugins-git triggerbox-calamares
   cd ../
@@ -133,7 +140,7 @@ compileaurpkgs() {
       cd "$d"
     done
     makepkg -s
-    cp *.pkg.tar.* ../../x86_64
+    cp *.pkg.tar.* customrepo/x86_64
     cd $buildingpath
     for d in */ ; do
       rm -rf "$d"
