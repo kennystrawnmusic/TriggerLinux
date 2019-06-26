@@ -125,6 +125,9 @@ compilecalamares() {
   echo "triggerbox-calamares" | sudo tee -a ./workingdir/packages.x86_64 > /dev/null
 }
 
+#Calamares dependency found in Manjaro repos only
+wget -O customrepo/x86_64/kpmcore3-3.3.0-1-x86_64.pkg.tar.xz https://mirrors.ocf.berkeley.edu/manjaro/stable/community/x86_64/kpmcore3-3.3.0-1-x86_64.pkg.tar.xz
+
 #Unfortunately there are dependencies of calamares in the AUR or I wouldn't have to run this
 compileaurpkgs() {
   yes | sudo pacman -Scc #prevent package signature errors, part 2
