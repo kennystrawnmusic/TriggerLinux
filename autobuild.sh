@@ -43,6 +43,7 @@ copyskel() {
   sudo mkdir ./workingdir/airootfs/usr/bin
   sudo mkdir -p ./workingdir/airootfs/usr/share/applications
   sudo cp {minds,gab,parler} ./workingdir/airootfs/usr/bin
+  sudo cp {minds,gab,parler.desktop ./workingdir/airoots/usr/share/applications
 }
 createlsbrelease() {
   echo "lsb-release" | sudo tee --append ./workingdir/packages.x86_64 > /dev/null
