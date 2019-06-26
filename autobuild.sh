@@ -56,6 +56,8 @@ compilecalamares() {
   echo "Preparing Repository..."
   mkdir customrepo
   mkdir customrepo/x86_64
+  #Calamares dependency found in Manjaro repos only
+  wget -O customrepo/x86_64/kpmcore3-3.3.0-1-x86_64.pkg.tar.xz https://mirrors.ocf.berkeley.edu/manjaro/stable/community/x86_64/kpmcore3-3.3.0-1-x86_64.pkg.tar.xz
   mkdir customrepo/i686
   mkdir customrepo/triggerbox-calamares
   echo "Preparing Calamares-build..."
@@ -127,9 +129,7 @@ compilecalamares() {
 
 #Unfortunately there are dependencies of calamares in the AUR or I wouldn't have to run this
 compileaurpkgs() {
-  #Calamares dependency found in Manjaro repos only
-  wget -O customrepo/x86_64/kpmcore3-3.3.0-1-x86_64.pkg.tar.xz https://mirrors.ocf.berkeley.edu/manjaro/stable/community/x86_64/kpmcore3-3.3.0-1-x86_64.pkg.tar.xz
-  yes | sudo pacman -Scc #prevent package signature errors, part 2
+yes | sudo pacman -Scc #prevent package signature errors, part 2
   mkdir customrepo/custompkgs
   repopath="$(readlink -f .)"
   buildingpath="$(readlink -f ./customrepo/custompkgs)"
