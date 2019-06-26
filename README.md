@@ -8,16 +8,8 @@ Triggerbox comes with the distribution-agnostic [Calamares](https://calamares.io
 
 ## Decentralization - see introduction
 
-## Out-of-the-box (((Coincidence Detection)))
-**Developer's Note:** No, this is not because I personally support the idea that any certain group of people deserves to be completely trolled out of existence; hell, I even wrote [a lengthy blog post on Minds](https://www.minds.com/blog/view/925216309127471104) offering an alternative explanation for the idea behind this. However, censorship of this kind of speech actually hinders the chances of allowing people to actually offer explanations like this, and it only proves the point behind the "echo" symbol all the more. If and when Google decides to un-ban this extension from the Chrome Web Store, then and only then will I unbundle the Firefox version of it, but not until then.
-
-Although this extension is bundled, you're more than welcome to remove it; it's as easy as right-clicking the extension icon. It also only comes with the Firefox version and not any other, so installing another browser other than Firefox (explained below) will hide it. I also included a link to Gab in there, bundled and pinned to the task manager.
-
 ## Out-of-the-box Ethereum mining
 Triggerbox comes with Claymore bundled, along with OpenCL support for both Nvidia and AMD GPUs. The only thing left to do is configure it by creating a mine.sh script and placing it in /usr/local/claymore; everything else is already done for you.
-
-## Out-of-the-box documents, spreadsheets, and presentations
-I was a bit disappointed when Ubuntu decided to unbundle [LibreOffice](https://www.libreoffice.org), since that's exactly what made it so appealing early on. Well, you're in luck: it's bundled with Triggerbox. So you can once again get straight to your office work after system installation without needing to install anything later.
 
 ## Out-of-the-box video production
 YouTubers, take note: Triggerbox comes with [Kdenlive](https://kdenlive.org) out-of-the-box. So no more tedious post-install configuration in order to start producing YouTube content; everything you need to start in on making everything from short videos all the way to long documentaries is already there when the OS is installed.
