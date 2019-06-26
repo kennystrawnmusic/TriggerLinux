@@ -123,9 +123,9 @@ wget -O /usr/share/icons/breeze/apps/scalable/minds.svg https://cdn-assets.minds
 #Create JAK webapp for Parler
 wget -O /usr/share/icons/breeze/apps/48/parler.jpg https://images.parler.com/a078092e6e2df507bfd12db4710e8621_128
 
-#Add Gab and Minds by default to desktops of all users
-cp /usr/share/applications/gab.desktop /root/Desktop/
-cp /usr/share/applications/gab.desktop /etc/skel/Desktop/
+#Add desktop shortcuts for Gab, Minds, and Parler for all users
+cp /usr/share/applications/{gab,minds,parler}.desktop /root/Desktop/
+cp /usr/share/applications/{gab,minds,parler}.desktop /etc/skel/Desktop/
 
-#Disable temporary user account to prep for later deletion
-usermod -Le 1970-01-02 tempuser
+#Delete temporary user
+killall -9 -u tempuser && userdel -f tempuser
