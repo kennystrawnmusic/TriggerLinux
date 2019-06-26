@@ -43,7 +43,7 @@ copyskel() {
   sudo mkdir ./workingdir/airootfs/usr/bin
   sudo mkdir -p ./workingdir/airootfs/usr/share/applications
   sudo cp {minds,gab,parler} ./workingdir/airootfs/usr/bin
-  sudo cp {minds,gab,parler.desktop ./workingdir/airoots/usr/share/applications
+  sudo cp {minds,gab,parler}.desktop ./workingdir/airoots/usr/share/applications
 }
 createlsbrelease() {
   echo "lsb-release" | sudo tee --append ./workingdir/packages.x86_64 > /dev/null
@@ -106,7 +106,7 @@ compilecalamares() {
   echo "Building qt5-styleplugins-git..."
   git clone https://aur.archlinux.org/qt5-styleplugins-git
   cd qt5-styleplugins-git
-  makepkg --noconfirm -si
+  yes | makepkg -si
   cp *.pkg.tar.* ../x86_64
   cd ../
   echo "Building calamares..."
