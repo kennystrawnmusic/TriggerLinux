@@ -113,12 +113,12 @@ compilecalamares() {
   git clone https://aur.archlinux.org/qt5-styleplugins-git
   cd qt5-styleplugins-git
   yes | makepkg -si
-  cp *.pkg.tar.* customrepo/x86_64
+  cp *.pkg.tar.* ../x86_64
   cd ../
   echo "Building calamares..."
   cd triggerbox-calamares
   makepkg -s
-  cp *.pkg.tar.* customrepo/x86_64
+  cp *.pkg.tar.* ../x86_64
   cd ../
   rm -rf qt5-styleplugins-git triggerbox-calamares
   cd ../
@@ -140,7 +140,7 @@ compileaurpkgs() {
       cd "$d"
     done
     makepkg -s
-    cp *.pkg.tar.* customrepo/x86_64
+    cp *.pkg.tar.* ../../x86_64
     cd $buildingpath
     for d in */ ; do
       rm -rf "$d"
