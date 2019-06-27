@@ -145,7 +145,9 @@ compileaurpkgs() {
   buildingpath="$(readlink -f ./customrepo/custompkgs)"
   while IFS='' read -r currentpkg || [[ -n "$currentpkg" ]]; do
     cd customrepo/custompkgs
-    wget -O currentpkg.tar.gz $currentpkg
+    if [ ! -z $currentpkg ]; then
+      wget -O currentpkg.tar.gz $currentpkg
+    fi
     tar xf currentpkg.tar.gz
     rm currentpkg.tar.gz
     for d in * ; do
