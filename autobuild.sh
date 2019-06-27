@@ -145,6 +145,8 @@ compilecalamares() {
 compileaurpkgs() {
   yes | sudo pacman -Scc #prevent package signature errors, part 2
   mkdir customrepo/custompkgs
+  #must download Manjaro-specific package again in order for it to be used inside build chroot
+  wget -O customrepo/x86_64/kpmcore3-3.3.0-1-x86_64.pkg.tar.xz https://mirrors.ocf.berkeley.edu/manjaro/stable/community/x86_64/kpmcore3-3.3.0-1-x86_64.pkg.tar.xz
   repopath="$(readlink -f .)"
   buildingpath="$(readlink -f ./customrepo/custompkgs)"
   while IFS='' read -r currentpkg || [[ -n "$currentpkg" ]]; do
