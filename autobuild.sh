@@ -58,6 +58,7 @@ compilecalamares() {
   mkdir customrepo/x86_64
   #Calamares dependency found in Manjaro repos only
   wget -O customrepo/x86_64/kpmcore3-3.3.0-1-x86_64.pkg.tar.xz https://mirrors.ocf.berkeley.edu/manjaro/stable/community/x86_64/kpmcore3-3.3.0-1-x86_64.pkg.tar.xz
+  sudo pacman -U customrepo/x86_64/kpmcore3-3.3.0-1-x86_64.pkg.tar.xz
   mkdir customrepo/i686
   mkdir customrepo/triggerbox-calamares
   echo "Preparing Calamares-build..."
@@ -65,7 +66,7 @@ compilecalamares() {
   curl http://archmaker.guidedlinux.org/PKGBUILD > customrepo/triggerbox-calamares/PKGBUILD
   
   #Fix out-of-date calamares dependencies
-  sed -i "s/depends.*/depends=('kconfig' 'kcoreaddons' 'kiconthemes' 'ki18n' 'kio' 'solid' 'yaml-cpp' 'kpmcore3>=3.3.0' 'mkinitcpio-openswap' 'boost-libs' 'ckbcomp' 'hwinfo' 'qt5-svg' 'polkit-qt5' 'gtk-update-icon-cache' 'pythonqt>=3.2' 'plasma-framework' 'qt5-xmlpatterns')/" customrepo/triggerbox-calamares/PKGBUILD
+  sed -i "s/depends.*/depends=('kconfig' 'kcoreaddons' 'kiconthemes' 'ki18n' 'kio' 'solid' 'yaml-cpp' 'kpmcore3' 'mkinitcpio-openswap' 'boost-libs' 'ckbcomp' 'hwinfo' 'qt5-svg' 'polkit-qt5' 'gtk-update-icon-cache' 'pythonqt>=3.2' 'plasma-framework' 'qt5-xmlpatterns')/" customrepo/triggerbox-calamares/PKGBUILD
   sed -i "s/makedepends.*/makedepends=('extra-cmake-modules' 'qt5-tools' 'qt5-translations' 'git' 'boost')/" customrepo/triggerbox-calamares/PKGBUILD
 
   echo "    echo '    ' >> src/branding/custombranding/show.qml" >> slideshowchanges
