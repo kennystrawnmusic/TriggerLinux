@@ -72,7 +72,7 @@ compilecalamares() {
   mkdir customrepo/triggerbox-calamares
   echo "Preparing Calamares-build..."
   
-  curl http://archmaker.guidedlinux.org/PKGBUILD > customrepo/triggerbox-calamares/PKGBUILD
+  wget -O customrepo/triggerbox-calamares/PKGBUILD http://archmaker.guidedlinux.org/PKGBUILD
   
   #Fix out-of-date calamares dependencies
   sed -i "s/depends.*/depends=('kconfig' 'kcoreaddons' 'kiconthemes' 'ki18n' 'kio' 'solid' 'yaml-cpp' 'kpmcore3' 'mkinitcpio-openswap' 'boost-libs' 'ckbcomp' 'hwinfo' 'qt5-svg' 'polkit-qt5' 'gtk-update-icon-cache' 'pythonqt>=3.2' 'plasma-framework' 'qt5-xmlpatterns' 'kparts' 'qt5-webengine')/" customrepo/triggerbox-calamares/PKGBUILD
@@ -139,13 +139,13 @@ compilecalamares() {
 
 #Unfortunately there are dependencies of calamares in the AUR or I wouldn't have to run this
 compileaurpkgs() {
-yes | sudo pacman -Scc #prevent package signature errors, part 2
+  yes | sudo pacman -Scc #prevent package signature errors, part 2
   mkdir customrepo/custompkgs
   repopath="$(readlink -f .)"
   buildingpath="$(readlink -f ./customrepo/custompkgs)"
   while IFS='' read -r currentpkg || [[ -n "$currentpkg" ]]; do
     cd customrepo/custompkgs
-    curl $currentpkg > ./currentpkg.tar.gz
+    wget -O currentpkg.tar.gz $currentpkg
     tar xf currentpkg.tar.gz
     rm currentpkg.tar.gz
     for d in * ; do
