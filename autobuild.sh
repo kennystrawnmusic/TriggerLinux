@@ -113,7 +113,7 @@ compilecalamares() {
     echo "  echo '      anchors.centerIn: parent' >> src/branding/custombranding/show.qml" >> slideshowchanges
     echo "  echo '    }' >> src/branding/custombranding/show.qml" >> slideshowchanges
     echo "  echo '  }' >> src/branding/custombranding/show.qml" >> slideshowchanges
-  currentslide=$(( $currentslide + 1 ))
+    currentslide=$(( $currentslide + 1 ))
   done
   sed -i "s/DISTRNAME/Triggerbox/" ./customrepo/triggerbox-calamares/PKGBUILD
   sed -i "s/DISTRVERSION/${distroversion}/" ./customrepo/triggerbox-calamares/PKGBUILD
