@@ -18,7 +18,7 @@ fi
 
 cleanup_failure() {
   if [ -d workingdir ]; then
-  sudo rm -rf workingdir
+  sudo rm -rf {workingdir,customrepo}
   fi
 }
 
@@ -81,17 +81,17 @@ compilecalamares() {
   sed -i "s/makedepends.*/makedepends=('extra-cmake-modules' 'qt5-tools' 'qt5-translations' 'git' 'boost')/" customrepo/triggerbox-calamares/PKGBUILD
 
   echo "  echo '  ' >> src/branding/custombranding/show.qml" >> slideshowchanges
-  echo "  echo '    BackButton {' >> src/branding/custombranding/show.qml" >> slideshowchanges
-  echo "  echo '      width: 50' >> src/branding/custombranding/show.qml" >> slideshowchanges
-  echo "  echo '      height: 50' >> src/branding/custombranding/show.qml" >> slideshowchanges
-  echo "  echo '      source: \"back.png\"' >> src/branding/custombranding/show.qml" >> slideshowchanges
-  echo "  echo '    }' >> src/branding/custombranding/show.qml" >> slideshowchanges
-  echo "  echo '    ' >> src/branding/custombranding/show.qml" >> slideshowchanges
-  echo "  echo '    ForwardButton {' >> src/branding/custombranding/show.qml" >> slideshowchanges
-  echo "  echo '      width: 50' >> src/branding/custombranding/show.qml" >> slideshowchanges
-  echo "  echo '      height: 50' >> src/branding/custombranding/show.qml" >> slideshowchanges
-  echo "  echo '      source: \"forward.png\"' >> src/branding/custombranding/show.qml" >> slideshowchanges
-  echo "  echo '    }' >> src/branding/custombranding/show.qml" >> slideshowchanges
+  echo "  echo '  BackButton {' >> src/branding/custombranding/show.qml" >> slideshowchanges
+  echo "  echo '    width: 50' >> src/branding/custombranding/show.qml" >> slideshowchanges
+  echo "  echo '    height: 50' >> src/branding/custombranding/show.qml" >> slideshowchanges
+  echo "  echo '    source: \"back.png\"' >> src/branding/custombranding/show.qml" >> slideshowchanges
+  echo "  echo '  }' >> src/branding/custombranding/show.qml" >> slideshowchanges
+  echo "  echo '  ' >> src/branding/custombranding/show.qml" >> slideshowchanges
+  echo "  echo '  ForwardButton {' >> src/branding/custombranding/show.qml" >> slideshowchanges
+  echo "  echo '   width: 50' >> src/branding/custombranding/show.qml" >> slideshowchanges
+  echo "  echo '   height: 50' >> src/branding/custombranding/show.qml" >> slideshowchanges
+  echo "  echo '    source: \"forward.png\"' >> src/branding/custombranding/show.qml" >> slideshowchanges
+  echo "  echo '  }' >> src/branding/custombranding/show.qml" >> slideshowchanges
   echo "  echo '  ' >> src/branding/custombranding/show.qml" >> slideshowchanges
   FILES="calamaresslides/*"
   sed -i "27a \ \ \ \ cp $(pwd)/{forward,back}.png src/branding/custombranding/" ./customrepo/triggerbox-calamares/PKGBUILD
@@ -100,16 +100,16 @@ compilecalamares() {
   do
   currentline=$(( $currentslide + 28 ))
   sed -i "${currentline}a\ \ \ \ cp $(pwd)\/$f src\/branding\/custombranding\/" ./customrepo/triggerbox-calamares/PKGBUILD
-  echo "  echo '    Slide {' >> src/branding/custombranding/show.qml" >> slideshowchanges
-  echo "  echo '      ' >> src/branding/custombranding/show.qml" >> slideshowchanges
-  echo "  echo '      Image {' >> src/branding/custombranding/show.qml" >> slideshowchanges
-  echo "  echo '        id: background${currentslide}' >> src/branding/custombranding/show.qml" >> slideshowchanges
-  echo "  echo '        source: \"${f##*/}\"' >> src/branding/custombranding/show.qml" >> slideshowchanges
-  echo "  echo '        width: 800; height: 440' >> src/branding/custombranding/show.qml" >> slideshowchanges
-  echo "  echo '        fillMode: Image.PreserveAspectFit' >> src/branding/custombranding/show.qml" >> slideshowchanges
-  echo "  echo '        anchors.centerIn: parent' >> src/branding/custombranding/show.qml" >> slideshowchanges
-  echo "  echo '      }' >> src/branding/custombranding/show.qml" >> slideshowchanges
+  echo "  echo '  Slide {' >> src/branding/custombranding/show.qml" >> slideshowchanges
+  echo "  echo '    ' >> src/branding/custombranding/show.qml" >> slideshowchanges
+  echo "  echo '    Image {' >> src/branding/custombranding/show.qml" >> slideshowchanges
+  echo "  echo '     id: background${currentslide}' >> src/branding/custombranding/show.qml" >> slideshowchanges
+  echo "  echo '      source: \"${f##*/}\"' >> src/branding/custombranding/show.qml" >> slideshowchanges
+  echo "  echo '      width: 800; height: 440' >> src/branding/custombranding/show.qml" >> slideshowchanges
+  echo "  echo '      fillMode: Image.PreserveAspectFit' >> src/branding/custombranding/show.qml" >> slideshowchanges
+  echo "  echo '      anchors.centerIn: parent' >> src/branding/custombranding/show.qml" >> slideshowchanges
   echo "  echo '    }' >> src/branding/custombranding/show.qml" >> slideshowchanges
+  echo "  echo '  }' >> src/branding/custombranding/show.qml" >> slideshowchanges
   currentslide=$(( $currentslide + 1 ))
   done
   sed -i "s/DISTRNAME/Triggerbox/" ./customrepo/triggerbox-calamares/PKGBUILD
