@@ -281,14 +281,12 @@ kde-cli-tools
 kde-dev-scripts
 kde-dev-utils
 kde-gtk-config
-kdebase-runtime
 kdebugsettings
 kdeclarative
 kdecoration
 kded
 kdeedu-data
 kdegraphics-mobipocket
-kdelibs
 kdelibs4support
 kdenetwork-filesharing
 kdenlive
@@ -776,7 +774,6 @@ perl
 perl-error
 perl-mailtools
 perl-timedate
-phonon-qt4
 phonon-qt5
 phonon-qt5-gstreamer
 picmi
@@ -800,7 +797,6 @@ plasma-workspace
 plasma-workspace-wallpapers
 polkit
 polkit-kde-agent
-polkit-qt4
 polkit-qt5
 poppler
 poppler-qt5
