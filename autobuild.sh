@@ -129,7 +129,7 @@ compilecalamares() {
   cd ../
   echo "Building calamares..."
   cd triggerbox-calamares
-  makepkg -s
+  yes | makepkg -s || exit 1
   cp *.pkg.tar.* ../x86_64
   cd ../
   rm -rf qt5-styleplugins-git triggerbox-calamares
@@ -151,7 +151,7 @@ compileaurpkgs() {
     for d in * ; do
       cd "$d"
     done
-    makepkg -s
+    yes | makepkg -s || exit 1
     cp *.pkg.tar.* ../../x86_64
     cd $buildingpath
     for d in */ ; do
@@ -171,17 +171,17 @@ setuprepo() {
   echo "[customrepo]" | sudo tee --append ./workingdir/pacman.conf > /dev/null
   echo "SigLevel = Never" | sudo tee --append ./workingdir/pacman.conf > /dev/null
   echo "Server = file://$(pwd)/customrepo/$(echo '$arch')" | sudo tee --append ./workingdir/pacman.conf > /dev/null
-  sudo pacman --noconfirm -Syyuu
+  sudo pacman --noconfirm -Syyuu || exit 1
   cat /etc/pacman.conf > ./pacman.backup
   echo "[customrepo]" | sudo tee --append /etc/pacman.conf > /dev/null
   echo "SigLevel = Never" | sudo tee --append /etc/pacman.conf > /dev/null
   echo "Server = file://$(pwd)/customrepo/$(echo '$arch')" | sudo tee --append /etc/pacman.conf > /dev/null
-  sudo pacman --noconfirm -Syyuu
+  sudo pacman --noconfirm -Syyuu || exit 1
 }
 buildtheiso() {
   sudo rm -rf ./workingdir/airootfs/etc/systemd/system/getty*
   cd workingdir
-  sudo ./build.sh -v
+  sudo ./build.sh -v || exit 1
   cd ../
 }
 cleanup() {
