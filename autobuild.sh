@@ -80,7 +80,7 @@ compilecalamares() {
   wget -O customrepo/triggerbox-calamares/PKGBUILD http://archmaker.guidedlinux.org/PKGBUILD
   
   #Fix out-of-date calamares dependencies
-  sed -i "s/depends.*/depends=('kconfig' 'kcoreaddons' 'kiconthemes' 'ki18n' 'kio' 'solid' 'yaml-cpp' 'kpmcore3' 'mkinitcpio-openswap' 'boost-libs' 'ckbcomp' 'hwinfo' 'qt5-svg' 'polkit-qt5' 'gtk-update-icon-cache' 'pythonqt>=3.2' 'plasma-framework' 'qt5-xmlpatterns' 'kparts' 'qt5-webengine')/" customrepo/triggerbox-calamares/PKGBUILD
+  sed -i "s/depends.*/depends=('kconfig' 'kcoreaddons' 'kiconthemes' 'ki18n' 'kio' 'solid' 'yaml-cpp' 'kpmcore3' 'mkinitcpio-openswap' 'boost-libs' 'ckbcomp' 'hwinfo' 'qt5-svg' 'polkit-qt5' 'gtk-update-icon-cache' 'pythonqt>=3.2' 'plasma-framework' 'qt5-xmlpatterns' 'kparts' 'qt5-webengine' 'rsync' 'f2fs-tools')/" customrepo/triggerbox-calamares/PKGBUILD
   sed -i "s/makedepends.*/makedepends=('extra-cmake-modules' 'qt5-tools' 'qt5-translations' 'git' 'boost')/" customrepo/triggerbox-calamares/PKGBUILD
 
   echo "  echo '  ' >> src/branding/custombranding/show.qml" >> slideshowchanges
@@ -129,7 +129,13 @@ compilecalamares() {
   echo "Building qt5-styleplugins-git..."
   git clone https://aur.archlinux.org/qt5-styleplugins-git
   cd qt5-styleplugins-git
-  yes | makepkg -si
+  yes | makepkg -si || exit 1
+  cp *.pkg.tar.* ../x86_64
+  cd ../
+  echo "Building pythonqt..."
+  git clone https://aur.archlinux.org/pythonqt.git
+  cd pythonqt
+  yes | makepkg -si || exit 1
   cp *.pkg.tar.* ../x86_64
   cd ../
   echo "Building calamares..."
@@ -137,7 +143,7 @@ compilecalamares() {
   yes | makepkg -s || exit 1
   cp *.pkg.tar.* ../x86_64
   cd ../
-  rm -rf qt5-styleplugins-git triggerbox-calamares
+  rm -rf qt5-styleplugins-git pythonqt triggerbox-calamares
   cd ../
   echo "triggerbox-calamares" | sudo tee -a ./workingdir/packages.x86_64 > /dev/null
 }
