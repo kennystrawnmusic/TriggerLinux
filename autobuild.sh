@@ -65,9 +65,13 @@ compilecalamares() {
   echo "Preparing Repository..."
   mkdir customrepo
   mkdir customrepo/x86_64
-  #Calamares dependency found in Manjaro repos only
-  wget -O customrepo/x86_64/kpmcore3-3.3.0-1-x86_64.pkg.tar.xz https://mirrors.ocf.berkeley.edu/manjaro/stable/community/x86_64/kpmcore3-3.3.0-1-x86_64.pkg.tar.xz
-  sudo pacman -U customrepo/x86_64/kpmcore3-3.3.0-1-x86_64.pkg.tar.xz
+  #check if already installed before attempting to sideload Manjaro-specific calamares dependency
+  pacman -Qi kpmcore3 > /dev/null
+  if [ $? -eq 1 ]; then
+    #Calamares dependency found in Manjaro repos only
+    wget -O customrepo/x86_64/kpmcore3-3.3.0-1-x86_64.pkg.tar.xz https://mirrors.ocf.berkeley.edu/manjaro/stable/community/x86_64/kpmcore3-3.3.0-1-x86_64.pkg.tar.xz
+    sudo pacman -U customrepo/x86_64/kpmcore3-3.3.0-1-x86_64.pkg.tar.xz
+  fi
   mkdir customrepo/i686
   mkdir customrepo/triggerbox-calamares
   echo "Preparing Calamares-build..."
