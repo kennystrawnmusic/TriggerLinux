@@ -46,8 +46,9 @@ copyskel() {
   sudo ln -s /usr/lib/systemd/system/sddm-plymouth.service ./workingdir/airootfs/etc/systemd/system/display-manager.service
   sudo cp -f ./customize_airootfs.sh ./workingdir/airootfs/root/customize_airootfs.sh
   sudo cp -r triggerbox-breeze ./workingdir/airootfs/usr/share/plymouth/themes/
-  if [ ! -d workingdir/airootfs/lib/systemd/system ]; then
-    sudo mkdir -p workingdir/airootfs/lib/systemd/system
+  if [ ! -d workingdir/airootfs/usr/lib/systemd/system ]; then
+    sudo mkdir -p workingdir/airootfs/usr/lib/systemd/system
+    sudo ln -s workingdir/airootfs/usr/lib workingdir/airootfs/lib
   fi
   sudo cp autoupdate.{service,timer} ./workingdir/airootfs/lib/systemd/system/
   sudo mkdir ./workingdir/airootfs/usr/bin
