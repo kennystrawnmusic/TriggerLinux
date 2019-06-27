@@ -38,7 +38,7 @@ copypackages() {
 copyskel() {
   sudo mkdir -p ./workingdir/airootfs/etc/fonts
   if [ ! -d skeldata/Desktop ]; then
-  mkdir -p skeldata/{Desktop,Documents,Downloads,Pictures,Videos}
+    mkdir -p skeldata/{Desktop,Documents,Downloads,Pictures,Videos}
   fi
   sudo cp -r skeldata ./workingdir/airootfs/etc/skel
   sudo bash -c 'echo -e "PROMPT=\"%n@%m:%~%# \"" >> ./workingdir/airootfs/etc/skel/.zshrc'
@@ -48,7 +48,7 @@ copyskel() {
   sudo cp -f ./customize_airootfs.sh ./workingdir/airootfs/root/customize_airootfs.sh
   sudo cp -r triggerbox-breeze ./workingdir/airootfs/usr/share/plymouth/themes/
   if [ ! -d workingdir/airootfs/usr/lib/systemd/system ]; then
-  sudo mkdir -p workingdir/airootfs/usr/lib/systemd/system
+    sudo mkdir -p workingdir/airootfs/usr/lib/systemd/system
   fi
   sudo cp autoupdate.{service,timer} ./workingdir/airootfs/usr/lib/systemd/system/
   sudo mkdir ./workingdir/airootfs/usr/bin
@@ -101,18 +101,18 @@ compilecalamares() {
   currentslide=1
   for f in $FILES
   do
-  currentline=$(( $currentslide + 28 ))
-  sed -i "${currentline}a\ \ \ \ cp $(pwd)\/$f src\/branding\/custombranding\/" ./customrepo/triggerbox-calamares/PKGBUILD
-  echo "  echo '  Slide {' >> src/branding/custombranding/show.qml" >> slideshowchanges
-  echo "  echo '    ' >> src/branding/custombranding/show.qml" >> slideshowchanges
-  echo "  echo '    Image {' >> src/branding/custombranding/show.qml" >> slideshowchanges
-  echo "  echo '     id: background${currentslide}' >> src/branding/custombranding/show.qml" >> slideshowchanges
-  echo "  echo '      source: \"${f##*/}\"' >> src/branding/custombranding/show.qml" >> slideshowchanges
-  echo "  echo '      width: 800; height: 440' >> src/branding/custombranding/show.qml" >> slideshowchanges
-  echo "  echo '      fillMode: Image.PreserveAspectFit' >> src/branding/custombranding/show.qml" >> slideshowchanges
-  echo "  echo '      anchors.centerIn: parent' >> src/branding/custombranding/show.qml" >> slideshowchanges
-  echo "  echo '    }' >> src/branding/custombranding/show.qml" >> slideshowchanges
-  echo "  echo '  }' >> src/branding/custombranding/show.qml" >> slideshowchanges
+    currentline=$(( $currentslide + 28 ))
+    sed -i "${currentline}a\ \ \ \ cp $(pwd)\/$f src\/branding\/custombranding\/" ./customrepo/triggerbox-calamares/PKGBUILD
+    echo "  echo '  Slide {' >> src/branding/custombranding/show.qml" >> slideshowchanges
+    echo "  echo '    ' >> src/branding/custombranding/show.qml" >> slideshowchanges
+    echo "  echo '    Image {' >> src/branding/custombranding/show.qml" >> slideshowchanges
+    echo "  echo '     id: background${currentslide}' >> src/branding/custombranding/show.qml" >> slideshowchanges
+    echo "  echo '      source: \"${f##*/}\"' >> src/branding/custombranding/show.qml" >> slideshowchanges
+    echo "  echo '      width: 800; height: 440' >> src/branding/custombranding/show.qml" >> slideshowchanges
+    echo "  echo '      fillMode: Image.PreserveAspectFit' >> src/branding/custombranding/show.qml" >> slideshowchanges
+    echo "  echo '      anchors.centerIn: parent' >> src/branding/custombranding/show.qml" >> slideshowchanges
+    echo "  echo '    }' >> src/branding/custombranding/show.qml" >> slideshowchanges
+    echo "  echo '  }' >> src/branding/custombranding/show.qml" >> slideshowchanges
   currentslide=$(( $currentslide + 1 ))
   done
   sed -i "s/DISTRNAME/Triggerbox/" ./customrepo/triggerbox-calamares/PKGBUILD
@@ -153,7 +153,7 @@ compileaurpkgs() {
   while IFS='' read -r currentpkg || [[ -n "$currentpkg" ]]; do
     cd customrepo/custompkgs
     if [ ! -z $currentpkg ]; then
-    wget -O currentpkg.tar.gz $currentpkg
+      wget -O currentpkg.tar.gz $currentpkg
     fi
     tar xf currentpkg.tar.gz
     rm currentpkg.tar.gz
@@ -161,7 +161,7 @@ compileaurpkgs() {
     cd "$d"
     done
     if [ ! -z $currentpkg ]; then
-    yes | makepkg -s || exit 1
+      yes | makepkg -s || exit 1
     fi
     cp *.pkg.tar.* ../../x86_64
     cd $buildingpath
