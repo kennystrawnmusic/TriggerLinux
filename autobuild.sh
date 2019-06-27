@@ -48,7 +48,6 @@ copyskel() {
   sudo cp -r triggerbox-breeze ./workingdir/airootfs/usr/share/plymouth/themes/
   if [ ! -d workingdir/airootfs/usr/lib/systemd/system ]; then
     sudo mkdir -p workingdir/airootfs/usr/lib/systemd/system
-    sudo ln -s workingdir/airootfs/usr/lib workingdir/airootfs/lib
   fi
   sudo cp autoupdate.{service,timer} ./workingdir/airootfs/lib/systemd/system/
   sudo mkdir ./workingdir/airootfs/usr/bin
