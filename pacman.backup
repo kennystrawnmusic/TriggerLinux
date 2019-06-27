@@ -101,12 +101,3 @@ Include = /etc/pacman.d/mirrorlist
 #[custom]
 #SigLevel = Optional TrustAll
 #Server = file:///home/custompkgs
-[customrepo]
-SigLevel = Never
-Server = file:///home/builder/Triggerbox/customrepo/$arch
-[customrepo]
-SigLevel = Never
-Server = file:///home/builder/Triggerbox/customrepo/$arch
-[customrepo]
-SigLevel = Never
-Server = file:///home/builder/Triggerbox/customrepo/$arch

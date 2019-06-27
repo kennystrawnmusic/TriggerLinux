@@ -983,6 +983,7 @@ vid.stab
 vlc
 volume_key
 vulkan-icd-loader
+wget
 wavpack
 wayland
 wayland-protocols
