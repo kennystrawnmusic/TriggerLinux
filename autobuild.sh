@@ -15,6 +15,15 @@ else
   distroversion="${basedistroversion:2:5}"
   distrocodename="monthly-stable-$(uname -m)"
 fi
+
+cleanup_failure() {
+  if [ -d workingdir ]; then
+    sudo rm -rf {workingdir,customrepo}
+  elif [ -d customrepo ]; then
+    sudo rm -rf {workingdir,customrepo}
+  fi
+}
+
 createdir() {
   yes | sudo pacman -Scc #prevent AUR package signature errors
   sudo mkdir workingdir
@@ -66,7 +75,7 @@ compilecalamares() {
   curl http://archmaker.guidedlinux.org/PKGBUILD > customrepo/triggerbox-calamares/PKGBUILD
   
   #Fix out-of-date calamares dependencies
-  sed -i "s/depends.*/depends=('kconfig' 'kcoreaddons' 'kiconthemes' 'ki18n' 'kio' 'solid' 'yaml-cpp' 'kpmcore3' 'mkinitcpio-openswap' 'boost-libs' 'ckbcomp' 'hwinfo' 'qt5-svg' 'polkit-qt5' 'gtk-update-icon-cache' 'pythonqt>=3.2' 'plasma-framework' 'qt5-xmlpatterns' 'kparts')/" customrepo/triggerbox-calamares/PKGBUILD
+  sed -i "s/depends.*/depends=('kconfig' 'kcoreaddons' 'kiconthemes' 'ki18n' 'kio' 'solid' 'yaml-cpp' 'kpmcore3' 'mkinitcpio-openswap' 'boost-libs' 'ckbcomp' 'hwinfo' 'qt5-svg' 'polkit-qt5' 'gtk-update-icon-cache' 'pythonqt>=3.2' 'plasma-framework' 'qt5-xmlpatterns' 'kparts' 'qt5-webengine')/" customrepo/triggerbox-calamares/PKGBUILD
   sed -i "s/makedepends.*/makedepends=('extra-cmake-modules' 'qt5-tools' 'qt5-translations' 'git' 'boost')/" customrepo/triggerbox-calamares/PKGBUILD
 
   echo "    echo '    ' >> src/branding/custombranding/show.qml" >> slideshowchanges
@@ -194,6 +203,7 @@ cleanup() {
   echo "Removing archiso directory..."
   sudo rm -rf workingdir
 }
+cleanup_failure
 createdir
 copypackages
 copyskel
