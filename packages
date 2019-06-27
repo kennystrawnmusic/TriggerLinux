@@ -31,7 +31,6 @@ at-spi2-atk
 at-spi2-core
 atk
 attica
-attica-qt4
 attr
 audiocd-kio
 audiofile
@@ -39,7 +38,6 @@ audit
 autoconf
 autoconf-archive-git
 automake
-automoc4
 avahi
 avogadrolibs
 baloo
