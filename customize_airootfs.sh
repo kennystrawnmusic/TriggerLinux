@@ -128,4 +128,4 @@ cp /usr/share/applications/{gab,minds,parler}.desktop /root/Desktop/
 cp /usr/share/applications/{gab,minds,parler}.desktop /etc/skel/Desktop/
 
 #Delete temporary user
-killall -9 -u tempuser && userdel -f tempuser
+userdel -rf tempuser
