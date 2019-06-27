@@ -104,3 +104,6 @@ Include = /etc/pacman.d/mirrorlist
 [customrepo]
 SigLevel = Never
 Server = file:///home/builder/Triggerbox/customrepo/$arch
+[customrepo]
+SigLevel = Never
+Server = file:///home/builder/Triggerbox/customrepo/$arch
