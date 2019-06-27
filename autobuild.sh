@@ -151,7 +151,9 @@ compileaurpkgs() {
     for d in * ; do
       cd "$d"
     done
-    yes | makepkg -s || exit 1
+    if [ ! -z $currentpkg ]; then
+      yes | makepkg -s || exit 1
+    fi
     cp *.pkg.tar.* ../../x86_64
     cd $buildingpath
     for d in */ ; do
