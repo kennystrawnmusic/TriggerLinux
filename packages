@@ -125,7 +125,6 @@ file
 filelight
 filesystem
 findutils
-firefox
 flac
 flatpak
 flex
@@ -592,7 +591,6 @@ libqmi
 libqxp
 libraw
 libraw1394
-libreoffice-fresh
 librevenge
 librsvg
 libsamplerate

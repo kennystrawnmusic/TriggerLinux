@@ -22,7 +22,7 @@ PreloadWeight=2
 ToolBoxButtonState=left
 ToolBoxButtonX=42
 ToolBoxButtonY=319
-positions=2,12,desktop:/DesktopLayout.png,0,0,desktop:/customize_airootfs.sh,0,1,desktop:/DraftCalamareSlideshow.odp,0,2,desktop:/Flag_of_the_United_States.svg,0,3,desktop:/IMG_1780.MOV,0,4,desktop:/iphone-transparent-icon-23.png,0,5,desktop:/packages.x86_64,0,6,desktop:/V-drums-2.jpg,0,7,desktop:/Discover.png,0,8,desktop:/linuxdeployqt,0,9,desktop:/KdenliveTracks.png,0,10,desktop:/Discover2.png,0,11,desktop:/calaslideshow,1,0,desktop:/triggerbox,1,1,desktop:/triggerbox-breeze,1,2,desktop:/serious-face-with-symbols-covering-mouth_1f92c.png,1,3,desktop:/triggerbox-logo.xcf,1,4,desktop:/triggerbox-symb-grayscale.xcf,1,5,desktop:/triggerbox-logo-grayscale.xcf,1,6,desktop:/plymouth-theme-arch-breeze-git,1,7,desktop:/forward.xcf,1,8,desktop:/previous.xcf,1,9,desktop:/ref.PKGBUILD,1,10,desktop:/splash.xcf,1,11
+positions=1,13,desktop:/server-install.run,0,0,desktop:/minds.desktop,0,1,desktop:/gab.desktop,0,2,desktop:/parler.desktop,0,3
 sortMode=-1
 
 [Containments][2]
@@ -42,14 +42,14 @@ plugin=org.kde.plasma.icontasks
 PreloadWeight=2
 
 [Containments][2][Applets][20][Configuration][General]
-launchers=applications:org.kde.dolphin.desktop,applications:org.kde.discover.desktop,applications:firefox.desktop,applications:org.kde.konsole.desktop,file:///usr/share/applications/libreoffice-writer.desktop,file:///usr/share/applications/libreoffice-calc.desktop,file:///usr/share/applications/libreoffice-base.desktop,file:///usr/share/applications/libreoffice-impress.desktop,applications:org.kde.k3b.desktop,applications:org.kde.kdenlive.desktop,applications:org.kde.juk.desktop,applications:systemsettings.desktop
+launchers=applications:org.kde.dolphin.desktop,applications:org.kde.discover.desktop,applications:brave-bin.desktop,applications:org.kde.konsole.desktop,applications:ms-word.desktop,applications:ms-excel.desktop,applications:ms-powerpoint.desktop,applications:ms-outlook.desktop,applications:org.kde.k3b.desktop,applications:org.kde.kdenlive.desktop,applications:org.kde.juk.desktop,applications:systemsettings.desktop
 
 [Containments][2][Applets][3]
 immutability=1
 plugin=org.kde.plasma.kickoff
 
 [Containments][2][Applets][3][Configuration]
-PreloadWeight=99
+PreloadWeight=100
 
 [Containments][2][Applets][3][Configuration][General]
 favoritesPortedToKAstats=true
@@ -167,7 +167,7 @@ immutability=1
 plugin=org.kde.plasma.notifications
 
 [Containments][24][Applets][29][Configuration]
-PreloadWeight=12
+PreloadWeight=17
 
 [Containments][24][Applets][30]
 immutability=1
@@ -209,7 +209,7 @@ immutability=1
 plugin=org.kde.plasma.networkmanagement
 
 [Containments][24][Applets][35][Configuration]
-PreloadWeight=47
+PreloadWeight=49
 
 [Containments][24][Applets][38]
 immutability=1
@@ -234,4 +234,4 @@ immutability=2
 
 [ScreenMapping]
 itemsOnDisabledScreens=
-screenMapping=desktop:/triggerbox-breeze/logo_full_grey_light.png,0,desktop:/triggerbox-breeze/logo_symb_grey.png,0,desktop:/triggerbox,0,desktop:/forward.xcf,0,desktop:/triggerbox-symb-grayscale.xcf,0,desktop:/triggerbox-logo-grayscale.xcf,0,desktop:/serious-face-with-symbols-covering-mouth_1f92c.png,0,desktop:/triggerbox-logo-grarscale.xcf,0,desktop:/triggerbox-breeze/logo_full_blue.png,0,desktop:/triggerbox-breeze/logo_symb_white.png,0,desktop:/packages.x86_64,0,desktop:/previous.xcf,0,desktop:/calaslideshow,0,desktop:/DraftCalamareSlideshow.odp,0,desktop:/triggerbox-breeze/triggerbox-breeze.plymouth,0,desktop:/triggerbox-breeze/logo_symb_grey_dark.png,0,desktop:/triggerbox-breeze/plymouth-theme-triggerbox-breeze-git.install,0,desktop:/triggerbox-symb-grayscaale.xcf,0,desktop:/customize_airootfs.sh,0,desktop:/triggerbox-breeze/script,0,desktop:/KdenliveTracks.png,0,desktop:/Discover.png,0,desktop:/linuxdeployqt,0,desktop:/plymouth-theme-arch-breeze-git,0,desktop:/triggerbox-breeze/logo_full_grey.png,0,desktop:/triggerbox-breeze/logo_symb_grey_light.png,0,desktop:/Discover2.png,0,desktop:/triggerbox-breeze/logo.png,0,desktop:/triggerbox-breeze/entry.png,0,desktop:/ref.PKGBUILD,0,desktop:/triggerbox-logo.xcf,0,desktop:/triggerbox-breeze/logo_full_white.png,0,desktop:/triggerbox-breeze,0,desktop:/triggerbox-breeze/logo_symb_blue.png,0,desktop:/triggerbox-breeze/logo_full_grey_dark.png,0,desktop:/DesktopLayout.png,0,desktop:/splash.xcf,0,desktop:/IMG_1780.MOV,0,desktop:/triggerbox-breeze/bullet.png,0,desktop:/iphone-transparent-icon-23.png,0,desktop:/triggerbox-breeze/spinner.png,0,desktop:/V-drums-2.jpg,0,desktop:/Flag_of_the_United_States.svg,0
+screenMapping=desktop:/server-install.run,0,desktop:/triggerbox-breeze/triggerbox-breeze.plymouth,0,desktop:/triggerbox-breeze/bullet.png,0,desktop:/customize_airootfs.sh,0,desktop:/ref.PKGBUILD,0,desktop:/triggerbox-breeze/logo.png,0,desktop:/Discover2.png,0,desktop:/triggerbox-breeze/logo_full_white.png,0,desktop:/triggerbox-logo.xcf,0,desktop:/triggerbox-breeze/script,0,desktop:/IMG_1780.MOV,0,desktop:/triggerbox-breeze/logo_symb_white.png,0,desktop:/gab.desktop,0,desktop:/triggerbox-breeze/logo_symb_grey_dark.png,0,desktop:/iphone-transparent-icon-23.png,0,desktop:/triggerbox-logo-grarscale.xcf,0,desktop:/triggerbox-breeze/logo_symb_blue.png,0,desktop:/triggerbox-breeze/logo_symb_grey.png,0,desktop:/packages.x86_64,0,desktop:/triggerbox-breeze/logo_full_grey_light.png,0,desktop:/calaslideshow,0,desktop:/splash.xcf,0,desktop:/minds.desktop,0,desktop:/serious-face-with-symbols-covering-mouth_1f92c.png,0,desktop:/forward.xcf,0,desktop:/triggerbox-breeze/spinner.png,0,desktop:/triggerbox-breeze/logo_symb_grey_light.png,0,desktop:/parler.desktop,0,desktop:/Discover.png,0,desktop:/linuxdeployqt,0,desktop:/DesktopLayout.png,0,desktop:/triggerbox-breeze/plymouth-theme-triggerbox-breeze-git.install,0,desktop:/triggerbox-breeze/logo_full_grey_dark.png,0,desktop:/triggerbox-breeze/logo_full_blue.png,0,desktop:/triggerbox-breeze/logo_full_grey.png,0,desktop:/KdenliveTracks.png,0,desktop:/Flag_of_the_United_States.svg,0,desktop:/plymouth-theme-arch-breeze-git,0,desktop:/triggerbox-logo-grayscale.xcf,0,desktop:/triggerbox-symb-grayscale.xcf,0,desktop:/triggerbox,0,desktop:/triggerbox-breeze/entry.png,0,desktop:/triggerbox-breeze,0,desktop:/triggerbox-symb-grayscaale.xcf,0,desktop:/previous.xcf,0,desktop:/V-drums-2.jpg,0,desktop:/DraftCalamareSlideshow.odp,0
