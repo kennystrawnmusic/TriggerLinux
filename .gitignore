@@ -2,3 +2,4 @@
 *.iso
 workingdir
 customrepo
+pacman.backup
