@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Icon=/usr/share/icons/breeze/mimetypes/32/application-x-executable.svg
+Type=Application
+Categories=Internet
+Exec=/usr/bin/server-install.sh
+Name=Install Server
+GenericName=server-install
+Comment=Install Server
+Keywords=hosting;web;internet
+StartupNotify=true

@@ -9,9 +9,16 @@ ln -sf /usr/share/zoneinfo/UTC /etc/localtime
 
 usermod -s /usr/bin/zsh root
 
-#add XAMPP installer to all desktops, including root's
-wget -O /etc/skel/Desktop/server-install.run https://www.apachefriends.org/xampp-files/7.3.2/xampp-linux-x64-7.3.2-2-installer.run
-chmod a+x /etc/skel/Desktop/server-install.run
+#inject XAMPP installer into system
+wget -O /opt/server-install.run https://www.apachefriends.org/xampp-files/7.3.6/xampp-linux-x64-7.3.6-2-installer.run
+chmod a+x /opt/server-install.run
+
+#shell script wrapper to allow ordinary users to install
+echo -e "\x23\x21/usr/bin/sudo /bin/bash\n/opt/server-install.run" > /usr/bin/server-install.sh
+chmod a+x /usr/bin/server-install.sh
+
+#Override default dhcp client to (hopefully) resolve NetworkManager endless restarts issue
+echo -e "[main]\ndhcp=dhclient" > /etc/NetworkManager/conf.d/dhcp.conf
 
 cp -aT /etc/skel/ /root/
 cp /root/calamares.desktop /root/Desktop/

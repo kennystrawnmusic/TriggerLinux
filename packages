@@ -91,7 +91,7 @@ dbus-glib
 dconf
 desktop-file-utils
 device-mapper
-dhcpcd
+dhclient
 diffutils
 discount
 djvulibre

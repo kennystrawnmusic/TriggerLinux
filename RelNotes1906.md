@@ -10,7 +10,6 @@ Although it is rolling release (as is upstream Arch Linux, whose repositories it
 * Replaced Firefox with Brave as bundled browser
 * Upgraded bundled Claymore miner to version 14.7
 * Bundled an XAMPP server installer for easy one-click installation of server software (should come in handy for sites like Gab in particular that keep getting banned by hosting providers for political reasons)
-* F2FS support (using bleeding-edge version of GRUB)
 
 ## Known Issues
 
