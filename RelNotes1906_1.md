@@ -1,5 +1,5 @@
 # Triggerbox 19.06.1 Release Notes
-Although it is rolling release (as is upstream Arch Linux, whose repositories it does still use), Triggerbox still, also like Arch Linux, releases snapshot ISO images for installation. [Download Here](https://mega.nz/#!JEdE2IaT!_f9B-2GCRmJnjTgJFyc7ZZ79zdn2V0blXwqiGjGZ3HQ)
+Although it is rolling release (as is upstream Arch Linux, whose repositories it does still use), Triggerbox still, also like Arch Linux, releases snapshot ISO images for installation. [Download Here](https://mega.nz/#!Vd8GUazQ!i5ssW9PNB4n3TGZ50tzbs_V9PcN4Ve7f3TutAsoQfYA)
 
 ## Feature Changes and Bug Fixes
 
