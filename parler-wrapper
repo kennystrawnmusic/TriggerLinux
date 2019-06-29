@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ $UID -eq 0 ]; then
+  parler --no-sandbox
+else
+  parler
+fi
