@@ -138,12 +138,12 @@ setuprepo() {
   git push origin master
   echo "[triggerbox-overlay]" | sudo tee --append ./workingdir/pacman.conf > /dev/null
   echo "SigLevel = Never" | sudo tee --append ./workingdir/pacman.conf > /dev/null
-  echo "Server = https://raw.github.com/realKennyStrawn93/triggerbox-overlay/$(echo '$arch')" | sudo tee --append ./workingdir/pacman.conf > /dev/null
+  echo "Server = https://raw.github.com/realKennyStrawn93/triggerbox-overlay/master/$(echo '$arch')" | sudo tee --append ./workingdir/pacman.conf > /dev/null
   sudo pacman --noconfirm -Syyuu || exit 1
   cat /etc/pacman.conf > ./pacman.backup
   echo "[triggerbox-overlay]" | sudo tee --append /etc/pacman.conf > /dev/null
   echo "SigLevel = Never" | sudo tee --append /etc/pacman.conf > /dev/null
-  echo "Server = https://raw.github.com/realKennyStrawn93/triggerbox-overlay/$(echo '$arch')" | sudo tee --append /etc/pacman.conf > /dev/null
+  echo "Server = https://raw.github.com/realKennyStrawn93/triggerbox-overlay/master/$(echo '$arch')" | sudo tee --append /etc/pacman.conf > /dev/null
   sudo pacman --noconfirm -Syyuu || exit 1
 }
 compilecalamares
