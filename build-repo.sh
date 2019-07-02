@@ -130,16 +130,16 @@ compileaurpkgs() {
 
 setuprepo() {
   cd customrepo/x86_64
+  #Download a third time. Keeps disappearing from the made repository.
+  wget -O kpmcore3-3.3.0-1-x86_64.pkg.tar.xz https://mirrors.ocf.berkeley.edu/manjaro/stable/community/x86_64/kpmcore3-3.3.0-1-x86_64.pkg.tar.xz
+  #Clean up database before re-adding everything
+  rm -f {triggerbox-overlay.db*,triggerbox-overlay.files*}
   echo "Adding packages to repository..."
   repo-add triggerbox-overlay.db.tar.gz *.pkg.tar.*
   cd ..
   git add .
   git commit -m "Add new packages"
   git push origin master
-  echo "[triggerbox-overlay]" | sudo tee --append ./workingdir/pacman.conf > /dev/null
-  echo "SigLevel = Never" | sudo tee --append ./workingdir/pacman.conf > /dev/null
-  echo "Server = https://raw.github.com/realKennyStrawn93/triggerbox-overlay/master/$(echo '$arch')" | sudo tee --append ./workingdir/pacman.conf > /dev/null
-  sudo pacman --noconfirm -Syyuu || exit 1
   cat /etc/pacman.conf > ./pacman.backup
   echo "[triggerbox-overlay]" | sudo tee --append /etc/pacman.conf > /dev/null
   echo "SigLevel = Never" | sudo tee --append /etc/pacman.conf > /dev/null
