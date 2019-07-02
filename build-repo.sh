@@ -86,7 +86,7 @@ compilecalamares() {
   echo "Building claymore-miner"
   cd claymore-miner
   yes | makepkg -s --skipinteg || exit 1
-  cp 
+  cp *.pkg.tar.* ../x86_64
   cd ../
   echo "Building calamares..."
   cd triggerbox-calamares
