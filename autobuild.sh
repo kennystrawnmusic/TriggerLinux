@@ -44,7 +44,6 @@ copyskel() {
   sudo bash -c 'echo -e "PROMPT=\"%n@%m:%~%# \"" >> ./workingdir/airootfs/etc/skel/.zshrc'
   sudo cp fonts.conf workingdir/airootfs/etc/skel/.config/fontconfig
   sudo cp fonts.conf workingdir/airootfs/etc/fonts/local.conf
-  sudo ln -s /usr/lib/systemd/system/sddm-plymouth.service ./workingdir/airootfs/etc/systemd/system/display-manager.service
   sudo cp -f ./customize_airootfs.sh ./workingdir/airootfs/root/customize_airootfs.sh
   sudo cp -r triggerbox-breeze ./workingdir/airootfs/usr/share/plymouth/themes/
   if [ ! -d workingdir/airootfs/usr/lib/systemd/system ]; then
