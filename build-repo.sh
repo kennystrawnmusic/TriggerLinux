@@ -2,7 +2,7 @@
 compilecalamares() {
   echo "Preparing Repository..."
   if [ ! -d customrepo ]; then
-    git clone https://realKennyStrawn93/triggerbox-overlay customrepo
+    git clone https:/github.com/realKennyStrawn93/triggerbox-overlay customrepo
   else
     cd customrepo
     git pull --rebase
