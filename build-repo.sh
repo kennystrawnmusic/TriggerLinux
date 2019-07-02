@@ -13,10 +13,13 @@ compilecalamares() {
   echo "Preparing Repository..."
   if [ ! -d customrepo ]; then
     git clone https://github.com/realKennyStrawn93/triggerbox-overlay customrepo
+    #Must start from scratch
+    rm -rf customrepo/{LICENSE,README.md,x86_64}
   else
-    cd customrepo
-    git pull --rebase
-    cd ..
+    rm -rf customrepo
+    git clone https://github.com/realKennyStrawn93/triggerbox-overlay customrepo
+    #Must start from scratch
+    rm -rf customrepo/{LICENSE,README.md,x86_64}
   fi
   mkdir customrepo/claymore-miner
   cp claymore-PKGBUILD customrepo/claymore-miner/PKGBUILD
@@ -142,10 +145,13 @@ setuprepo() {
   cd customrepo/x86_64
   #Download a third time. Keeps disappearing from the finished repository.
   wget -O kpmcore3-3.3.0-1-x86_64.pkg.tar.xz https://mirrors.ocf.berkeley.edu/manjaro/stable/community/x86_64/kpmcore3-3.3.0-1-x86_64.pkg.tar.xz
-  #Clean up database before re-adding everything
-  rm -f {triggerbox-overlay.db*,triggerbox-overlay.files*}
   echo "Adding packages to repository..."
   repo-add triggerbox-overlay.db.tar.gz *.pkg.tar.*
+  # Avoid creating symlinks; throws Git off
+  unlink triggerbox-overlay.db
+  unlink triggerbox-overlay.files
+  cat triggerbox-overlay.db.tar.gz > triggerbox-overlay.db
+  cat triggerbox-overlay.files.tar.gz > triggerbox-overlay.files
   cd ..
   git add .
   git commit -m "Add new packages"

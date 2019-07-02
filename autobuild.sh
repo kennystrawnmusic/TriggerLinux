@@ -94,6 +94,5 @@ createdir
 copypackages
 copyskel
 createlsbrelease
-./build-repo.sh
 buildtheiso
 cleanup
