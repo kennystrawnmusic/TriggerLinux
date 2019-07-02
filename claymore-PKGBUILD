@@ -1,0 +1,17 @@
+pkgname=claymore-miner
+pkgver=14.7
+pkgrel=1
+pkgdesc="Claymore Dual Ethereum Miner"
+arch=('x86_64')
+url="https://github.com/Claymore-Dual/Claymore-Dual-Miner"
+license=('custom:claymore')
+depends=('curl' 'opencl-amd' 'opencl-nvidia')
+source=("$pkgname-$pkgver.zip::$url/releases/download/${pkgver}/Claymore.s.Dual.Ethereum.AMD+NVIDIA.GPU.Miner.v${pkgver}.-.LINUX.zip")
+
+package() {
+  mv $srcdir/"Claymore's Dual Ethereum AMD+NVIDIA GPU Miner v14.7 - LINUX" $srcdir/$pkgname-$pkgver
+  mkdir $pkgdir/opt
+  cp -r $srcdir/$pkgname-$pkgver $pkgdir/opt/claymore
+  chmod a+x $pkgdir/opt/claymore/ethdcrminer64
+  chmod a+x $pkgdir/opt/claymore/start.bash
+}

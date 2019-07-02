@@ -8,6 +8,8 @@ compilecalamares() {
     git pull --rebase
     cd ..
   fi
+  mkdir customrepo/claymore-miner
+  cp claymore-PKGBUILD customrepo/claymore-miner/PKGBUILD
   mkdir customrepo/x86_64
   #check if already installed before attempting to sideload Manjaro-specific calamares dependency
   pacman -Qi kpmcore3 > /dev/null
@@ -81,12 +83,16 @@ compilecalamares() {
   yes | makepkg -si || exit 1
   cp *.pkg.tar.* ../x86_64
   cd ../
+  echo "Building claymore-miner"
+  cd claymore-miner
+  yes | makepkg -s || exit 1
+  cd ../
   echo "Building calamares..."
   cd triggerbox-calamares
   yes | makepkg -s || exit 1
   cp *.pkg.tar.* ../x86_64
   cd ../
-  rm -rf qt5-styleplugins-git pythonqt triggerbox-calamares
+  rm -rf {qt5-styleplugins-git,pythonqt,claymore-miner,triggerbox-calamares}
   cd ../
   echo "triggerbox-calamares" | sudo tee -a ./workingdir/packages.x86_64 > /dev/null
 }
@@ -131,12 +137,12 @@ setuprepo() {
   git push origin master
   echo "[triggerbox-overlay]" | sudo tee --append ./workingdir/pacman.conf > /dev/null
   echo "SigLevel = Never" | sudo tee --append ./workingdir/pacman.conf > /dev/null
-  echo "Server = https://github.com/realKennyStrawn93/triggerbox-overlay/$(echo '$arch')" | sudo tee --append ./workingdir/pacman.conf > /dev/null
+  echo "Server = https://raw.github.com/realKennyStrawn93/triggerbox-overlay/$(echo '$arch')" | sudo tee --append ./workingdir/pacman.conf > /dev/null
   sudo pacman --noconfirm -Syyuu || exit 1
   cat /etc/pacman.conf > ./pacman.backup
   echo "[triggerbox-overlay]" | sudo tee --append /etc/pacman.conf > /dev/null
   echo "SigLevel = Never" | sudo tee --append /etc/pacman.conf > /dev/null
-  echo "Server = https://github.com/realKennyStrawn93/triggerbox-overlay/$(echo '$arch')" | sudo tee --append /etc/pacman.conf > /dev/null
+  echo "Server = https://raw.github.com/realKennyStrawn93/triggerbox-overlay/$(echo '$arch')" | sudo tee --append /etc/pacman.conf > /dev/null
   sudo pacman --noconfirm -Syyuu || exit 1
 }
 compilecalamares
