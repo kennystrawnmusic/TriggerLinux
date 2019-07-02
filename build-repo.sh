@@ -1,5 +1,14 @@
 #!/bin/bash
 
+cleanup() {
+  if [ -d customrepo ]; then
+    sudo sed -i /etc/pacman.conf
+    sudo sed -i /etc/pacman.conf
+    sudo sed -i /etc/pacman.conf
+    sudo rm -rf customrepo
+  fi
+}
+
 compilecalamares() {
   echo "Preparing Repository..."
   if [ ! -d customrepo ]; then
