@@ -1,4 +1,14 @@
 #!/bin/bash
+
+cleanup() {
+  if [ -d customrepo ]; then
+    sudo sed -i "$ d" /etc/pacman.conf
+    sudo sed -i "$ d" /etc/pacman.conf
+    sudo sed -i "$ d" /etc/pacman.conf
+    sudo rm -rf customrepo
+  fi
+}
+
 compilecalamares() {
   echo "Preparing Repository..."
   if [ ! -d customrepo ]; then
@@ -112,7 +122,7 @@ compileaurpkgs() {
     tar xf currentpkg.tar.gz
     rm currentpkg.tar.gz
     for d in * ; do
-    cd "$d"
+      cd "$d"
     done
     if [ ! -z $currentpkg ]; then
       yes | makepkg -s || exit 1
@@ -130,7 +140,7 @@ compileaurpkgs() {
 
 setuprepo() {
   cd customrepo/x86_64
-  #Download a third time. Keeps disappearing from the made repository.
+  #Download a third time. Keeps disappearing from the finished repository.
   wget -O kpmcore3-3.3.0-1-x86_64.pkg.tar.xz https://mirrors.ocf.berkeley.edu/manjaro/stable/community/x86_64/kpmcore3-3.3.0-1-x86_64.pkg.tar.xz
   #Clean up database before re-adding everything
   rm -f {triggerbox-overlay.db*,triggerbox-overlay.files*}
