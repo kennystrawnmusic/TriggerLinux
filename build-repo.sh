@@ -2,7 +2,7 @@
 compilecalamares() {
   echo "Preparing Repository..."
   if [ ! -d customrepo ]; then
-    git clone https:/github.com/realKennyStrawn93/triggerbox-overlay customrepo
+    git clone https://github.com/realKennyStrawn93/triggerbox-overlay customrepo
   else
     cd customrepo
     git pull --rebase
@@ -12,10 +12,10 @@ compilecalamares() {
   cp claymore-PKGBUILD customrepo/claymore-miner/PKGBUILD
   mkdir customrepo/x86_64
   #check if already installed before attempting to sideload Manjaro-specific calamares dependency
+  wget -O customrepo/x86_64/kpmcore3-3.3.0-1-x86_64.pkg.tar.xz https://mirrors.ocf.berkeley.edu/manjaro/stable/community/x86_64/kpmcore3-3.3.0-1-x86_64.pkg.tar.xz
   pacman -Qi kpmcore3 > /dev/null
   if [ $? -eq 1 ]; then
     #Calamares dependency found in Manjaro repos only
-    wget -O customrepo/x86_64/kpmcore3-3.3.0-1-x86_64.pkg.tar.xz https://mirrors.ocf.berkeley.edu/manjaro/stable/community/x86_64/kpmcore3-3.3.0-1-x86_64.pkg.tar.xz
     sudo pacman --noconfirm -U customrepo/x86_64/kpmcore3-3.3.0-1-x86_64.pkg.tar.xz
   fi
   mkdir customrepo/i686
@@ -86,6 +86,7 @@ compilecalamares() {
   echo "Building claymore-miner"
   cd claymore-miner
   yes | makepkg -s --skipinteg || exit 1
+  cp 
   cd ../
   echo "Building calamares..."
   cd triggerbox-calamares
