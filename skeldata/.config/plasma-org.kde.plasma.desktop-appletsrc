@@ -46,7 +46,7 @@ launchers=applications:org.kde.dolphin.desktop,applications:org.kde.discover.des
 
 [Containments][2][Applets][3]
 immutability=1
-plugin=org.kde.plasma.kickoff
+plugin=org.kde.plasma.kickerdash
 
 [Containments][2][Applets][3][Configuration]
 PreloadWeight=100

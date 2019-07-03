@@ -85,11 +85,11 @@ su tempuser -c "gpg --recv-keys EC94D18F7F05997E"
 su tempuser -c "yes | yay -Syu --devel yay-git plymouth-git snapd-glib-git snapd-git discover-snap ocs-url opencl-amd grub-git jade-application-kit-git pyside2 brave-bin ms-office-online"
 
 #Add yay packages to remote triggerbox-overlay repository
-su tempuser -c "git clone https://github.com/realkstrawn93/triggerbox-overlay ~/customrepo/x86_64"
+su tempuser -c "git clone https://github.com/realKennyStrawn93/triggerbox-overlay ~/customrepo"
 su tempuser -c "cp ~/.cache/yay/*/*.pkg.tar.* ~/customrepo"
 su tempuser -c "git config --global user.name \"Kenny Strawn\""
 su tempuser -c "git config --global user.email \"Kenny.Strawn@gmail.com\""
-su tempuser -c "cd ~/customrepo/x86_64 && rm -f triggerbox-overlay.{db,files} && repo-add -n triggerbox-overlay.db.tar.gz *.pkg.tar.* && unlink triggerbox-overlay.{db,files} && cat triggerbox-overlay.db.tar.gz > triggerbox-overlay.db && cat triggerbox-overlay.files.tar.gz > triggerbox-overlay.files"
+su tempuser -c "cd ~/customrepo/x86_64 && rm -f triggerbox-overlay.{db,files} && repo-add -n triggerbox-overlay.db.tar.gz *.pkg.tar.* && unlink triggerbox-overlay.db && unlink triggerbox-overlay.files && cat triggerbox-overlay.db.tar.gz > triggerbox-overlay.db && cat triggerbox-overlay.files.tar.gz > triggerbox-overlay.files"
 su tempuser -c "cd ~/customrepo && git add . && git commit -m \"Add AUR Helper packages\" && git push origin master"
 
 # #Don't enable sddm-plymouth.service from host; only inside ISO build environment
