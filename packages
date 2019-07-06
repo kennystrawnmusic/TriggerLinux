@@ -746,6 +746,7 @@ opencore-amr
 openexr
 openjpeg2
 openresolv
+openssh
 openssl
 openssl-1.0
 opus
@@ -966,6 +967,9 @@ ttf-hack
 ttf-dejavu
 ttf-liberation
 triggerbox-calamares
+triggerbox-gab
+triggerbox-minds
+triggerbox-parler
 twolame
 tzdata
 udisks2

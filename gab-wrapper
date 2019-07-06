@@ -1,7 +1,0 @@
-#!/bin/bash
-
-if [ $UID -eq 0 ]; then
-  gab --no-sandbox
-else
-  gab
-fi

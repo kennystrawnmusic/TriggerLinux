@@ -84,14 +84,6 @@ su tempuser -c "gpg --recv-keys EC94D18F7F05997E"
 #Install certain packages using AUR helper to work around integrity failures
 su tempuser -c "yes | yay -Syu --devel yay-git plymouth-git snapd-glib-git snapd-git discover-snap ocs-url opencl-amd grub-git jade-application-kit-git pyside2 brave-bin ms-office-online"
 
-#Add yay packages to remote triggerbox-overlay repository
-su tempuser -c "git clone https://github.com/realKennyStrawn93/triggerbox-overlay ~/customrepo"
-su tempuser -c "cp ~/.cache/yay/*/*.pkg.tar.* ~/customrepo"
-su tempuser -c "git config --global user.name \"Kenny Strawn\""
-su tempuser -c "git config --global user.email \"Kenny.Strawn@gmail.com\""
-su tempuser -c "cd ~/customrepo/x86_64 && rm -f triggerbox-overlay.{db,files} && repo-add -n triggerbox-overlay.db.tar.gz *.pkg.tar.* && unlink triggerbox-overlay.db && unlink triggerbox-overlay.files && cat triggerbox-overlay.db.tar.gz > triggerbox-overlay.db && cat triggerbox-overlay.files.tar.gz > triggerbox-overlay.files"
-su tempuser -c "cd ~/customrepo && git add . && git commit -m \"Add AUR Helper packages\" && git push origin master"
-
 # #Don't enable sddm-plymouth.service from host; only inside ISO build environment
 systemctl disable sddm.service
 systemctl enable sddm-plymouth.service autoupdate.service autoupdate.timer
@@ -126,7 +118,7 @@ sed -i "s/ExecStart\=\/usr\/bin\/nice -n 19 \/usr\/bin\/pacman -Syuwq --noconfir
 sed -i "s/GRUB_DISTRIBUTOR=\"Arch\"/GRUB_DISTRIBUTOR=\"Triggerbox\"/" /etc/default/grub
 sed -i "s/OS=\"\${GRUB_DISTRIBUTOR} Linux\"/OS=\"\${GRUB_DISTRIBUTOR}\"/" /etc/grub.d/10_linux
 
-#Create JAK webapp for Gab
+#Add icon for JAK Gab webapp
 wget -O /usr/share/icons/breeze/apps/48/gab.png https://gab.com/assets/icon/apple-touch-icon.png
 
 #Create /usr/share/icons/breeze/apps/scalable if it doesn't exist
@@ -134,10 +126,10 @@ if [ ! -d /usr/share/icons/breeze/apps/scalable ]; then
   mkdir /usr/share/icons/breeze/apps/scalable
 fi
 
-#Create JAK webapp for Minds
+#Add icon for JAK Minds webapp
 wget -O /usr/share/icons/breeze/apps/scalable/minds.svg https://cdn-assets.minds.com/front/dist/en/assets/logos/bulb.svg
 
-#Create JAK webapp for Parler
+#Add icon for JAK Parler webapp
 wget -O /usr/share/icons/breeze/apps/48/parler.jpg https://images.parler.com/a078092e6e2df507bfd12db4710e8621_128
 
 #Add desktop shortcuts for Gab, Minds, and Parler for all users

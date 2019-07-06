@@ -162,6 +162,28 @@ setuprepo() {
   echo "Server = https://raw.github.com/realKennyStrawn93/triggerbox-overlay/master/$(echo '$arch')" | sudo tee --append /etc/pacman.conf > /dev/null
   sudo pacman --noconfirm -Syyuu || exit 1
 }
+
+setupaurhelper() {
+  #Check if yay is installed before proceeding
+  pacman -Qi yay > /dev/null
+  if [ $? -eq 1 ]; then
+    pacman -S yay
+  fi
+  #Must ensure that all helpered AUR packages have local copies before proceeding
+  yes | yay -Syu --devel yay-git plymouth-git snapd-glib-git snapd-git discover-snap ocs-url opencl-amd grub-git jade-application-kit-git pyside2 brave-bin ms-office-online
+  cp ~/.cache/yay/*/*.pkg.tar.* customrepo/x86_64
+  cd x86_64
+  repo-add -n triggerbox-overlay.db.tar.gz *.pkg.tar.*
+  unlink triggerbox-overlay.db
+  unlink triggerbox-overlay.files
+  cat triggerbox-overlay.db.tar.gz > triggerbox-overlay.db
+  cat triggerbox-overlay.files.tar.gz > triggerbox-overlay.files
+  cd ..
+  git add .
+  git commit -m "Add AUR Helper packages"
+  git push origin master
+}
 compilecalamares
 compileaurpkgs
 setuprepo
+setupaurhelper

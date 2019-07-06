@@ -1,7 +1,0 @@
-#!/bin/bash
-
-if [ $UID -eq 0 ]; then
-  minds --no-sandbox
-else
-  minds
-fi
