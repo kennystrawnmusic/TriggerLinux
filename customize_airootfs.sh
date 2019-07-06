@@ -119,7 +119,7 @@ sed -i "s/GRUB_DISTRIBUTOR=\"Arch\"/GRUB_DISTRIBUTOR=\"Triggerbox\"/" /etc/defau
 sed -i "s/OS=\"\${GRUB_DISTRIBUTOR} Linux\"/OS=\"\${GRUB_DISTRIBUTOR}\"/" /etc/grub.d/10_linux
 
 #Add icon for JAK Gab webapp
-wget -O /usr/share/icons/breeze/apps/48/gab.png https://gab.com/assets/icon/apple-touch-icon.png
+wget -O /usr/share/icons/breeze/apps/48/gab.png https://gab.com/apple-touch-icon.png
 
 #Create /usr/share/icons/breeze/apps/scalable if it doesn't exist
 if [ ! -d /usr/share/icons/breeze/apps/scalable ]; then
