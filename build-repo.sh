@@ -142,22 +142,26 @@ compileaurpkgs() {
 }
 
 setuprepo() {
-  cd customrepo/x86_64
-  #Download a third time. Keeps disappearing from the finished repository.
-  wget -O kpmcore3-3.3.0-1-x86_64.pkg.tar.xz https://mirrors.ocf.berkeley.edu/manjaro/stable/community/x86_64/kpmcore3-3.3.0-1-x86_64.pkg.tar.xz
-  echo "Adding packages to repository..."
+  cd customrepo
   git clone https://gihub.com/realKennyStrawn93/triggerbox-gab
   cd triggerbox-gab
-  yes | makepkg -s || exit 1
+  yes | makepkg -s --skipinteg || exit 1
+  cp *.pkg.tar.* ../x86_64
   cd ..
   git clone https://gihub.com/realKennyStrawn93/triggerbox-minds
   cd triggerbox-minds
-  yes | makepkg -s || exit 1
+  yes | makepkg -s --skipinteg || exit 1
+  cp *.pkg.tar.* ../x86_64
   cd ..
   git clone https://gihub.com/realKennyStrawn93/triggerbox-parler
   cd triggerbox-parler
-  yes | makepkg -s || exit 1
+  yes | makepkg -s --skipinteg || exit 1
+  cp *.pkg.tar.* ../x86_64
   cd ..
+  cd x86_64
+  #Download a third time. Keeps disappearing from the finished repository.
+  wget -O kpmcore3-3.3.0-1-x86_64.pkg.tar.xz https://mirrors.ocf.berkeley.edu/manjaro/stable/community/x86_64/kpmcore3-3.3.0-1-x86_64.pkg.tar.xz
+  echo "Adding packages to repository..."
   repo-add triggerbox-overlay.db.tar.gz *.pkg.tar.*
   # Avoid creating symlinks; throws Git off
   unlink triggerbox-overlay.db
