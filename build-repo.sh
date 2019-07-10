@@ -143,17 +143,17 @@ compileaurpkgs() {
 
 setuprepo() {
   cd customrepo
-  git clone https://gihub.com/realKennyStrawn93/triggerbox-gab
+  git clone https://github.com/realKennyStrawn93/triggerbox-gab
   cd triggerbox-gab
   yes | makepkg -s --skipinteg || exit 1
   cp *.pkg.tar.* ../x86_64
   cd ..
-  git clone https://gihub.com/realKennyStrawn93/triggerbox-minds
+  git clone https://github.com/realKennyStrawn93/triggerbox-minds
   cd triggerbox-minds
   yes | makepkg -s --skipinteg || exit 1
   cp *.pkg.tar.* ../x86_64
   cd ..
-  git clone https://gihub.com/realKennyStrawn93/triggerbox-parler
+  git clone https://github.com/realKennyStrawn93/triggerbox-parler
   cd triggerbox-parler
   yes | makepkg -s --skipinteg || exit 1
   cp *.pkg.tar.* ../x86_64
