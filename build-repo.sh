@@ -14,12 +14,12 @@ compilecalamares() {
   if [ ! -d customrepo ]; then
     git clone https://github.com/realKennyStrawn93/triggerbox-overlay customrepo
     #Must start from scratch
-    rm -rf customrepo/{LICENSE,README.md,x86_64}
+    rm -rf customrepo/{LICENSE,README.md,triggerbox-overlay.db.*,x86_64}
   else
     rm -rf customrepo
     git clone https://github.com/realKennyStrawn93/triggerbox-overlay customrepo
     #Must start from scratch
-    rm -rf customrepo/{LICENSE,README.md,x86_64}
+    rm -rf customrepo/{LICENSE,README.md,triggerbox-overlay.db.*,x86_64}
   fi
   mkdir customrepo/claymore-miner
   cp claymore-PKGBUILD customrepo/claymore-miner/PKGBUILD
@@ -146,6 +146,18 @@ setuprepo() {
   #Download a third time. Keeps disappearing from the finished repository.
   wget -O kpmcore3-3.3.0-1-x86_64.pkg.tar.xz https://mirrors.ocf.berkeley.edu/manjaro/stable/community/x86_64/kpmcore3-3.3.0-1-x86_64.pkg.tar.xz
   echo "Adding packages to repository..."
+  git clone https://gihub.com/realKennyStrawn93/triggerbox-gab
+  cd triggerbox-gab
+  yes | makepkg -s || exit 1
+  cd ..
+  git clone https://gihub.com/realKennyStrawn93/triggerbox-minds
+  cd triggerbox-minds
+  yes | makepkg -s || exit 1
+  cd ..
+  git clone https://gihub.com/realKennyStrawn93/triggerbox-parler
+  cd triggerbox-parler
+  yes | makepkg -s || exit 1
+  cd ..
   repo-add triggerbox-overlay.db.tar.gz *.pkg.tar.*
   # Avoid creating symlinks; throws Git off
   unlink triggerbox-overlay.db

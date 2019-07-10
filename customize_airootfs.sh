@@ -118,20 +118,6 @@ sed -i "s/ExecStart\=\/usr\/bin\/nice -n 19 \/usr\/bin\/pacman -Syuwq --noconfir
 sed -i "s/GRUB_DISTRIBUTOR=\"Arch\"/GRUB_DISTRIBUTOR=\"Triggerbox\"/" /etc/default/grub
 sed -i "s/OS=\"\${GRUB_DISTRIBUTOR} Linux\"/OS=\"\${GRUB_DISTRIBUTOR}\"/" /etc/grub.d/10_linux
 
-#Add icon for JAK Gab webapp
-wget -O /usr/share/icons/breeze/apps/48/gab.png https://gab.com/apple-touch-icon.png
-
-#Create /usr/share/icons/breeze/apps/scalable if it doesn't exist
-if [ ! -d /usr/share/icons/breeze/apps/scalable ]; then
-  mkdir /usr/share/icons/breeze/apps/scalable
-fi
-
-#Add icon for JAK Minds webapp
-wget -O /usr/share/icons/breeze/apps/scalable/minds.svg https://cdn-assets.minds.com/front/dist/en/assets/logos/bulb.svg
-
-#Add icon for JAK Parler webapp
-wget -O /usr/share/icons/breeze/apps/48/parler.jpg https://images.parler.com/a078092e6e2df507bfd12db4710e8621_128
-
 #Add desktop shortcuts for Gab, Minds, and Parler for all users
 cp /usr/share/applications/{gab,minds,parler}.desktop /root/Desktop/
 cp /usr/share/applications/{gab,minds,parler}.desktop /etc/skel/Desktop/
