@@ -2,9 +2,9 @@
 
 cleanup() {
   if [ -d customrepo ]; then
-    sudo sed -i /etc/pacman.conf
-    sudo sed -i /etc/pacman.conf
-    sudo sed -i /etc/pacman.conf
+    sudo sed -i "$ d" /etc/pacman.conf
+    sudo sed -i "$ d" /etc/pacman.conf
+    sudo sed -i "$ d" /etc/pacman.conf
     sudo rm -rf customrepo
   fi
 }
@@ -187,7 +187,7 @@ setupaurhelper() {
   fi
   #Must ensure that all helpered AUR packages have local copies before proceeding
   yes | yay -Syu --devel yay-git plymouth-git snapd-glib-git snapd-git discover-snap ocs-url opencl-amd grub-git jade-application-kit-git pyside2 brave-bin ms-office-online
-  cp ~/.cache/yay/*/*.pkg.tar.* customrepo/x86_64
+  cp ~/.cache/yay/*/*.pkg.tar.* x86_64
   cd x86_64
   repo-add -n triggerbox-overlay.db.tar.gz *.pkg.tar.*
   unlink triggerbox-overlay.db
