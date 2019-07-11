@@ -199,6 +199,7 @@ setupaurhelper() {
   git commit -m "Add AUR Helper packages"
   git push origin master
 }
+cleanup
 compilecalamares
 compileaurpkgs
 setuprepo
