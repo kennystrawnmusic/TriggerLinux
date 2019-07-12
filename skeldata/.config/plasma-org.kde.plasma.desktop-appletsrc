@@ -88,7 +88,7 @@ wallpaperplugin=org.kde.image
 
 [Containments][21][Applets][22]
 immutability=1
-plugin=org.kde.plasma.appmenu
+plugin[$ie]=$(touch-disable-appmenu)
 
 [Containments][21][Applets][22][Configuration]
 PreloadWeight=2

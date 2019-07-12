@@ -970,6 +970,9 @@ triggerbox-calamares
 triggerbox-gab
 triggerbox-minds
 triggerbox-parler
+triggerbox-touch-detect-kwin
+triggerbox-touch-disable-appmenu
+triggerbox-touch-maximize-all
 twolame
 tzdata
 udisks2

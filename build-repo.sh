@@ -2,9 +2,6 @@
 
 cleanup() {
   if [ -d customrepo ]; then
-    sudo sed -i "$ d" /etc/pacman.conf
-    sudo sed -i "$ d" /etc/pacman.conf
-    sudo sed -i "$ d" /etc/pacman.conf
     sudo rm -rf customrepo
   fi
 }
@@ -158,7 +155,21 @@ setuprepo() {
   yes | makepkg -s --skipinteg || exit 1
   cp *.pkg.tar.* ../x86_64
   cd ..
-  cd x86_64
+  git clone https://github.com/realKennyStrawn93/triggerbox-touch-detect-kwin
+  cd triggerbox-touch-detect-kwin
+  yes | makepkg -si || exit 1
+  cp *.pkg.tar.* ../x86_64
+  cd ..
+  git clone https://github.com/realKennyStrawn93/triggerbox-touch-disable-appmenu
+  cd triggerbox-touch-disable-appmenu
+  yes | makepkg -si || exit 1
+  cp *.pkg.tar.* ../x86_64
+  cd ..
+  git clone https://github.com/realKennyStrawn93/triggerbox-touch-maximize-all
+  cd triggerbox-touch-maximize-all
+  yes | makepkg -si || exit 1
+  cp *.pkg.tar.* ../x86_64
+  cd ../x86_64
   #Download a third time. Keeps disappearing from the finished repository.
   wget -O kpmcore3-3.3.0-1-x86_64.pkg.tar.xz https://mirrors.ocf.berkeley.edu/manjaro/stable/community/x86_64/kpmcore3-3.3.0-1-x86_64.pkg.tar.xz
   echo "Adding packages to repository..."

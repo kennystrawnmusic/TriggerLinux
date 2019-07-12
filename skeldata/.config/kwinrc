@@ -41,3 +41,4 @@ ElectricBorderDelay=150
 ElectricBorderMaximize=true
 ElectricBorderTiling=true
 ElectricBorders=0
+BorderlessMaximizedWindows[$ie]=$(touch-detect-kwin)
