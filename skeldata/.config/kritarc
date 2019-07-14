@@ -297,14 +297,6 @@ width=636
 xPosition=2
 yPosition=30
 
-[RecentFiles]
-File1[$e]=$HOME/Desktop/Discover.png
-File2[$e]=$HOME/Desktop/triggerbox-breeze/logo.png
-File3[$e]=$HOME/Desktop/serious-face-with-symbols-covering-mouth_1f92c.png
-Name1[$e]=Discover.png
-Name2[$e]=logo.png
-Name3[$e]=serious-face-with-symbols-covering-mouth_1f92c.png
-
 [SvgSymbolCollection]
 currentCollection=0
 
