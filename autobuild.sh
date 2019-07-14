@@ -45,7 +45,7 @@ copyskel() {
   sudo cp fonts.conf workingdir/airootfs/etc/skel/.config/fontconfig
   sudo cp fonts.conf workingdir/airootfs/etc/fonts/local.conf
   sudo cp -f ./customize_airootfs.sh ./workingdir/airootfs/root/customize_airootfs.sh
-  sudo cp -r triggerbox-breeze ./workingdir/airootfs/usr/share/plymouth/themes/
+  sudo cp -r triggerlinux-breeze ./workingdir/airootfs/usr/share/plymouth/themes/
   if [ ! -d workingdir/airootfs/usr/lib/systemd/system ]; then
     sudo mkdir -p workingdir/airootfs/usr/lib/systemd/system
   fi
@@ -71,7 +71,7 @@ cleanup() {
   cat ./pacman.backup | sudo tee /etc/pacman.conf > /dev/null
   sudo pacman --noconfirm -Syyuu
   rm ./pacman.backup
-  sudo rm -rf /var/cache/pacman/pkg/triggerbox-calamares*
+  sudo rm -rf /var/cache/pacman/pkg/triggerlinux-calamares*
   sudo rm -rf /var/cache/pacman/pkg/qt5-styleplugins-git*
   finalfiles=""
   while IFS='' read -r currentpkg || [[ -n "$currentpkg" ]]; do
@@ -81,7 +81,7 @@ cleanup() {
   sudo rm -rf $finalfiles
   rm -rf ./customrepo
   echo "Saving iso file..."
-  cp ./workingdir/out/*.iso ./triggerbox-$distroversion-$(uname -m).iso
+  cp ./workingdir/out/*.iso ./triggerlinux-$distroversion-$(uname -m).iso
   echo "Removing archiso directory..."
   sudo rm -rf workingdir
 }

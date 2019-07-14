@@ -35,7 +35,7 @@ if [ -d /etc/ssh ]; then
 fi
 
 #Change archiso hostname to resolve branding issues
-echo "triggerbox" > /etc/hostname
+echo "triggerlinux" > /etc/hostname
 
 #Only uncomment American servers (for now)
 sed -i "/United States$/{n;s/#Server/Server/;}" /etc/pacman.d/mirrorlist
@@ -98,11 +98,11 @@ sed -i "s/.*GRUB_TIMEOUT.*/GRUB_TIMEOUT=0/" /etc/default/grub
 sed -i "s/.*GRUB_CMDLINE_LINUX_DEFAULT.*/GRUB_CMDLINE_LINUX_DEFAULT=\"quiet splash loglevel=0 rd.udev.log-priority=3 vt.global_cursor_default=0 sysrq_always_enabled=1\"/" /etc/default/grub
 
 #retarget logo.png symlink before changing theme to work around failure of splash screen to appear
-unlink /usr/share/plymouth/themes/triggerbox-breeze/logo.png
-ln -s /usr/share/plymouth/themes/triggerbox-breeze/logo_full_blue.png /usr/share/plymouth/themes/triggerbox-breeze/logo.png
+unlink /usr/share/plymouth/themes/triggerlinux-breeze/logo.png
+ln -s /usr/share/plymouth/themes/triggerlinux-breeze/logo_full_blue.png /usr/share/plymouth/themes/triggerlinux-breeze/logo.png
 
 #self-explanatory
-plymouth-set-default-theme -R triggerbox-breeze
+plymouth-set-default-theme -R triggerlinux-breeze
 
 #Delete pacman-key directory to work around bug in which calamares tries to create directory that already exists
 rm -rf /etc/pacman.d/gnupg

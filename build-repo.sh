@@ -9,14 +9,14 @@ cleanup() {
 compilecalamares() {
   echo "Preparing Repository..."
   if [ ! -d customrepo ]; then
-    git clone https://github.com/realKennyStrawn93/triggerbox-overlay customrepo
+    git clone https://github.com/realKennyStrawn93/triggerlinux-overlay customrepo
     #Must start from scratch
-    rm -rf customrepo/{LICENSE,README.md,triggerbox-overlay.db.*,x86_64}
+    rm -rf customrepo/{LICENSE,README.md,triggerlinux-overlay.db.*,x86_64}
   else
     rm -rf customrepo
-    git clone https://github.com/realKennyStrawn93/triggerbox-overlay customrepo
+    git clone https://github.com/realKennyStrawn93/triggerlinux-overlay customrepo
     #Must start from scratch
-    rm -rf customrepo/{LICENSE,README.md,triggerbox-overlay.db.*,x86_64}
+    rm -rf customrepo/{LICENSE,README.md,triggerlinux-overlay.db.*,x86_64}
   fi
   mkdir customrepo/claymore-miner
   cp claymore-PKGBUILD customrepo/claymore-miner/PKGBUILD
@@ -29,14 +29,14 @@ compilecalamares() {
     sudo pacman --noconfirm -U customrepo/x86_64/kpmcore3-3.3.0-1-x86_64.pkg.tar.xz
   fi
   mkdir customrepo/i686
-  mkdir customrepo/triggerbox-calamares
+  mkdir customrepo/triggerlinux-calamares
   echo "Preparing Calamares-build..."
   
-  wget -O customrepo/triggerbox-calamares/PKGBUILD http://archmaker.guidedlinux.org/PKGBUILD
+  wget -O customrepo/triggerlinux-calamares/PKGBUILD http://archmaker.guidedlinux.org/PKGBUILD
   
   #Fix out-of-date calamares dependencies
-  sed -i "s/depends.*/depends=('kconfig' 'kcoreaddons' 'kiconthemes' 'ki18n' 'kio' 'solid' 'yaml-cpp' 'kpmcore3' 'mkinitcpio-openswap' 'boost-libs' 'ckbcomp' 'hwinfo' 'qt5-svg' 'polkit-qt5' 'gtk-update-icon-cache' 'pythonqt>=3.2' 'plasma-framework' 'qt5-xmlpatterns' 'kparts' 'qt5-webengine' 'rsync' 'f2fs-tools')/" customrepo/triggerbox-calamares/PKGBUILD
-  sed -i "s/makedepends.*/makedepends=('extra-cmake-modules' 'qt5-tools' 'qt5-translations' 'git' 'boost')/" customrepo/triggerbox-calamares/PKGBUILD
+  sed -i "s/depends.*/depends=('kconfig' 'kcoreaddons' 'kiconthemes' 'ki18n' 'kio' 'solid' 'yaml-cpp' 'kpmcore3' 'mkinitcpio-openswap' 'boost-libs' 'ckbcomp' 'hwinfo' 'qt5-svg' 'polkit-qt5' 'gtk-update-icon-cache' 'pythonqt>=3.2' 'plasma-framework' 'qt5-xmlpatterns' 'kparts' 'qt5-webengine' 'rsync' 'f2fs-tools')/" customrepo/triggerlinux-calamares/PKGBUILD
+  sed -i "s/makedepends.*/makedepends=('extra-cmake-modules' 'qt5-tools' 'qt5-translations' 'git' 'boost')/" customrepo/triggerlinux-calamares/PKGBUILD
 
   echo "  echo '  ' >> src/branding/custombranding/show.qml" >> slideshowchanges
   echo "  echo '  BackButton {' >> src/branding/custombranding/show.qml" >> slideshowchanges
@@ -52,12 +52,12 @@ compilecalamares() {
   echo "  echo '  }' >> src/branding/custombranding/show.qml" >> slideshowchanges
   echo "  echo '  ' >> src/branding/custombranding/show.qml" >> slideshowchanges
   FILES="calamaresslides/*"
-  sed -i "27a \ \ \ \ cp $(pwd)/{forward,back}.png src/branding/custombranding/" ./customrepo/triggerbox-calamares/PKGBUILD
+  sed -i "27a \ \ \ \ cp $(pwd)/{forward,back}.png src/branding/custombranding/" ./customrepo/triggerlinux-calamares/PKGBUILD
   currentslide=1
   for f in $FILES
   do
     currentline=$(( $currentslide + 28 ))
-    sed -i "${currentline}a\ \ \ \ cp $(pwd)\/$f src\/branding\/custombranding\/" ./customrepo/triggerbox-calamares/PKGBUILD
+    sed -i "${currentline}a\ \ \ \ cp $(pwd)\/$f src\/branding\/custombranding\/" ./customrepo/triggerlinux-calamares/PKGBUILD
     echo "  echo '  Slide {' >> src/branding/custombranding/show.qml" >> slideshowchanges
     echo "  echo '    ' >> src/branding/custombranding/show.qml" >> slideshowchanges
     echo "  echo '    Image {' >> src/branding/custombranding/show.qml" >> slideshowchanges
@@ -70,15 +70,15 @@ compilecalamares() {
     echo "  echo '  }' >> src/branding/custombranding/show.qml" >> slideshowchanges
     currentslide=$(( $currentslide + 1 ))
   done
-  sed -i "s/DISTRNAME/Triggerbox/" ./customrepo/triggerbox-calamares/PKGBUILD
-  sed -i "s/DISTRVERSION/${distroversion}/" ./customrepo/triggerbox-calamares/PKGBUILD
-  sed -i "s/archmaker-calamares/triggerbox-calamares/" ./customrepo/triggerbox-calamares/PKGBUILD
+  sed -i "s/DISTRNAME/Triggerbox/" ./customrepo/triggerlinux-calamares/PKGBUILD
+  sed -i "s/DISTRVERSION/${distroversion}/" ./customrepo/triggerlinux-calamares/PKGBUILD
+  sed -i "s/archmaker-calamares/triggerlinux-calamares/" ./customrepo/triggerlinux-calamares/PKGBUILD
   echo "  echo '  ' >> src/branding/custombranding/show.qml" >> slideshowchanges
   echo "  echo '}' >> src/branding/custombranding/show.qml" >> slideshowchanges
   lastline=$(( $currentslide + 27 ))
-  sed -i '/mkdir -p build/r slideshowchanges' ./customrepo/triggerbox-calamares/PKGBUILD
+  sed -i '/mkdir -p build/r slideshowchanges' ./customrepo/triggerlinux-calamares/PKGBUILD
   rm slideshowchanges
-  cd ./customrepo/triggerbox-calamares
+  cd ./customrepo/triggerlinux-calamares
   makepkg --printsrcinfo > .SRCINFO
   cd ../
   echo "Building qt5-styleplugins-git..."
@@ -99,13 +99,13 @@ compilecalamares() {
   cp *.pkg.tar.* ../x86_64
   cd ../
   echo "Building calamares..."
-  cd triggerbox-calamares
+  cd triggerlinux-calamares
   yes | makepkg -s || exit 1
   cp *.pkg.tar.* ../x86_64
   cd ../
-  rm -rf {qt5-styleplugins-git,pythonqt,claymore-miner,triggerbox-calamares}
+  rm -rf {qt5-styleplugins-git,pythonqt,claymore-miner,triggerlinux-calamares}
   cd ../
-  echo "triggerbox-calamares" | sudo tee -a ./workingdir/packages.x86_64 > /dev/null
+  echo "triggerlinux-calamares" | sudo tee -a ./workingdir/packages.x86_64 > /dev/null
 }
 compileaurpkgs() {
   yes | sudo pacman -Scc #prevent package signature errors, part 2
@@ -140,53 +140,53 @@ compileaurpkgs() {
 
 setuprepo() {
   cd customrepo
-  git clone https://github.com/realKennyStrawn93/triggerbox-gab
-  cd triggerbox-gab
+  git clone https://github.com/realKennyStrawn93/triggerlinux-gab
+  cd triggerlinux-gab
   yes | makepkg -s --skipinteg || exit 1
   cp *.pkg.tar.* ../x86_64
   cd ..
-  git clone https://github.com/realKennyStrawn93/triggerbox-minds
-  cd triggerbox-minds
+  git clone https://github.com/realKennyStrawn93/triggerlinux-minds
+  cd triggerlinux-minds
   yes | makepkg -s --skipinteg || exit 1
   cp *.pkg.tar.* ../x86_64
   cd ..
-  git clone https://github.com/realKennyStrawn93/triggerbox-parler
-  cd triggerbox-parler
+  git clone https://github.com/realKennyStrawn93/triggerlinux-parler
+  cd triggerlinux-parler
   yes | makepkg -s --skipinteg || exit 1
   cp *.pkg.tar.* ../x86_64
   cd ..
-  git clone https://github.com/realKennyStrawn93/triggerbox-touch-detect-kwin
-  cd triggerbox-touch-detect-kwin
+  git clone https://github.com/realKennyStrawn93/triggerlinux-touch-detect-kwin
+  cd triggerlinux-touch-detect-kwin
   yes | makepkg -si || exit 1
   cp *.pkg.tar.* ../x86_64
   cd ..
-  git clone https://github.com/realKennyStrawn93/triggerbox-touch-disable-appmenu
-  cd triggerbox-touch-disable-appmenu
+  git clone https://github.com/realKennyStrawn93/triggerlinux-touch-disable-appmenu
+  cd triggerlinux-touch-disable-appmenu
   yes | makepkg -si || exit 1
   cp *.pkg.tar.* ../x86_64
   cd ..
-  git clone https://github.com/realKennyStrawn93/triggerbox-touch-maximize-all
-  cd triggerbox-touch-maximize-all
+  git clone https://github.com/realKennyStrawn93/triggerlinux-touch-maximize-all
+  cd triggerlinux-touch-maximize-all
   yes | makepkg -si || exit 1
   cp *.pkg.tar.* ../x86_64
   cd ../x86_64
   #Download a third time. Keeps disappearing from the finished repository.
   wget -O kpmcore3-3.3.0-1-x86_64.pkg.tar.xz https://mirrors.ocf.berkeley.edu/manjaro/stable/community/x86_64/kpmcore3-3.3.0-1-x86_64.pkg.tar.xz
   echo "Adding packages to repository..."
-  repo-add triggerbox-overlay.db.tar.gz *.pkg.tar.*
+  repo-add triggerlinux-overlay.db.tar.gz *.pkg.tar.*
   # Avoid creating symlinks; throws Git off
-  unlink triggerbox-overlay.db
-  unlink triggerbox-overlay.files
-  cat triggerbox-overlay.db.tar.gz > triggerbox-overlay.db
-  cat triggerbox-overlay.files.tar.gz > triggerbox-overlay.files
+  unlink triggerlinux-overlay.db
+  unlink triggerlinux-overlay.files
+  cat triggerlinux-overlay.db.tar.gz > triggerlinux-overlay.db
+  cat triggerlinux-overlay.files.tar.gz > triggerlinux-overlay.files
   cd ..
   git add .
   git commit -m "Add new packages"
   git push origin master
   cat /etc/pacman.conf > ./pacman.backup
-  echo "[triggerbox-overlay]" | sudo tee --append /etc/pacman.conf > /dev/null
+  echo "[triggerlinux-overlay]" | sudo tee --append /etc/pacman.conf > /dev/null
   echo "SigLevel = Never" | sudo tee --append /etc/pacman.conf > /dev/null
-  echo "Server = https://raw.github.com/realKennyStrawn93/triggerbox-overlay/master/$(echo '$arch')" | sudo tee --append /etc/pacman.conf > /dev/null
+  echo "Server = https://raw.github.com/realKennyStrawn93/triggerlinux-overlay/master/$(echo '$arch')" | sudo tee --append /etc/pacman.conf > /dev/null
   sudo pacman --noconfirm -Syyuu || exit 1
 }
 
@@ -200,11 +200,11 @@ setupaurhelper() {
   yes | yay -Syu --devel yay-git plymouth-git snapd-glib-git snapd-git discover-snap ocs-url opencl-amd grub-git jade-application-kit-git pyside2 brave-bin ms-office-online
   cp ~/.cache/yay/*/*.pkg.tar.* x86_64
   cd x86_64
-  repo-add -n triggerbox-overlay.db.tar.gz *.pkg.tar.*
-  unlink triggerbox-overlay.db
-  unlink triggerbox-overlay.files
-  cat triggerbox-overlay.db.tar.gz > triggerbox-overlay.db
-  cat triggerbox-overlay.files.tar.gz > triggerbox-overlay.files
+  repo-add -n triggerlinux-overlay.db.tar.gz *.pkg.tar.*
+  unlink triggerlinux-overlay.db
+  unlink triggerlinux-overlay.files
+  cat triggerlinux-overlay.db.tar.gz > triggerlinux-overlay.db
+  cat triggerlinux-overlay.files.tar.gz > triggerlinux-overlay.files
   cd ..
   git add .
   git commit -m "Add AUR Helper packages"

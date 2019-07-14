@@ -1,5 +1,5 @@
-# Triggerbox 19.03 Release Notes
-Although it is rolling release (as is upstream Arch Linux, whose repositories it does still use), Triggerbox still, also like Arch Linux, releases snapshots every month, starting with this first stable release. [Download Here](https://mega.nz/#!5I90hSqS!sdqOLBzg1SBGOkRt8rqnB88bCvO9rZvpHgBT9OVMiy0)
+# TriggerLinux 19.03 Release Notes
+Although it is rolling release (as is upstream Arch Linux, whose repositories it does still use), TriggerLinux still, also like Arch Linux, releases snapshots every month, starting with this first stable release. [Download Here](https://mega.nz/#!5I90hSqS!sdqOLBzg1SBGOkRt8rqnB88bCvO9rZvpHgBT9OVMiy0)
 
 ## Feature Changes and Bug Fixes
 
@@ -10,4 +10,4 @@ Although it is rolling release (as is upstream Arch Linux, whose repositories it
 
 ## Known Issues
 
-TODO: If you find a bug, post it (along with all necessary system logs) in the [Issues](https://github.com/realKennyStrawn93/Triggerbox/issues) section and I will add all issues listed to this section along with ticket references.
+TODO: If you find a bug, post it (along with all necessary system logs) in the [Issues](https://github.com/realKennyStrawn93/TriggerLinux/issues) section and I will add all issues listed to this section along with ticket references.

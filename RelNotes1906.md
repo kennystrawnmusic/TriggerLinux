@@ -1,5 +1,5 @@
-# Triggerbox 19.06 Release Notes
-Although it is rolling release (as is upstream Arch Linux, whose repositories it does still use), Triggerbox still, also like Arch Linux, releases snapshot ISO images for installation. [Download Here](https://mega.nz/#!JEdE2IaT!_f9B-2GCRmJnjTgJFyc7ZZ79zdn2V0blXwqiGjGZ3HQ)
+# TriggerLinux 19.06 Release Notes
+Although it is rolling release (as is upstream Arch Linux, whose repositories it does still use), TriggerLinux still, also like Arch Linux, releases snapshot ISO images for installation. [Download Here](https://mega.nz/#!JEdE2IaT!_f9B-2GCRmJnjTgJFyc7ZZ79zdn2V0blXwqiGjGZ3HQ)
 
 ## Feature Changes and Bug Fixes
 
@@ -28,4 +28,4 @@ Although it is rolling release (as is upstream Arch Linux, whose repositories it
 * Gab, Parler, and Minds JAK web apps won't work on live media
   * **Workaround**: Press Alt-F2, type either "gab --no-sandbox", "parler --no-sandbox", or "minds --no-sandbox", and press Enter
 
-If you have any other issues to report, feel free to add them (along with screenshots and logs, among other details) to the [Issues](https://github.com/realKennyStrawn93/Triggerbox/issues) section of this project page. Thanks.
+If you have any other issues to report, feel free to add them (along with screenshots and logs, among other details) to the [Issues](https://github.com/realKennyStrawn93/TriggerLinux/issues) section of this project page. Thanks.
