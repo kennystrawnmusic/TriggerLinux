@@ -4,8 +4,8 @@ set -e -u
 
 iso_name=triggerlinux
 iso_label="triggerlinux_$(date +%Y%m)"
-iso_publisher="Triggerbox <http://github.com/realKennyStrawn93/Triggerbox>"
-iso_application="Triggerbox Install DVD"
+iso_publisher="TriggerLinux <http://github.com/realKennyStrawn93/TriggerLinux>"
+iso_application="TriggerLinux Install DVD"
 iso_version=$(date +%Y.%m.%d)
 install_dir=arch
 work_dir=work

@@ -70,7 +70,7 @@ compilecalamares() {
     echo "  echo '  }' >> src/branding/custombranding/show.qml" >> slideshowchanges
     currentslide=$(( $currentslide + 1 ))
   done
-  sed -i "s/DISTRNAME/Triggerbox/" ./customrepo/triggerlinux-calamares/PKGBUILD
+  sed -i "s/DISTRNAME/TriggerLinux/" ./customrepo/triggerlinux-calamares/PKGBUILD
   sed -i "s/DISTRVERSION/${distroversion}/" ./customrepo/triggerlinux-calamares/PKGBUILD
   sed -i "s/archmaker-calamares/triggerlinux-calamares/" ./customrepo/triggerlinux-calamares/PKGBUILD
   echo "  echo '  ' >> src/branding/custombranding/show.qml" >> slideshowchanges

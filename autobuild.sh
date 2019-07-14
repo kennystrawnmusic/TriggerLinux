@@ -6,7 +6,7 @@ fi
 basedistroversion="$(date +%Y.%m.%d)"
 distroversion=""
 distrocodename=""
-echo "Welcome to the generation script for Triggerbox"
+echo "Welcome to the generation script for TriggerLinux"
 echo "==========="
 if [ "$1" != "" ]; then
   distroversion="$1"
@@ -54,7 +54,7 @@ copyskel() {
 }
 createlsbrelease() {
   echo "lsb-release" | sudo tee --append ./workingdir/packages.x86_64 > /dev/null
-  echo "DISTRIB_ID=Triggerbox" | sudo tee ./workingdir/airootfs/etc/lsb-release > /dev/null
+  echo "DISTRIB_ID=TriggerLinux" | sudo tee ./workingdir/airootfs/etc/lsb-release > /dev/null
   echo 'DISTRIB_DESCRIPTION="Break the grip of censorship"' | sudo tee --append ./workingdir/airootfs/etc/lsb-release > /dev/null
   echo "DISTRIB_RELEASE=$distroversion" | sudo tee --append ./workingdir/airootfs/etc/lsb-release > /dev/null
   echo "DISTRIB_CODENAME=$distrocodename" | sudo tee --append ./workingdir/airootfs/etc/lsb-release > /dev/null
