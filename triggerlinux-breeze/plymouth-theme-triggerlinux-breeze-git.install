@@ -1,4 +1,4 @@
-_themedir="/usr/share/plymouth/themes/triggerbox-breeze"
+_themedir="/usr/share/plymouth/themes/triggerlinux-breeze"
 
 post_install() {
   [ -e "${_themedir}/logo.png" ] || ln -s ${_themedir}/logo{_full_blue,}.png
