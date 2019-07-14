@@ -115,7 +115,7 @@ chmod a+x /usr/bin/amdgpu-pro-fans
 sed -i "s/ExecStart\=\/usr\/bin\/nice -n 19 \/usr\/bin\/pacman -Syuwq --noconfirm/ExecStart\=\/usr\/bin\/pacman  --noconfirm -Syuq/g" /lib/systemd/system/autoupdate.service
 
 #Customize GRUB to remove last vestiges of Arch branding
-sed -i "s/GRUB_DISTRIBUTOR=\"Arch\"/GRUB_DISTRIBUTOR=\"Triggerbox\"/" /etc/default/grub
+sed -i "s/GRUB_DISTRIBUTOR=\"Arch\"/GRUB_DISTRIBUTOR=\"TriggerLinux\"/" /etc/default/grub
 sed -i "s/OS=\"\${GRUB_DISTRIBUTOR} Linux\"/OS=\"\${GRUB_DISTRIBUTOR}\"/" /etc/grub.d/10_linux
 
 #Add desktop shortcuts for Gab, Minds, and Parler for all users
