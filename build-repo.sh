@@ -184,9 +184,6 @@ setuprepo() {
   git commit -m "Add new packages"
   git push origin master
   cat /etc/pacman.conf > ./pacman.backup
-  echo "[triggerlinux-overlay]" | sudo tee --append /etc/pacman.conf > /dev/null
-  echo "SigLevel = Never" | sudo tee --append /etc/pacman.conf > /dev/null
-  echo "Server = https://raw.github.com/realKennyStrawn93/triggerlinux-overlay/master/$(echo '$arch')" | sudo tee --append /etc/pacman.conf > /dev/null
   sudo pacman --noconfirm -Syyuu || exit 1
 }
 
