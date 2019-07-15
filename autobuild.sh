@@ -82,6 +82,8 @@ cleanup() {
   rm -rf ./customrepo
   echo "Saving iso file..."
   cp ./workingdir/out/*.iso ./triggerlinux-$distroversion-$(uname -m).iso
+  echo "Exporting iso file to hosting node"
+  cat ./triggerlinux-$distroversion-$(uname -m).iso | sudo tee /opt/lampp/htdocs/triggerlinux-latest-$(uname -m).iso > /dev/null
   echo "Removing archiso directory..."
   sudo rm -rf workingdir
 }
