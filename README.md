@@ -45,4 +45,4 @@ It is also possible to pass a version number and a codename to this script as pa
 
     ./autobuild.sh 0.3.2019.01.23.1 alpha1
 
-# [Download latest snapshot](http://107.202.104.48/triggerlinux-latest.iso)
+# [Download latest snapshot](http://107.202.104.48/triggerlinux-latest-x86_64.iso)
