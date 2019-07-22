@@ -122,5 +122,7 @@ sed -i "s/OS=\"\${GRUB_DISTRIBUTOR} Linux\"/OS=\"\${GRUB_DISTRIBUTOR}\"/" /etc/g
 cp /usr/share/applications/{gab,minds,parler}.desktop /root/Desktop/
 cp /usr/share/applications/{gab,minds,parler}.desktop /etc/skel/Desktop/
 
+#Must create empty spool in order for userdel to succeed
+mkdir -p /var/spool/mail/tempuser
 #Delete temporary user
 userdel -rf tempuser
