@@ -84,6 +84,11 @@ su tempuser -c "gpg --recv-keys EC94D18F7F05997E"
 #Install certain packages using AUR helper to work around integrity failures
 su tempuser -c "yes | yay -Syu --devel yay-git plymouth-git snapd-glib-git snapd-git discover-snap ocs-url opencl-amd grub-git jade-application-kit-git pyside2 brave-bin ms-office-online"
 
+#Check if sddm-plymouth.service exists and wget if it doesn't
+if [ ! -f /lib/systemd/system/sddm-plymouth.service ]; then
+  wget -O /lib/systemd/system/sddm-plymouth.servive https://aur.archlinux.org/cgit/aur.git/plain/sddm-plymouth.service?h=plymouth-git
+fi
+
 # #Don't enable sddm-plymouth.service from host; only inside ISO build environment
 systemctl disable sddm.service
 systemctl enable sddm-plymouth.service autoupdate.service autoupdate.timer
@@ -122,7 +127,7 @@ sed -i "s/OS=\"\${GRUB_DISTRIBUTOR} Linux\"/OS=\"\${GRUB_DISTRIBUTOR}\"/" /etc/g
 cp /usr/share/applications/{gab,minds,parler}.desktop /root/Desktop/
 cp /usr/share/applications/{gab,minds,parler}.desktop /etc/skel/Desktop/
 
-#Must create empty spool in order for userdel to succeed
-mkdir -p /var/spool/mail/tempuser
 #Delete temporary user
-userdel -rf tempuser
+rm -rf /var/spool/mail/*
+rm -rf /home/tempuser
+userdel tempuser

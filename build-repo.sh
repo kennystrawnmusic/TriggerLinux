@@ -206,6 +206,9 @@ setupaurhelper() {
   git add .
   git commit -m "Add AUR Helper packages"
   git push origin master
+  cd ..
+  #Prevent loss of custom repo on host machine
+  cat config/pacman.conf | sudo tee /etc/pacman.conf > /dev/null
 }
 cleanup
 compilecalamares
