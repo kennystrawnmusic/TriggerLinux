@@ -18,9 +18,7 @@ fi
 
 cleanup_failure() {
   if [ -d workingdir ]; then
-    sudo sed -i "$ d" /etc/pacman.conf
-    sudo sed -i "$ d" /etc/pacman.conf
-    sudo sed -i "$ d" /etc/pacman.conf
+    cat config/pacman.conf | sudo tee /etc/pacman.conf > /dev/null
     sudo rm -rf {workingdir,customrepo}
   fi
 }
