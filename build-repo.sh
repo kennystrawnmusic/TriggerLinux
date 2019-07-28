@@ -9,12 +9,12 @@ cleanup() {
 compilecalamares() {
   echo "Preparing Repository..."
   if [ ! -d customrepo ]; then
-    git clone https://github.com/realKennyStrawn93/triggerlinux-overlay customrepo
+    git clone ssh://git@github.com:realKennyStrawn93/triggerlinux-overlay customrepo
     #Must start from scratch
     rm -rf customrepo/{LICENSE,README.md,triggerlinux-overlay.db.*,x86_64}
   else
     rm -rf customrepo
-    git clone https://github.com/realKennyStrawn93/triggerlinux-overlay customrepo
+    git clone ssh://git@github.com:realKennyStrawn93/triggerlinux-overlay customrepo
     #Must start from scratch
     rm -rf customrepo/{LICENSE,README.md,triggerlinux-overlay.db.*,x86_64}
   fi
@@ -140,32 +140,32 @@ compileaurpkgs() {
 
 setuprepo() {
   cd customrepo
-  git clone https://github.com/realKennyStrawn93/triggerlinux-gab
+  git clone ssh://git@github.com:realKennyStrawn93/triggerlinux-gab
   cd triggerlinux-gab
   yes | makepkg -s --skipinteg || exit 1
   cp *.pkg.tar.* ../x86_64
   cd ..
-  git clone https://github.com/realKennyStrawn93/triggerlinux-minds
+  git clone ssh://git@github.com:realKennyStrawn93/triggerlinux-minds
   cd triggerlinux-minds
   yes | makepkg -s --skipinteg || exit 1
   cp *.pkg.tar.* ../x86_64
   cd ..
-  git clone https://github.com/realKennyStrawn93/triggerlinux-parler
+  git clone ssh://git@github.com:realKennyStrawn93/triggerlinux-parler
   cd triggerlinux-parler
   yes | makepkg -s --skipinteg || exit 1
   cp *.pkg.tar.* ../x86_64
   cd ..
-  git clone https://github.com/realKennyStrawn93/triggerlinux-touch-detect-kwin
+  git clone ssh://git@github.com:realKennyStrawn93/triggerlinux-touch-detect-kwin
   cd triggerlinux-touch-detect-kwin
   yes | makepkg -si || exit 1
   cp *.pkg.tar.* ../x86_64
   cd ..
-  git clone https://github.com/realKennyStrawn93/triggerlinux-touch-disable-appmenu
+  git clone ssh://git@github.com:realKennyStrawn93/triggerlinux-touch-disable-appmenu
   cd triggerlinux-touch-disable-appmenu
   yes | makepkg -si || exit 1
   cp *.pkg.tar.* ../x86_64
   cd ..
-  git clone https://github.com/realKennyStrawn93/triggerlinux-touch-maximize-all
+  git clone ssh://git@github.com:realKennyStrawn93/triggerlinux-touch-maximize-all
   cd triggerlinux-touch-maximize-all
   yes | makepkg -si || exit 1
   cp *.pkg.tar.* ../x86_64
