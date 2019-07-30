@@ -66,7 +66,7 @@ buildtheiso() {
 }
 cleanup() {
   echo "Cleaning up..."
-  cat ./pacman.backup | sudo tee /etc/pacman.conf > /dev/null
+  cat ./config/pacman.conf | sudo tee /etc/pacman.conf > /dev/null
   sudo pacman --noconfirm -Syyuu
   rm ./pacman.backup
   sudo rm -rf /var/cache/pacman/pkg/triggerlinux-calamares*
