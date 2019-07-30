@@ -175,6 +175,12 @@ setuprepo() {
   cd triggerlinux-archiso
   yes | makepkg -s || exit 1
   cp *.pkg.tar.* ../x86_64
+  cd ..
+  git clone https://aur.archlinux.org/yay-git.git
+  cd yay-git
+  sed -i 's/source=.*/source=\(\"yay::git\+https\:\/\/github.com\/Jguer\/yay.git\#branch\=pacman-next\"\)/' PKGBUILD
+  yes | makepkg -s || exit 1
+  cp *.pkg.tar.* ../x86_64
   cd ../x86_64
   #Download a third time. Keeps disappearing from the finished repository.
   wget -O kpmcore3-3.3.0-1-x86_64.pkg.tar.xz https://mirrors.ocf.berkeley.edu/manjaro/stable/community/x86_64/kpmcore3-3.3.0-1-x86_64.pkg.tar.xz
@@ -197,10 +203,14 @@ setupaurhelper() {
   #Check if yay is installed before proceeding
   pacman -Qi yay > /dev/null
   if [ $? -eq 1 ]; then
-    pacman -S yay
+    git clone https://aur.archlinux.org/yay-git.git
+    cd yay-git
+    sed -i 's/source=.*/source=\(\"yay::git\+https\:\/\/github.com\/Jguer\/yay.git\#branch\=pacman-next\"\)/' PKGBUILD
+    yes | makepkg -si || exit 1
+    cd ..
   fi
   #Must ensure that all helpered AUR packages have local copies before proceeding
-  yes | yay -Syu --devel yay-git plymouth-git snapd-glib-git snapd-git discover-snap ocs-url opencl-amd grub-git jade-application-kit-git pyside2 brave-bin ms-office-online
+  yes | yay -Syu --devel pacman-git plymouth-git snapd-glib-git snapd-git discover-snap ocs-url opencl-amd grub-git jade-application-kit-git pyside2 brave-bin ms-office-online
   cp ~/.cache/yay/*/*.pkg.tar.* x86_64
   cd x86_64
   repo-add -n triggerlinux-overlay.db.tar.gz *.pkg.tar.*
