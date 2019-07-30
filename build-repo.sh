@@ -2,6 +2,7 @@
 
 cleanup() {
   if [ -d customrepo ]; then
+    cat config/pacman.conf | sudo tee /etc/pacman.conf >/dev/null
     sudo rm -rf customrepo
   fi
 }
