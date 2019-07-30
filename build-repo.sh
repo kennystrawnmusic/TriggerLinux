@@ -158,17 +158,22 @@ setuprepo() {
   cd ..
   git clone git@github.com:realKennyStrawn93/triggerlinux-touch-detect-kwin
   cd triggerlinux-touch-detect-kwin
-  yes | makepkg -si || exit 1
+  yes | makepkg -s || exit 1
   cp *.pkg.tar.* ../x86_64
   cd ..
   git clone git@github.com:realKennyStrawn93/triggerlinux-touch-disable-appmenu
   cd triggerlinux-touch-disable-appmenu
-  yes | makepkg -si || exit 1
+  yes | makepkg -s || exit 1
   cp *.pkg.tar.* ../x86_64
   cd ..
   git clone git@github.com:realKennyStrawn93/triggerlinux-touch-maximize-all
   cd triggerlinux-touch-maximize-all
-  yes | makepkg -si || exit 1
+  yes | makepkg -s || exit 1
+  cp *.pkg.tar.* ../x86_64
+  cd ..
+  git clone git@github.com:realKennyStrawn93/triggerlinux-archiso
+  cd triggerlinux-archiso
+  yes | makepkg -s || exit 1
   cp *.pkg.tar.* ../x86_64
   cd ../x86_64
   #Download a third time. Keeps disappearing from the finished repository.
