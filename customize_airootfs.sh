@@ -73,7 +73,7 @@ sed -i "$ d" /etc/pacman.conf
 sed -i "$ d" /etc/pacman.conf
 sed -i "$ d" /etc/pacman.conf
 
-#required for yay to work inside the chroot
+#required for pacaur to work inside the chroot
 pacman-key --init
 pacman-key --populate archlinux
 
@@ -82,12 +82,12 @@ su tempuser -c "gpg --recv-keys FE0784117FBCE11D F5675605C74E02CF EAAF29B42A678C
 su tempuser -c "gpg --recv-keys EC94D18F7F05997E"
 
 #Install certain packages using AUR helper to work around integrity failures
-su tempuser -c "yes | yay -Syu --devel yay-git plymouth-git snapd-glib-git snapd-git discover-snap-git ocs-url opencl-amd grub-git jade-application-kit-git pyside2 brave-bin ms-office-online"
+su tempuser -c "yes | pacaur -Syu --devel pacaur-git plymouth-git snapd-glib-git snapd-git discover-snap-git ocs-url opencl-amd grub-git jade-application-kit-git pyside2 brave-bin ms-office-online"
 
 #Check if plymouth-git is actually installed; reinstall if not
 pacman -Qi plymouth-git
 if [ $? -ne 0 ]; then
-  su tempuser -c "yes | yay -S plymouth-git"
+  su tempuser -c "yes | pacaur -S plymouth-git"
 fi
 
 #Check if sddm-plymouth.service exists and wget if it doesn't

@@ -1041,7 +1041,7 @@ xorgproto
 xterm
 xvidcore
 xz
-yay-git
+pacaur-git
 zeroconf-ioslave
 zeromq
 zip

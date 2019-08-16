@@ -176,10 +176,9 @@ setuprepo() {
   yes | makepkg -s || exit 1
   cp *.pkg.tar.* ../x86_64
   cd ..
-  git clone https://aur.archlinux.org/yay-git.git
-  cd yay-git
-  sed -i 's/source=.*/source=\(\"yay::git\+https\:\/\/github.com\/Jguer\/yay.git\#branch\=pacman-next\"\)/' PKGBUILD
-  yes | makepkg -s || exit 1
+  git clone https://aur.archlinux.org/pacaur-git.git
+  cd pacaur-git
+  yes | makepkg -si || exit 1
   cp *.pkg.tar.* ../x86_64
   cd ../x86_64
   #Download a third time. Keeps disappearing from the finished repository.
@@ -200,18 +199,17 @@ setuprepo() {
 }
 
 setupaurhelper() {
-  #Check if yay is installed before proceeding
-  pacman -Qi yay > /dev/null
+  #Check if pacaur is installed before proceeding
+  pacman -Qi pacaur > /dev/null
   if [ $? -eq 1 ]; then
-    git clone https://aur.archlinux.org/yay-git.git
-    cd yay-git
-    sed -i 's/source=.*/source=\(\"yay::git\+https\:\/\/github.com\/Jguer\/yay.git\#branch\=pacman-next\"\)/' PKGBUILD
+    git clone https://aur.archlinux.org/pacaur-git.git
+    cd pacaur-git
     yes | makepkg -si || exit 1
     cd ..
   fi
   #Must ensure that all helpered AUR packages have local copies before proceeding
-  yes | yay -S --devel pacman-git plymouth-git snapd-glib-git snapd-git discover-snap-git ocs-url opencl-amd grub-git jade-application-kit-git pyside2 brave-bin ms-office-online
-  cp ~/.cache/yay/*/*.pkg.tar.* x86_64
+  yes | pacaur -S --devel pacman-git plymouth-git snapd-glib-git snapd-git discover-snap-git ocs-url opencl-amd grub-git jade-application-kit-git pyside2 brave-bin ms-office-online
+  cp ~/.cache/pacaur/*/*.pkg.tar.* x86_64
   cd x86_64
   repo-add -n triggerlinux-overlay.db.tar.gz *.pkg.tar.*
   unlink triggerlinux-overlay.db
