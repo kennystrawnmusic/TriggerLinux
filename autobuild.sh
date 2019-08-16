@@ -43,7 +43,6 @@ copyskel() {
   sudo cp fonts.conf workingdir/airootfs/etc/skel/.config/fontconfig
   sudo cp fonts.conf workingdir/airootfs/etc/fonts/local.conf
   sudo cp -f ./customize_airootfs.sh ./workingdir/airootfs/root/customize_airootfs.sh
-  sudo cp -r triggerlinux-breeze ./workingdir/airootfs/usr/share/plymouth/themes/
   if [ ! -d workingdir/airootfs/usr/lib/systemd/system ]; then
     sudo mkdir -p workingdir/airootfs/usr/lib/systemd/system
   fi

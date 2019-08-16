@@ -1,8 +1,0 @@
-[Plymouth Theme]
-Name=TriggerLinux Breeze
-Description=Fork of Arch Breeze that uses TriggerLinux branding
-ModuleName=script
-
-[script]
-ImageDir=/usr/share/plymouth/themes/triggerlinux-breeze
-ScriptFile=/usr/share/plymouth/themes/triggerlinux-breeze/script
