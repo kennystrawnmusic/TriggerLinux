@@ -1,10 +1,13 @@
 # Break the grip of censorship
-TriggerLinux is an [Gentoo](https://www.gentoo.org) Linux-based operating system designed with the attacks on conservatives coming from Silicon Valley in mind. We chose Gentoo as the base because the repositories are completely decentralized: there are many mirrors to choose the installation of packages from; as a result, if one mirror decides to censor, it's easy for you, the developer, to fork off of it and maintain your own copy of the mirror, with absolutely no problem whatsoever.
+TriggerLinux is an [Gentoo](https://www.gentoo.org) Linux-based operating system designed with the attacks on conservatives coming from Silicon Valley in mind. I chose Gentoo as the base because it's source-based: instead of packages, there's ebuilds, which are simply instructions on how to build packages from source. That makes for a highly decentralized build process, which is made even more decentralized through the use of Portage overlays.
 
 # Features
 
+## AppImage Ready
+[AppImageUpdate](https://github.com/AppImage/AppImageUpdate), [appimaged](https://github.com/AppImage/appimaged), and the /Applications directory are all installed, enabled, and configured out of the box. This means that any sideloaded apps are updated automatically, no configuring necessary.
+
 ## Easy installation
-TriggerLinux comes with the distribution-agnostic [Calamares](https://calamares.io) installer app. This makes installation far easier than the rather tedious work involved with the upstream Arch installation instructions, to say the least.
+TriggerLinux comes with the distribution-agnostic [Calamares](https://calamares.io) installer app. This makes installation far easier than the rather tedious work involved with the upstream Gentoo installation instructions, to say the least. Also, installation time is greatly reduced ― minutes instead of hours.
 
 ## Decentralization - see introduction
 
