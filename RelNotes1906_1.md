@@ -1,5 +1,5 @@
 # TriggerLinux 19.06.1 Release Notes
-Although it is rolling release (as is upstream Arch Linux, whose repositories it does still use), TriggerLinux still, also like Arch Linux, releases snapshot ISO images for installation. [Download Here](https://mega.nz/#!Vd8GUazQ!i5ssW9PNB4n3TGZ50tzbs_V9PcN4Ve7f3TutAsoQfYA)
+Although it is rolling release (as is upstream Gentoo, whose repositories it does still use), TriggerLinux still, also like Gentoo, releases snapshot ISO images for installation. [Download Here](https://mega.nz/#!Vd8GUazQ!i5ssW9PNB4n3TGZ50tzbs_V9PcN4Ve7f3TutAsoQfYA)
 
 ## Feature Changes and Bug Fixes
 
