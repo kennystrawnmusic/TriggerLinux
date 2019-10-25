@@ -1,0 +1,13 @@
+# Allow linux-firmware and other required packages in @BINARY-REDISTRIBUTABLE
+# license group
+*/* @BINARY-REDISTRIBUTABLE
+# required by www-client/google-chrome-unstable (argument)
+>=www-client/google-chrome-unstable-79.0.3921.0 google-chrome
+# required by net-misc/chrome-remote-desktop (argument)
+=net-misc/chrome-remote-desktop-63.0.3239.17-r1 google-chrome
+# required by =net-misc/chrome-remote-desktop-77.0.3865.32 (argument)
+>=net-misc/chrome-remote-desktop-77.0.3865.32 google-chrome
+# required by dev-libs/amdgpu-pro-opencl (argument)
+>=dev-libs/amdgpu-pro-opencl-19.30.838629 AMD-GPU-PRO-EULA
+# required by www-client/google-chrome (argument)
+>=www-client/google-chrome-77.0.3865.120 google-chrome

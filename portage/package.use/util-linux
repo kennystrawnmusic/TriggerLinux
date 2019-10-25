@@ -1,0 +1,41 @@
+sys-apps/util-linux build static-libs
+# required by sys-boot/plymouth-9999::gentoo[libkms]
+# required by =sys-boot/plymouth-9999 (argument)
+>=x11-libs/libdrm-2.4.99 libkms
+# required by www-client/firefox-68.1.0::gentoo[system-libvpx]
+# required by www-client/firefox (argument)
+>=media-libs/libvpx-1.7.0 postproc
+# required by www-client/firefox-68.1.0::gentoo[system-sqlite]
+# required by www-client/firefox (argument)
+>=dev-db/sqlite-3.29.0 secure-delete
+# required by net-misc/chrome-remote-desktop-63.0.3239.17-r1::gentoo
+# required by net-misc/chrome-remote-desktop (argument)
+>=x11-base/xorg-server-1.20.5 xvfb
+# required by net-wireless/wpa_supplicant-2.8-r1::gentoo[-libressl]
+# required by @__auto_slot_operator_replace_installed__ (argument)
+>=sys-libs/libseccomp-2.4.0 static-libs
+# required by dev-python/pyside-tools-9999::qt
+# required by dev-python/pyside-tools (argument)
+>=dev-python/pyside-9999 gui widgets
+# required by app-admin/calamares-3.2.12::gentoo
+# required by app-admin/calamares (argument)
+>=dev-qt/qtwebengine-5.12.3 widgets jumbo-build
+# required by app-admin/calamares-3.2.12::gentoo
+# required by app-admin/calamares (argument)
+>=dev-libs/boost-1.65.0 python
+# required by sys-boot/os-prober-1.76-r1::gentoo
+# required by app-admin/calamares-3.2.12::gentoo
+# required by app-admin/calamares (argument)
+>=sys-boot/grub-9999 mount
+# required by dev-qt/qtwebengine-5.12.3::gentoo
+# required by app-admin/calamares-3.2.12::gentoo
+# required by app-admin/calamares (argument)
+>=dev-qt/qtwebchannel-5.12.3 qml
+# required by dev-qt/qtwebengine-5.12.3::gentoo
+# required by app-admin/calamares-3.2.12::gentoo
+# required by app-admin/calamares (argument)
+>=sys-libs/zlib-1.2.11-r2 minizip
+# required by dev-util/meson-0.46::gentoo
+# required by virtual/service-manager-0::gentoo
+# required by sys-apps/systemd-242::gentoo
+>=dev-util/meson-0.46 python_targets_python3_6

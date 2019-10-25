@@ -1,0 +1,136 @@
+=net-analyzer/macchanger-1.7.0-r1 ~amd64
+# required by =sys-boot/plymouth-9999 (argument)
+=sys-boot/plymouth-9999 **
+# required by =sys-boot/grub-9999 (argument)
+=sys-boot/grub-9999 **
+# required by sys-kernel/git-sources (argument)
+=sys-kernel/git-sources-5.4_rc1 ~amd64
+# required by www-client/google-chrome-unstable (argument)
+=www-client/google-chrome-unstable-79.0.3921.0 ~amd64
+# required by gnome-extra/gnome-software (argument)
+=gnome-extra/gnome-software-3.30.6 ~amd64
+# required by x11-themes/arc-theme (argument)
+=x11-themes/arc-theme-20190330 ~amd64
+# required by net-misc/curl-7.65.0::gentoo[curl_ssl_openssl,ssl]
+# required by dev-lang/rust-1.34.2::gentoo
+# required by virtual/rust-1.34.2::gentoo
+# required by www-client/firefox-68.1.0::gentoo
+# required by www-client/firefox (argument)
+=dev-libs/openssl-1.1.1d ~amd64
+# required by =net-misc/chrome-remote-desktop-77.0.3865.32 (argument)
+=net-misc/chrome-remote-desktop-77.0.3865.32 ~amd64
+# required by dev-libs/amdgpu-pro-opencl (argument)
+=dev-libs/amdgpu-pro-opencl-19.30.838629 ~amd64
+# required by net-misc/openssh-8.0_p1-r2::gentoo
+# required by @selected
+# required by @world (argument)
+=dev-libs/openssl-1.1.1d-r1 ~amd64
+# required by dev-libs/rocm-opencl-runtime-2.9.0::gentoo
+# required by rocm-opencl-runtime (argument)
+=dev-libs/rocm-device-libs-2.9.0 ~amd64
+# required by dev-libs/rocr-runtime-2.9.0::gentoo
+# required by dev-libs/rocm-device-libs-2.9.0::gentoo
+# required by dev-libs/rocm-comgr-2.9.0::gentoo
+# required by dev-libs/rocm-opencl-runtime-2.9.0::gentoo
+# required by rocm-opencl-runtime (argument)
+=dev-libs/roct-thunk-interface-2.9.0-r1 ~amd64
+# required by dev-libs/rocm-opencl-runtime-2.9.0::gentoo
+# required by rocm-opencl-runtime (argument)
+=dev-libs/rocm-opencl-driver-2.9.0 ~amd64
+# required by rocm-opencl-runtime (argument)
+=dev-libs/rocm-opencl-runtime-2.9.0 ~amd64
+# required by dev-libs/rocm-device-libs-2.9.0::gentoo
+# required by dev-libs/rocm-comgr-2.9.0::gentoo
+# required by dev-libs/rocm-opencl-runtime-2.9.0::gentoo
+# required by rocm-opencl-runtime (argument)
+=sys-devel/llvm-roc-2.9.0 ~amd64
+# required by dev-libs/rocm-opencl-runtime-2.9.0::gentoo
+# required by rocm-opencl-runtime (argument)
+=dev-libs/rocm-comgr-2.9.0 ~amd64
+# required by dev-libs/rocm-opencl-driver-2.9.0::gentoo
+# required by dev-libs/rocm-opencl-runtime-2.9.0::gentoo
+# required by rocm-opencl-runtime (argument)
+=dev-libs/rocr-runtime-2.9.0 ~amd64
+# required by =app-office/libreoffice-9999 (argument)
+=app-office/libreoffice-9999 **
+# required by =net-libs/nodejs-12.12.0 (argument)
+=net-libs/nodejs-12.12.0 ~amd64
+# required by dev-util/cmake-3.14.6::gentoo
+# required by dev-libs/roct-thunk-interface-2.9.0-r1::gentoo
+# required by dev-libs/rocr-runtime-2.9.0::gentoo
+# required by dev-libs/rocm-device-libs-2.9.0::gentoo
+# required by dev-libs/rocm-comgr-2.9.0::gentoo
+# required by dev-libs/rocm-opencl-runtime-2.9.0::gentoo
+# required by @selected
+# required by @world (argument)
+=dev-libs/libuv-1.32.0 ~amd64
+# required by net-libs/nodejs-12.12.0::gentoo
+# required by =net-libs/nodejs-12.12.0 (argument)
+=net-libs/http-parser-2.9.2 ~amd64
+# required by net-libs/nodejs-12.12.0::gentoo
+# required by =net-libs/nodejs-12.12.0 (argument)
+=net-dns/c-ares-1.15.0 ~amd64
+# required by net-libs/neon-0.30.2::gentoo
+# required by media-libs/musicbrainz-5.1.0::gentoo
+# required by media-sound/sound-juicer-3.24.0::gentoo
+# required by gnome-base/gnome-extra-apps-3.30.2::gentoo
+# required by gnome-base/gnome-3.30.2::gentoo[extras]
+# required by @selected
+# required by @world (argument)
+=dev-libs/openssl-1.1.0l ~amd64
+# required by app-emulation/snapd-9999::snapd
+# required by =app-emulation/snapd-9999 (argument)
+=sys-apps/apparmor-2.13.3 ~amd64
+# required by app-emulation/snapd-9999::snapd
+# required by =app-emulation/snapd-9999 (argument)
+=sec-policy/apparmor-profiles-2.13.3 ~amd64
+# required by sys-apps/apparmor-2.13.3::gentoo
+# required by app-emulation/snapd-9999::snapd
+# required by =app-emulation/snapd-9999 (argument)
+=sys-libs/libapparmor-2.13.3 ~amd64
+# required by app-emulation/snapd-9999::snapd
+# required by =app-emulation/snapd-9999 (argument)
+=dev-go/govendor-1.0.8 ~amd64
+# required by =app-emulation/snapd-9999 (argument)
+=app-emulation/snapd-9999 **
+# required by dev-python/pyside-tools (argument)
+=dev-python/pyside-tools-9999 **
+# required by dev-python/pyside-9999::qt
+# required by dev-python/pyside-tools-9999::qt
+# required by dev-python/pyside-tools (argument)
+=dev-python/shiboken-9999 ~amd64
+# required by dev-qt/qtxml-9999::qt
+# required by dev-python/pyside-9999::qt
+# required by dev-python/pyside-tools-9999::qt
+# required by dev-python/pyside-tools (argument)
+=dev-qt/qtcore-9999 ~amd64
+# required by dev-qt/qtxmlpatterns-9999::qt
+# required by dev-python/shiboken-9999::qt[docstrings]
+# required by dev-python/pyside-9999::qt
+# required by dev-python/pyside-tools-9999::qt
+# required by dev-python/pyside-tools (argument)
+=dev-qt/qtnetwork-9999 ~amd64
+# required by dev-qt/qtnetwork-9999::qt[-connman,networkmanager]
+# required by dev-qt/qtxmlpatterns-9999::qt
+# required by dev-python/shiboken-9999::qt[docstrings]
+# required by dev-python/pyside-9999::qt
+# required by dev-python/pyside-tools-9999::qt
+# required by dev-python/pyside-tools (argument)
+=dev-qt/qtdbus-9999 ~amd64
+# required by dev-python/shiboken-9999::qt[docstrings]
+# required by dev-python/pyside-9999::qt
+# required by dev-python/pyside-tools-9999::qt
+# required by dev-python/pyside-tools (argument)
+=dev-qt/qtxml-9999 ~amd64
+# required by dev-python/pyside-tools-9999::qt
+# required by dev-python/pyside-tools (argument)
+=dev-python/pyside-9999 **
+# required by dev-python/shiboken-9999::qt[docstrings]
+# required by dev-python/pyside-9999::qt
+# required by dev-python/pyside-tools-9999::qt
+# required by dev-python/pyside-tools (argument)
+=dev-qt/qtxmlpatterns-9999 ~amd64
+# required by www-client/brave-bin (argument)
+=www-client/brave-bin-0.69.135 ~amd64
+# required by app-admin/calamares (argument)
+=app-admin/calamares-3.2.12 ~amd64
