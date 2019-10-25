@@ -23,7 +23,7 @@ The `autocatalyst.sh` script runs everything else for you. So assuming you alrea
     cd TriggerLinux
     ./autocatalyst.sh
 
-#Build Instructions (Non-Gentoo Host)
+# Build Instructions (Non-Gentoo Host)
 If you don't already use Gentoo (yet), download a [Stage3 tarball](http://distfiles.gentoo.org/releases/amd64/autobuilds/current-stage3-amd64-systemd/) and chroot into it first:
 
     tar -C build-chroot -xjvf stage3.amd64-systemd-xxxxxxxx.tar.gz
