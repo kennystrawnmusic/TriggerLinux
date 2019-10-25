@@ -1,5 +1,5 @@
 # Break the grip of censorship
-TriggerLinux is an [Gentoo](https://www.gentoo.org) Linux-based operating system designed with the attacks on conservatives coming from Silicon Valley in mind. I chose Gentoo as the base because it's source-based: instead of packages, there's ebuilds, which are simply instructions on how to build packages from source. That makes for a highly decentralized build process, which is made even more decentralized through the use of Portage overlays.
+TriggerLinux is a [Gentoo](https://www.gentoo.org) Linux-based operating system designed with the attacks on conservatives coming from Silicon Valley in mind. I chose Gentoo as the base because it's source-based: instead of packages, there's ebuilds, which are simply instructions on how to build packages from source. That makes for a highly decentralized build process, which is made even more decentralized through the use of Portage overlays.
 
 # Features
 
