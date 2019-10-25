@@ -39,7 +39,7 @@ python_targets=/usr/lib64/python3.6/site-packages/catalyst/targets
 catalystrc_ischanged="$(cat /etc/catalyst/catalystrc | grep NINJAFLAGS)"
 repo_dir=/var/db/repos/gentoo
 
-echo "Welcome to the Gentoo Catalyst GNOME/systemd build automator!"
+echo "Welcome to the TriggerLinux Gentoo Edition Catalyst build automator!"
 
 if [ -z $isinstalled1 ]; then
   echo "Installing all required packages"

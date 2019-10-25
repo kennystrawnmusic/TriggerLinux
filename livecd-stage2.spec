@@ -5,12 +5,12 @@ rel_type: default
 profile: default/linux/amd64/17.1/desktop/gnome/systemd
 snapshot: latest
 source_subpath: default/livecd-stage1-amd64-installer-latest
-portage_confdir: /opt/autocatalyst-gnome/portage
+portage_confdir: /opt/TriggerLinux/portage
 portage_overlay: /var/lib/layman/snapd
 
 livecd/bootargs: dokeymap
-livecd/cdtar: /opt/autocatalyst-gnome/livecd-stage2-cdtar.tar.bz2
-livecd/fsscript: /opt/autocatalyst-gnome/customize.sh
+livecd/cdtar: /opt/TriggerLinux/livecd-stage2-cdtar.tar.bz2
+livecd/fsscript: /opt/TriggerLinux/customize.sh
 livecd/fstype: squashfs
 livecd/fsops: -comp xz
 livecd/iso: livecd-amd64-installer-latest.iso
@@ -21,7 +21,7 @@ livecd/xdm: gdm
 
 boot/kernel: gentoo
 boot/kernel/gentoo/sources: git-sources
-boot/kernel/gentoo/config: /opt/autocatalyst-gnome/livecd-stage2.config
+boot/kernel/gentoo/config: /opt/TriggerLinux/livecd-stage2.config
 boot/kernel/gentoo/use: atm png truetype usb
 boot/kernel/gentoo/packages:
 	app-emulation/snapd

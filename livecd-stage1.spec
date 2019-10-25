@@ -5,7 +5,7 @@ rel_type: default
 profile: default/linux/amd64/17.1/desktop/gnome/systemd
 snapshot: latest
 source_subpath: default/livecd-stage1-amd64-installer-latest
-portage_confdir: /opt/autocatalyst-gnome/portage
+portage_confdir: /opt/TriggerLinux/portage
 portage_overlay: /var/lib/layman/brave-overlay
 
 livecd/use:
