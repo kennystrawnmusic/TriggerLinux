@@ -109,6 +109,7 @@ echo -e "[org.gnome.shell.extensions.dash-to-panel]" >> /usr/share/gnome-shell/e
 echo -e "appicon-margin=3" >> /usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/schemas/org.gnome.shell.extensions.dash-to-panel.gschema.override
 echo -e "hotkeys-overlay-combo='TEMPORARILY'" >> /usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/schemas/org.gnome.shell.extensions.dash-to-panel.gschema.override
 echo -e "panel-size=40" >> /usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/schemas/org.gnome.shell.extensions.dash-to-panel.gschema.override
+echo -e "animate-show-apps=false" >> /usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/schemas/org.gnome.shell.extensions.dash-to-panel.gschema.override
 
 #Desktop Background
 echo -e "[org.gnome.desktop.background:GNOME]" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
@@ -129,7 +130,7 @@ echo -e "idle-activation-enabled=false" >> /usr/share/glib-2.0/schemas/00_org.gn
 echo -e "[org.gnome.shell:GNOME]\nenabled-extensions=['dash-to-panel@jderose9.github.com', 'desktop-icons@csoriano', 'user-theme@gnome-shell-extensions.gcampax.github.com']" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
 
 #Favorites
-echo -e "favorite-apps=['calamares.desktop', 'org.gnome.Evolution.desktop', 'brave-bin.desktop', 'gnome-control-center.desktop', 'rhythmbox.desktop', 'shotwell.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop', 'org.gnome.tweaks.desktop', 'org.gnome.Terminal.desktop']\n" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
+echo -e "favorite-apps=['calamares.desktop', 'org.gnome.Evolution.desktop', 'brave-bin.desktop', 'gnome-control-center.desktop', 'rhythmbox.desktop', 'shotwell.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop', 'org.gnome.tweaks.desktop', 'org.gnome.Terminal.desktop', 'kdenlive.desktop']\n" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
 
 #More window controls than just "Close"
 echo -e "[org.gnome.desktop.wm.preferences:GNOME]\nbutton-layout='appmenu:minimize,maximize,close'\n" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
@@ -167,6 +168,33 @@ systemctl enable appimaged.service
 wget -O /usr/bin/AppImageUpdate https://github.com/AppImage/AppImageUpdate/releases/download/continuous/AppImageUpdate-x86_64.AppImage
 chmod a+x /usr/bin/AppImageUpdate
 wget -O /usr/share/applications/AppImageUpdate.desktop https://raw.githubusercontent.com/AppImage/AppImageUpdate/rewrite/resources/AppImageUpdate.desktop
+
+#AppImageLauncher
+wget -O /usr/bin/appimagelauncher-lite https://github.com/TheAssassin/AppImageLauncher/releases/download/continuous/appimagelauncher-lite-2.0.2-travis879-29526eb-x86_64.AppImage
+chmod a+x /usr/bin/appimagelauncher-lite
+appimagelauncher --appimage-extract
+cp squashfs-root/usr/share/applications/appimagelauncher-lite.desktop /usr/share/applications/appimagelauncher-lite.desktop
+for i in $(ls /usr/share/icons); do
+  if [ ! -d /usr/share/icons/$i/192x192 ]; then
+    mkdir -p /usr/share/icons/$i/192x192/apps
+  fi
+  cp squashfs-root/usr/share/icons/hicolor/192x192/apps/AppImageLauncher.png /usr/share/icons/$i/192x192/apps/AppImageLauncher.png
+done
+rm -rf squashfs-root
+
+#Install Kdenlive as AppImage
+wget -O /Applications/Kdenlive.AppImage https://files.kde.org/kdenlive/release/kdenlive-19.08.2b-x86_64.appimage
+chmod a+x /Applications/Kdenlive.AppImage
+/Applications/Kdenlive.AppImage --appimage-extract
+cp squashfs-root/org.kde.kdenlive.desktop /usr/share/applications/kdenlive.desktop
+sed -i "s/Exec\=.*/Exec\=\/Applications\/Kdenlive.AppImage\ \%F/" /usr/share/applications/kdenlive.desktop
+for i in $(ls /usr/share/icons); do
+  if [ ! -d /usr/share/icons/$i/scalable ]; then
+    mkdir -p /usr/share/icons/$i/scalable/apps
+  fi
+  cp squashfs-root/kdenlive.svg /usr/share/icons/$i/scalable/apps/kdenlive.svg
+done
+rm -rf squashfs-root
 
 #Needed for emerge --sync to succeed on calamares target system
 rm -rf /var/db/repos/gentoo
