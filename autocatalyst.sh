@@ -43,8 +43,8 @@ python_targets=/usr/lib64/python3.6/site-packages/catalyst/targets
 catalystrc_ischanged="$(cat /etc/catalyst/catalystrc | grep NINJAFLAGS)"
 repo_dir=/var/db/repos/gentoo
 
-sysrepoconfstat="$(stat -c%s /etc/portage/repos.conf/gentoo.conf)
-localrepoconfstat="$(stat -c%s $portageconf/repos.conf/gentoo.conf)
+sysrepoconfstat="$(stat -c%s /etc/portage/repos.conf/gentoo.conf)"
+localrepoconfstat="$(stat -c%s $portageconf/repos.conf/gentoo.conf)"
 
 echo "Welcome to the TriggerLinux Gentoo Edition Catalyst build automator!"
 
