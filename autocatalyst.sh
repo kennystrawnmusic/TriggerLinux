@@ -22,22 +22,29 @@ scriptdir=$PWD
 tarballdir=/var/tmp/catalyst/builds/default
 configfile=/etc/catalyst/catalystrc
 fsscript=$scriptdir/customize.sh
+
 stage1spec=$scriptdir/livecd-stage1.spec
 stage2spec=$scriptdir/livecd-stage2.spec
 kconffile=$scriptdir/livecd-stage2.config
 portageconf=$scriptdir/portage
+
 cdtar=$scriptdir/livecd-stage2-cdtar.tar.bz2
 remotefilename=$(wget -O - http://distfiles.gentoo.org/releases/amd64/autobuilds/current-stage3-amd64-systemd/ | grep -Eo "stage3-amd64-systemd-[0-9]{1,}.tar.bz2" | head -n1)
 url=http://distfiles.gentoo.org/releases/amd64/autobuilds/current-stage3-amd64-systemd/$remotefilename
 cpucores=$(nproc --all)
+
 tmpbuilddir=/var/tmp/catalyst/tmp/default
 livestage1tarball=$tarballdir/livecd-stage1-amd64-installer-latest.tar.bz2
 stage1chroot=$tmpbuilddir/livecd-stage1-amd64-installer-latest
 stage2chroot=$tmpbuilddir/livecd-stage2-amd64-latest
+
 support=/usr/share/catalyst/targets/support
 python_targets=/usr/lib64/python3.6/site-packages/catalyst/targets
 catalystrc_ischanged="$(cat /etc/catalyst/catalystrc | grep NINJAFLAGS)"
 repo_dir=/var/db/repos/gentoo
+
+sysrepoconfstat="$(stat -c%s /etc/portage/repos.conf/gentoo.conf)
+localrepoconfstat="$(stat -c%s $portageconf/repos.conf/gentoo.conf)
 
 echo "Welcome to the TriggerLinux Gentoo Edition Catalyst build automator!"
 
@@ -83,9 +90,14 @@ else
 fi
 
 echo "Generating snapshot"
-cat portage/repos.conf/gentoo.conf > /etc/portage/repos.conf/gentoo.conf && \
-emerge --sync && \
-catalyst -s latest || exit 1
+if [ $sysrepoconfstat -eq $localrepoconfstat ]; then
+  emerge --sync && catalyst -s latest
+else
+  cat portage/repos.conf/gentoo.conf > /etc/portage/repos.conf/gentoo.conf && \
+  rm -rf $repo_dir && \
+  emerge --sync && \
+  catalyst -s latest || exit 1
+fi
 
 echo "Making necessary specfile changes..."
 sed -i "s/portage_confdir.*/portage_confdir: ${portageconf//\//\\/}/g" $stage1spec
