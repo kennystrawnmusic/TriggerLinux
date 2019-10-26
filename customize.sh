@@ -105,10 +105,10 @@ sed -i "3a AutomaticLoginEnable=true" /etc/gdm/custom.conf
 sed -i "4a AutomaticLogin=root" /etc/gdm/custom.conf
 
 #Customize Dash-to-Panel
-echo -e "[org.gnome.shell.extensions.dash-to-panel:GNOME]" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
-echo -e "appicon-margin=3" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
-echo -e "hotkeys-overlay-combo='TEMPORARILY'" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
-echo -e "panel-size=40" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
+echo -e "[org.gnome.shell.extensions.dash-to-panel]" >> /usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/schemas/org.gnome.shell.extensions.dash-to-panel.gschema.override
+echo -e "appicon-margin=3" >> /usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/schemas/org.gnome.shell.extensions.dash-to-panel.gschema.override
+echo -e "hotkeys-overlay-combo='TEMPORARILY'" >> /usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/schemas/org.gnome.shell.extensions.dash-to-panel.gschema.override
+echo -e "panel-size=40" >> /usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/schemas/org.gnome.shell.extensions.dash-to-panel.gschema.override
 
 #Desktop Background
 echo -e "[org.gnome.desktop.background:GNOME]" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
@@ -126,11 +126,10 @@ echo -e "secondary-color='#000000'" >> /usr/share/glib-2.0/schemas/00_org.gnome.
 echo -e "idle-activation-enabled=false" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
 
 #Disable LiveCD auto-sleep
-echo -e "[org.gnome.settings-daemon.plugins.power:GNOME]" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
-echo -e "sleep-inactive-ac-timeout=0" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
-echo -e "sleep-inactive-ac-type='nothing'" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
-echo -e "idle-dim=false" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
-echo -e "idle-brightness=100" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
+sed -i "s/sleep-inactive-ac-type.*/sleep-inactive-ac-type='nothing'/" >> /usr/share/glib-2.0/schemas/org.gnome.settings-daemon.plugins.power.gschema.override
+echo -e "sleep-inactive-ac-timeout=0" >> /usr/share/glib-2.0/schemas/org.gnome.settings-daemon.plugins.power.gschema.override
+echo -e "idle-dim=false" >> /usr/share/glib-2.0/schemas/org.gnome.settings-daemon.plugins.power.gschema.override
+echo -e "idle-brightness=100" >> /usr/share/glib-2.0/schemas/org.gnome.settings-daemon.plugins.power.gschema.override
 
 #Enable GNOME Shell extensions by default
 echo -e "[org.gnome.shell:GNOME]\nenabled-extensions=['dash-to-panel@jderose9.github.com', 'desktop-icons@csoriano', 'user-theme@gnome-shell-extensions.gcampax.github.com']" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
@@ -145,6 +144,7 @@ echo -e "[org.gnome.desktop.wm.preferences:GNOME]\nbutton-layout='appmenu:minimi
 echo -e "[org.gnome.desktop.interface:GNOME]\ngtk-theme='Arc'\nicon-theme='Arc'\nclock-show-date=true\nclock-show-seconds=true" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
 
 #Recompile Schemas
+glib-compile-schemas /usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/schemas
 glib-compile-schemas /usr/share/glib-2.0/schemas
 
 #Don't disadvantage those with slower hardware
