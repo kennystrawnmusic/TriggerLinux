@@ -18,7 +18,7 @@ for i in $(ls /usr/lib64/calamares/modules); do
 done
 
 #Configure calamares branding
-sed -i "s/branding:.*/branding: triggerlinux/" /etc/calamares/settings.conf
+sed -i "s/branding\:.*/branding\: triggerlinux/" /etc/calamares/settings.conf
 
 #Un-break partitioning
 sed -i '84,$d' /etc/calamares/modules/partition.conf
@@ -28,9 +28,9 @@ sed -i "s/#\ neverCreateSwap/neverCreateSwap/" /etc/calamares/modules/partition.
 
 #Needed in order to successfully unpack system
 sed -i '85,$d' /etc/calamares/modules/unpackfs.conf
-sed -i "s/source:.*/source:\ \"\/mnt\/cdrom\/image.squashfs\"/" /etc/calamares/modules/unpackfs.conf
-sed -i "s/sourcefs:.*/sourcefs:\ \"squashfs\"/" /etc/calamares/modules/unpackfs.conf
-sed -i "s/destination:.*/destination:\ \"\/\"/" /etc/calamares/modules/unpackfs.conf
+sed -i "s/source\:.*/source\:\ \"\/mnt\/cdrom\/image.squashfs\"/" /etc/calamares/modules/unpackfs.conf
+sed -i "s/sourcefs\:.*/sourcefs\:\ \"squashfs\"/" /etc/calamares/modules/unpackfs.conf
+sed -i "s/destination\:.*/destination\:\ \"\/\"/" /etc/calamares/modules/unpackfs.conf
 sed -i '12,80d' /etc/calamares/modules/unpackfs.conf
 sed -i '1,10d' /etc/calamares/modules/unpackfs.conf
 
@@ -51,14 +51,14 @@ sed -i '35a\ \ \ \ \-\ bumblebee' /etc/calamares/modules/users.conf
 sed -i '36a\ \ \ \ \-\ lpadmin' /etc/calamares/modules/users.conf
 
 #Calamares bootloader config
-sed -i "s/kernel:.*/kernel:\ \"\/boot\/$kernel/\"" /etc/calamares/modules/bootloader.conf
-sed -i "s/img:.*/img:\ \"\/boot\/$initramfs/\"" /etc/calamares/modules/bootloader.conf
-sed -i "s/fallback:.*/fallback: \"\/boot\/$initramfs/\"" /etc/calamares/modules/bootloader.conf
-sed -i "s/timeout:.*/timeout:\ \"0\"/" /etc/calamares/modules/bootloader.conf
+sed -i "s/kernel\:.*/kernel\:\ \"\/boot\/$kernel/\"" /etc/calamares/modules/bootloader.conf
+sed -i "s/img\:.*/img\:\ \"\/boot\/$initramfs/\"" /etc/calamares/modules/bootloader.conf
+sed -i "s/fallback\:.*/fallback\: \"\/boot\/$initramfs/\"" /etc/calamares/modules/bootloader.conf
+sed -i "s/timeout\:.*/timeout\:\ \"0\"/" /etc/calamares/modules/bootloader.conf
 
 #Integrate calamares with Portage
-sed -i "s/backend:.*/backend:\ portage/" /etc/calamares/modules/packages.conf
-sed -i "s/update_system:.*/update_system:\ true/" /etc/calamares/modules/packages.conf
+sed -i "s/backend\:.*/backend\:\ portage/" /etc/calamares/modules/packages.conf
+sed -i "s/update\_system\:.*/update_system\:\ true/" /etc/calamares/modules/packages.conf
 
 #Don't need calamares on the system post-installation
 sed -i "162,166d" /etc/calamares/modules/packages.conf
@@ -68,22 +68,22 @@ sed -i '$d' /etc/calamares/modules/packages.conf
 sed -i '$a\ \ \ \ \-\ app-admin\/calamares' /etc/calamares/modules/packages.conf
 
 #Calamares Plymouth theme
-sed -i "s/plymouth_theme:.*/plymouth_theme: bgrt/" /etc/calamares/modules/plymouthcfg.conf
+sed -i "s/plymouth_theme\:.*/plymouth_theme\: bgrt/" /etc/calamares/modules/plymouthcfg.conf
 
 #Default calamares locale
-sed -i "s/zone:.*/zone:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \"Los_Angeles\"/" /etc/calamares/modules/locale.conf
-sed -i "s/\ \ \ \ selector:\ /selector:\ \"time_zone\"" /etc/calamares/modules/locale.conf
+sed -i "s/zone:.*/zone\:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \"Los_Angeles\"/" /etc/calamares/modules/locale.conf
+sed -i "s/\ \ \ \ selector\:\ /selector\:\ \"time_zone\"/" /etc/calamares/modules/locale.conf
 
 #Reboot immediately when finished
-sed -i "s/restartNowCommand:.*/restartNowCommand: \"echo b > /proc/sysrq-trigger\"/" /etc/calamares/modules/finished.conf
+sed -i "s/restartNowCommand\:.*/restartNowCommand\: \"echo b > /proc/sysrq-trigger\"/" /etc/calamares/modules/finished.conf
 
 #Enable "packages" module
 sed -i "124a\ \ \-\ packages" /etc/calamares/settings.conf
 
 #Disable Arch/Manjaro-specific modules
-sed -i "s/\ \ \- \initcpio/#\ \ \- \initcpio/" /etc/calamares/settings.conf
-sed -i "s/\ \ \- \initcpiocfg/#\ \ \- \initcpiocfg/" /etc/calamares/settings.conf
-sed -i "s/\ \ \- \initramfs/#\ \ \- \initramfs/" /etc/calamares/settings.conf
+sed -i "s/\ \ \-\ initcpio/#\ \ \-\ initcpio/" /etc/calamares/settings.conf
+sed -i "s/\ \ \-\ initcpiocfg/#\ \ \-\ initcpiocfg/" /etc/calamares/settings.conf
+sed -i "s/\ \ \-\ initramfs/#\ \ \-\ initramfs/" /etc/calamares/settings.conf
 
 #Calamares-pkexec
 sed -i "s/calamares-pkexec/pkexec\ \/usr\/bin\/calamares/g" /usr/share/applications/calamares.desktop
@@ -148,8 +148,8 @@ echo -e "[org.gnome.desktop.interface:GNOME]\ngtk-theme='Arc'\nicon-theme='Arc'\
 glib-compile-schemas /usr/share/glib-2.0/schemas
 
 #Don't disadvantage those with slower hardware
-sed -i "s/MAKEOPTS/#MAKEOPTS/" /etc/portage/make.conf
-sed -i "s/MAKEOPTS/#MAKEOPTS/" /etc/genkernel.conf
+sed -i "s/MAKEOPTS/\#MAKEOPTS/" /etc/portage/make.conf
+sed -i "s/MAKEOPTS/\#MAKEOPTS/" /etc/genkernel.conf
 
 #Activate Automatic Updater
 systemctl enable autoupdate.service
