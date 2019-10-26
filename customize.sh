@@ -94,7 +94,7 @@ echo "shopt -s extglob" >> /etc/profile
 #GRUB Plymouth entry
 sed -i "s/.*GRUB_CMDLINE_LINUX_DEFAULT.*/GRUB_CMDLINE_LINUX_DEFAULT=\"quiet splash zram.num_devices=1\"/" /etc/default/grub
 sed -i "s/.*GRUB_TIMEOUT.*/GRUB_TIMEOUT=0/" /etc/default/grub
-sed -i "s/GRUB_TIMEOUT.*/GRUB_TIMEOUT=0/" /etc/calamares/modules/grubcfg/grubcfg.conf
+sed -i "s/GRUB_TIMEOUT.*/GRUB_TIMEOUT=0/" /etc/calamares/modules/grubcfg.conf
 
 #Root password
 echo -e "triggerlinux\ntriggerlinux" | passwd
