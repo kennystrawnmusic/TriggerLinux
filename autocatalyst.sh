@@ -112,7 +112,7 @@ build() {
   sed -i "s/.MAKEOPTS=.*/MAKEOPTS=\"-j$cpucores\"/" $stage1chroot/etc/genkernel.conf && \
   sed -i "s/.*PLYMOUTH=.*/PLYMOUTH=\"yes\"/" $stage1chroot/etc/genkernel.conf && \
   sed -i "s/.*PLYMOUTH_THEME=.*/PLYMOUTH_THEME=\"bgrt\"/" $stage1chroot/etc/genkernel.conf && \
-  mkdir -p $stage1chroot/etc/calamares/branding && \
+  mkdir -p $stage1chroot/etc/calamares/{branding,modules} && \
   cp -r triggerlinux-calamares-branding $stage1chroot/etc/calamares/branding/triggerlinux && \
   cp autoupdate\.* $stage1chroot/lib/systemd/system && \
   catalyst -f $stage2spec
