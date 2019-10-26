@@ -72,7 +72,7 @@ sed -i "s/plymouth_theme\:.*/plymouth_theme\: bgrt/" /etc/calamares/modules/plym
 
 #Default calamares locale
 sed -i "s/zone\:.*/zone\:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \"Los_Angeles\"/" /etc/calamares/modules/locale.conf
-sed -i "s/selector\:\ /selector\:\ \"time_zone\"/" /etc/calamares/modules/locale.conf
+sed -i "s/selector\:.*\ /selector\:\ \"time_zone\"/" /etc/calamares/modules/locale.conf
 
 #Reboot immediately when finished
 sed -i "s/restartNowCommand\:.*/restartNowCommand\: \"echo b > \/proc\/sysrq-trigger\"/" /etc/calamares/modules/finished.conf
@@ -173,3 +173,6 @@ systemctl enable appimaged.service
 wget -O /usr/bin/AppImageUpdate https://github.com/AppImage/AppImageUpdate/releases/download/continuous/AppImageUpdate-x86_64.AppImage
 chmod a+x /usr/bin/AppImageUpdate
 wget -O /usr/share/applications/AppImageUpdate.desktop https://raw.githubusercontent.com/AppImage/AppImageUpdate/rewrite/resources/AppImageUpdate.desktop
+
+#Needed for emerge --sync to succeed on calamares target system
+rm -rf /var/db/repos/gentoo
