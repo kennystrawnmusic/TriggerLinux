@@ -51,9 +51,9 @@ sed -i '35a\ \ \ \ \-\ bumblebee' /etc/calamares/modules/users.conf
 sed -i '36a\ \ \ \ \-\ lpadmin' /etc/calamares/modules/users.conf
 
 #Calamares bootloader config
-sed -i "s/kernel\:.*/kernel\:\ \"\/boot\/$kernel/\"/" /etc/calamares/modules/bootloader.conf
-sed -i "s/img\:.*/img\:\ \"\/boot\/$initramfs/\"/" /etc/calamares/modules/bootloader.conf
-sed -i "s/fallback\:.*/fallback\: \"\/boot\/$initramfs/\"/" /etc/calamares/modules/bootloader.conf
+sed -i "s/kernel\:.*/kernel\:\ \"\/boot\/$kernel\"/" /etc/calamares/modules/bootloader.conf
+sed -i "s/img\:.*/img\:\ \"\/boot\/$initramfs\"/" /etc/calamares/modules/bootloader.conf
+sed -i "s/fallback\:.*/fallback\: \"\/boot\/$initramfs\"/" /etc/calamares/modules/bootloader.conf
 sed -i "s/timeout\:.*/timeout\:\ \"0\"/" /etc/calamares/modules/bootloader.conf
 
 #Integrate calamares with Portage
@@ -65,17 +65,17 @@ sed -i "162,166d" /etc/calamares/modules/packages.conf
 sed -i '$d' /etc/calamares/modules/packages.conf
 sed -i '$d' /etc/calamares/modules/packages.conf
 sed -i '$d' /etc/calamares/modules/packages.conf
-sed -i '$a\ \ \ \ \-\ app-admin\/calamares' /etc/calamares/modules/packages.conf
+sed -i "$ a\ \ \ \ \-\ app-admin\/calamares" /etc/calamares/modules/packages.conf
 
 #Calamares Plymouth theme
 sed -i "s/plymouth_theme\:.*/plymouth_theme\: bgrt/" /etc/calamares/modules/plymouthcfg.conf
 
 #Default calamares locale
-sed -i "s/zone:.*/zone\:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \"Los_Angeles\"/" /etc/calamares/modules/locale.conf
-sed -i "s/\ \ \ \ selector\:\ /selector\:\ \"time_zone\"/" /etc/calamares/modules/locale.conf
+sed -i "s/zone\:.*/zone\:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \"Los_Angeles\"/" /etc/calamares/modules/locale.conf
+sed -i "s/selector\:\ /selector\:\ \"time_zone\"/" /etc/calamares/modules/locale.conf
 
 #Reboot immediately when finished
-sed -i "s/restartNowCommand\:.*/restartNowCommand\: \"echo b > /proc/sysrq-trigger\"/" /etc/calamares/modules/finished.conf
+sed -i "s/restartNowCommand\:.*/restartNowCommand\: \"echo b > \/proc\/sysrq-trigger\"/" /etc/calamares/modules/finished.conf
 
 #Enable "packages" module
 sed -i "124a\ \ \-\ packages" /etc/calamares/settings.conf
