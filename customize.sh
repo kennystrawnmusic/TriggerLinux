@@ -14,7 +14,7 @@ echo "livecd" > /etc/hostname
 #Download config files that emerge won't install and inject them into the system
 wget -O /etc/calamares/settings.conf https://raw.githubusercontent.com/calamares/calamares/master/settings.conf
 for i in $(ls /usr/lib64/calamares/modules); do
-  wget -O /etc/calamares/modules/$i/$i.conf https://raw.githubusercontent.com/calamares/calamares/master/src/modules/$i/$i.conf
+  wget -O /etc/calamares/modules/$i.conf https://raw.githubusercontent.com/calamares/calamares/master/src/modules/$i/$i.conf
 done
 
 #Configure calamares branding
