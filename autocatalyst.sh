@@ -91,7 +91,7 @@ fi
 
 echo "Generating snapshot"
 if [ $sysrepoconfstat -eq $localrepoconfstat ]; then
-  emerge --sync && catalyst -s latest
+  emerge --sync && catalyst -s latest || exit 1
 else
   cat portage/repos.conf/gentoo.conf > /etc/portage/repos.conf/gentoo.conf && \
   rm -rf $repo_dir && \
