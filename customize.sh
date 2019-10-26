@@ -51,9 +51,9 @@ sed -i '35a\ \ \ \ \-\ bumblebee' /etc/calamares/modules/users.conf
 sed -i '36a\ \ \ \ \-\ lpadmin' /etc/calamares/modules/users.conf
 
 #Calamares bootloader config
-sed -i "s/kernel\:.*/kernel\:\ \"\/boot\/$kernel/\"" /etc/calamares/modules/bootloader.conf
-sed -i "s/img\:.*/img\:\ \"\/boot\/$initramfs/\"" /etc/calamares/modules/bootloader.conf
-sed -i "s/fallback\:.*/fallback\: \"\/boot\/$initramfs/\"" /etc/calamares/modules/bootloader.conf
+sed -i "s/kernel\:.*/kernel\:\ \"\/boot\/$kernel/\"/" /etc/calamares/modules/bootloader.conf
+sed -i "s/img\:.*/img\:\ \"\/boot\/$initramfs/\"/" /etc/calamares/modules/bootloader.conf
+sed -i "s/fallback\:.*/fallback\: \"\/boot\/$initramfs/\"/" /etc/calamares/modules/bootloader.conf
 sed -i "s/timeout\:.*/timeout\:\ \"0\"/" /etc/calamares/modules/bootloader.conf
 
 #Integrate calamares with Portage
