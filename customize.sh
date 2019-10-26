@@ -125,12 +125,6 @@ echo -e "primary-color='#ffffff'" >> /usr/share/glib-2.0/schemas/00_org.gnome.sh
 echo -e "secondary-color='#000000'" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
 echo -e "idle-activation-enabled=false" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
 
-#Disable LiveCD auto-sleep
-sed -i "s/sleep-inactive-ac-type.*/sleep-inactive-ac-type='nothing'/" >> /usr/share/glib-2.0/schemas/org.gnome.settings-daemon.plugins.power.gschema.override
-echo -e "sleep-inactive-ac-timeout=0" >> /usr/share/glib-2.0/schemas/org.gnome.settings-daemon.plugins.power.gschema.override
-echo -e "idle-dim=false" >> /usr/share/glib-2.0/schemas/org.gnome.settings-daemon.plugins.power.gschema.override
-echo -e "idle-brightness=100" >> /usr/share/glib-2.0/schemas/org.gnome.settings-daemon.plugins.power.gschema.override
-
 #Enable GNOME Shell extensions by default
 echo -e "[org.gnome.shell:GNOME]\nenabled-extensions=['dash-to-panel@jderose9.github.com', 'desktop-icons@csoriano', 'user-theme@gnome-shell-extensions.gcampax.github.com']" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
 

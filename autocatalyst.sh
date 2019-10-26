@@ -127,6 +127,7 @@ build() {
   mkdir -p $stage1chroot/etc/calamares/{branding,modules} && \
   cp -r triggerlinux-calamares-branding $stage1chroot/etc/calamares/branding/triggerlinux && \
   cp autoupdate\.* $stage1chroot/lib/systemd/system && \
+  cat org.gnome.settings-daemon.plugins.power.gschema.override > $stage1chroot/usr/share/glib-2.0/schemas/org.gnome.settings-daemon.plugins.power.gschema.override && \
   catalyst -f $stage2spec
 }
 
