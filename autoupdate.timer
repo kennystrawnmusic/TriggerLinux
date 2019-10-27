@@ -2,7 +2,7 @@
 Description=Automatic Update
 
 [Timer]
-OnBootSec=1min
+OnBootSec=5min
 OnActiveSec=2h
 OnUnitActiveSec=2h
 Unit=autoupdate.service
