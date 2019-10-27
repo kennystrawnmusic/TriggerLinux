@@ -31,7 +31,7 @@ chroot /tmp/triggerlinux-chroot mount -t devtmpfs none /dev
 chroot /tmp/triggerlinux-chroot mount -t devpts none /dev/pts
 chroot /tmp/triggerlinux-chroot mount -t tmpfs none /dev/shm
 chroot /tmp/triggerlinux-chroot emerge --sync
-chroot /tmp/triggerlinux-chroot emerge app-admin/sudo dev-vcs/git net-misc/wget dev-util/catalyst
+chroot /tmp/triggerlinux-chroot emerge app-portage/layman app-admin/sudo dev-vcs/git net-misc/wget dev-util/catalyst
 
 echo "Cloning git repo inside the chroot"
 chroot /tmp/triggerlinux-chroot bash -c "git clone https://github.com/realKennyStrawn93/TriggerLinux.git /tmp/triggerlinux"
