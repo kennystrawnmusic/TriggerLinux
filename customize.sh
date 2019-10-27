@@ -202,6 +202,7 @@ umount -lf /usr/livecd/db/repos/gentoo && rmdir /usr/livecd/db/repos/gentoo
 #Make Brave work when run as any user, including root
 sed -i "s/Exec=.*/Exec=\/usr\/bin\/brave-bin\ \-\-no\-sandbox\ \%u/" /usr/share/applications/brave-bin.desktop
 
+#TODO: Remove everything below this line on next successful test
 #Don't let genkernel and emerge overlap when updating system
 sed -i "s/OnBootSec=.*/OnBootSec=5min/" /lib/systemd/system/autoupdate.timer
 sed -i "s/OnActiveSec=.*/OnActiveSec=2h/" /lib/systemd/system/autoupdate.timer
