@@ -24,7 +24,6 @@ boot/kernel/gentoo/sources: git-sources
 boot/kernel/gentoo/config: /opt/TriggerLinux/livecd-stage2.config
 boot/kernel/gentoo/use: atm png truetype usb
 boot/kernel/gentoo/packages:
-	app-emulation/snapd
 	net-print/hplip
 	sys-block/parted
 	sys-block/gparted
@@ -47,7 +46,6 @@ boot/kernel/gentoo/packages:
 #	net-wireless/rt2500
 ### Masked (~amd64)
 #	net-wireless/rtl8187
-	=sys-apps/systemd-9999
 	sys-apps/pcmciautils
 	sys-kernel/linux-firmware
 	sys-fs/ntfs3g
