@@ -46,7 +46,7 @@ boot/kernel/gentoo/packages:
 #	net-wireless/rt2500
 ### Masked (~amd64)
 #	net-wireless/rtl8187
-	=sys-apps/systemd-242
+	=sys-apps/systemd-242-r7
 	sys-apps/pcmciautils
 	sys-kernel/linux-firmware
 	sys-fs/ntfs3g

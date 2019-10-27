@@ -3,8 +3,8 @@ Description=Automatic Update
 
 [Timer]
 OnBootSec=1min
-OnActiveSec=15min
-OnUnitActiveSec=1h
+OnActiveSec=2h
+OnUnitActiveSec=2h
 Unit=autoupdate.service
 
 [Install]
