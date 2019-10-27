@@ -126,8 +126,9 @@ build() {
   sed -i "s/.*PLYMOUTH_THEME=.*/PLYMOUTH_THEME=\"bgrt\"/" $stage1chroot/etc/genkernel.conf && \
   mkdir -p $stage1chroot/etc/calamares/{branding,modules} && \
   cp -r triggerlinux-calamares-branding $stage1chroot/etc/calamares/branding/triggerlinux && \
-  cp autoupdate\.* $stage1chroot/lib/systemd/system && \
+  cp autoupdate\.{service,timer} $stage1chroot/lib/systemd/system && \
   cat $scriptdir/org.gnome.settings-daemon.plugins.power.gschema.override > $stage1chroot/usr/share/glib-2.0/schemas/org.gnome.settings-daemon.plugins.power.gschema.override && \
+  install -m 755 $scriptdir/autoupdate.sh $stage1chroot/usr/bin && \
   catalyst -f $stage2spec
 }
 
