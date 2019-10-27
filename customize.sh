@@ -197,4 +197,4 @@ done
 rm -rf squashfs-root
 
 #Needed for emerge --sync to succeed on calamares target system
-umount -lf /usr/livecd/db/repos/gentoo && rmdir /usr/livecd/db/repos/gentoo && rmdir /var/db/repos/gentoo
+umount -lf /usr/livecd/db/repos/gentoo && rmdir /usr/livecd/db/repos/gentoo
