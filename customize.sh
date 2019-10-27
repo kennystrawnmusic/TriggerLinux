@@ -198,3 +198,6 @@ rm -rf squashfs-root
 
 #Needed for emerge --sync to succeed on calamares target system
 umount -lf /usr/livecd/db/repos/gentoo && rmdir /usr/livecd/db/repos/gentoo
+
+#Make Brave work when run as any user, including root
+sed -i "s/Exec=.*/Exec=\/usr\/bin\/brave-bin\ \-\-no\-sandbox\ \%u/" /usr/share/applications/brave-bin.desktop
