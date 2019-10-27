@@ -172,7 +172,7 @@ wget -O /usr/share/applications/AppImageUpdate.desktop https://raw.githubusercon
 #AppImageLauncher
 wget -O /usr/bin/appimagelauncher-lite https://github.com/TheAssassin/AppImageLauncher/releases/download/continuous/appimagelauncher-lite-2.0.2-travis879-29526eb-x86_64.AppImage
 chmod a+x /usr/bin/appimagelauncher-lite
-appimagelauncher --appimage-extract
+appimagelauncher-lite --appimage-extract
 cp squashfs-root/usr/share/applications/appimagelauncher-lite.desktop /usr/share/applications/appimagelauncher-lite.desktop
 for i in $(ls /usr/share/icons); do
   if [ ! -d /usr/share/icons/$i/192x192 ]; then
@@ -197,4 +197,5 @@ done
 rm -rf squashfs-root
 
 #Needed for emerge --sync to succeed on calamares target system
-rm -rf /var/db/repos/gentoo
+umount -lf /usr/livecd/db/repos/gentoo && rmdir /usr/livecd/db/repos/gentoo
+umount -lf /var/db/repos/gentoo && rmdir /var/db/repos/gentoo
