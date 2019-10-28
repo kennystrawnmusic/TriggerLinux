@@ -2,7 +2,13 @@
 
 kernel="$(ls /boot | grep kernel-genkernel | sort -rn | head -n1)"
 initramfs="$(ls /boot | grep initramfs-genkernel | sort -rn | head -n1)"
-kdenlive="$(wget -O - https://files.kde.org/kdenlive/release/ | grep -Eo \"kdenlive-[0-9][0-9].[0-9][0-9].[0-9][a-z]-x86_64.appimage\" | sort -rn | head -n1)"
+
+kdenlive="https://files.kde.org/kdenlive/release/$(wget -O - https://files.kde.org/kdenlive/release/ | grep -Eo \"kdenlive-[0-9][0-9].[0-9][0-9].[0-9][a-z]-x86_64.appimage\" | sort -rn | head -n1)"
+
+appimagelauncher_base=https://artifacts.assassinate-you.net/artifactory/AppImageLauncher
+appimagelauncher_var1=$(wget -O - $appimagelauncher_base | grep -Eo "travis-[0-9]{1,}" | sort -rn | head -n1)
+appimagelauncher_var2=$(wget -O - $appimagelauncher_base/$appimagelauncher_var1 | grep appimagelauncher-lite | grep x86_64 | cut -d "\"" -f2)
+appimagelauncher=$appimagelauncher_base/$appimaglauncher_var1/$appimagelauncher_var2
 
 #Overlays
 layman -L
@@ -22,7 +28,7 @@ chmod a+x /usr/bin/AppImageUpdate
 wget -O /usr/share/applications/AppImageUpdate.desktop https://raw.githubusercontent.com/AppImage/AppImageUpdate/rewrite/resources/AppImageUpdate.desktop
 
 #AppImageLauncher
-wget -O /usr/bin/appimagelauncher-lite https://github.com/TheAssassin/AppImageLauncher/releases/download/continuous/appimagelauncher-lite-2.0.2-travis879-29526eb-x86_64.AppImage
+wget -O /usr/bin/appimagelauncher-lite $appimagelauncher
 chmod a+x /usr/bin/appimagelauncher-lite
 appimagelauncher-lite --appimage-extract
 cp squashfs-root/usr/share/applications/appimagelauncher-lite.desktop /usr/share/applications/appimagelauncher-lite.desktop
@@ -35,7 +41,7 @@ done
 rm -rf squashfs-root
 
 #Install Kdenlive as AppImage
-wget -O /Applications/Kdenlive.AppImage https://files.kde.org/kdenlive/release/$kdenlive
+wget -O /Applications/Kdenlive.AppImage $kdenlive
 chmod a+x /Applications/Kdenlive.AppImage
 /Applications/Kdenlive.AppImage --appimage-extract
 cp squashfs-root/org.kde.kdenlive.desktop /usr/share/applications/kdenlive.desktop
