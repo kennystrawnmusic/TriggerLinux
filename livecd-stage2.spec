@@ -43,7 +43,6 @@ boot/kernel/gentoo/packages:
 #	net-wireless/rt2500
 ### Masked (~amd64)
 #	net-wireless/rtl8187
-	rocm-opencl-runtime
 	sys-apps/pcmciautils
 	sys-kernel/linux-firmware
 	sys-fs/ntfs3g

@@ -73,7 +73,6 @@ sed -i "s/plymouth_theme\:.*/plymouth_theme\: bgrt/" /etc/calamares/modules/plym
 
 #Default calamares locale
 sed -i "s/zone\:.*/zone\:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \"Los_Angeles\"/" /etc/calamares/modules/locale.conf
-sed -i "s/selector\:.*\ /selector\:\ \"time_zone\"/" /etc/calamares/modules/locale.conf
 
 #Reboot immediately when finished
 sed -i "s/restartNowCommand\:.*/restartNowCommand\: \"echo b > \/proc\/sysrq-trigger\"/" /etc/calamares/modules/finished.conf
@@ -147,10 +146,6 @@ glib-compile-schemas /usr/share/glib-2.0/schemas
 sed -i "s/MAKEOPTS/\#MAKEOPTS/" /etc/portage/make.conf
 sed -i "s/MAKEOPTS/\#MAKEOPTS/" /etc/genkernel.conf
 
-#Activate Automatic Updater
-systemctl enable autoupdate.service
-systemctl enable autoupdate.timer
-
 #NetworkManager
 systemctl enable systemd-resolved.service
 systemctl enable NetworkManager.service
@@ -198,7 +193,8 @@ done
 rm -rf squashfs-root
 
 #Needed for emerge --sync to succeed on calamares target system
-umount -lf /usr/livecd/db/repos/gentoo && rmdir /usr/livecd/db/repos/gentoo
+rm -rf /var/db/repos/gentoo/* && \
+git clone --depth 1 https://anongit.gentoo.org/git/repo/gentoo.git /var/db/repos/gentoo 
 
 #Make Brave work when run as any user, including root
 sed -i "s/Exec=.*/Exec=\/usr\/bin\/brave-bin\ \-\-no\-sandbox\ \%u/" /usr/share/applications/brave-bin.desktop

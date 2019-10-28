@@ -37,5 +37,5 @@ sys-apps/util-linux build static-libs
 >=sys-libs/zlib-1.2.11-r2 minizip
 # required by dev-util/meson-0.46::gentoo
 # required by virtual/service-manager-0::gentoo
-# required by sys-apps/systemd-9999::gentoo
+# required by sys-apps/systemd-242-r7::gentoo
 >=dev-util/meson-0.46 python_targets_python3_6

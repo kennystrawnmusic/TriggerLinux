@@ -276,6 +276,7 @@ livecd/packages:
 	dev-libs/openssl
 	dev-libs/popt
 	dev-libs/qqwing
+	dev-libs/rocm-opencl-runtime
 	dev-libs/totem-pl-parser
 	dev-libs/vala-common
 	dev-lua/lpeg
