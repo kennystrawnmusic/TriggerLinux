@@ -16,7 +16,6 @@ yes | layman -a snapd
 yes | layman -a brave-overlay
 
 #AppImage Daemon
-mkdir /Applications
 wget -O /usr/bin/appimaged https://github.com/AppImage/appimaged/releases/download/continuous/appimaged-x86_64.AppImage
 chmod a+x /usr/bin/appimaged
 wget -O /lib/systemd/system/appimaged.service https://raw.githubusercontent.com/AppImage/appimaged/master/resources/appimaged.service
@@ -39,8 +38,12 @@ for i in $(ls /usr/share/icons); do
   cp squashfs-root/usr/share/icons/hicolor/192x192/apps/AppImageLauncher.png /usr/share/icons/$i/192x192/apps/AppImageLauncher.png
 done
 rm -rf squashfs-root
+rm -f /usr/bin/appimagelauncher-lite
+wget -O /usr/bin/appimagelauncher-lite $appimagelauncher
+chmod a+x /usr/bin/appimagelauncher-lite
 
 #Install Kdenlive as AppImage
+mkdir /Applications
 wget -O /Applications/Kdenlive.AppImage $kdenlive
 chmod a+x /Applications/Kdenlive.AppImage
 /Applications/Kdenlive.AppImage --appimage-extract
@@ -53,6 +56,14 @@ for i in $(ls /usr/share/icons); do
   cp squashfs-root/kdenlive.svg /usr/share/icons/$i/scalable/apps/kdenlive.svg
 done
 rm -rf squashfs-root
+if [ ! -d /Applications ]; then
+  mkdir /Applications
+  wget -O /Applications/Kdenlive.AppImage $kdenlive
+  chmod a+x /Applications/Kdenlive.AppImage
+else
+  wget -O /Applications/Kdenlive.AppImage $kdenlive
+  chmod a+x /Applications/Kdenlive.AppImage
+fi
 
 #Live media hostname
 echo "livecd" > /etc/hostname
