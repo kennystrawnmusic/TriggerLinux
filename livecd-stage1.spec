@@ -645,6 +645,7 @@ livecd/packages:
 	net-print/cups
 	net-print/cups-filters
 	net-print/cups-pk-helper
+	net-print/hplip
 	net-wireless/bluez
 	net-wireless/crda
 	net-wireless/gnome-bluetooth
