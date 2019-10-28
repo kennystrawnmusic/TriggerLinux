@@ -127,3 +127,9 @@ systemctl enable cups.service
 
 #Make Brave work when run as any user, including root
 sed -i "s/Exec=.*/Exec=\/usr\/bin\/brave-bin\ \-\-no\-sandbox\ \%u/" /usr/share/applications/brave-bin.desktop
+
+#Initialize gentoo git repos to prevent Calamares emerge --sync failure
+cd /usr/livecd/db/repos/gentoo
+git init
+git remote add origin https://anongit.gentoo.org/git/repo/gentoo.git
+git pull --depth 1 origin master
