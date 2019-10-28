@@ -6,7 +6,7 @@ initramfs="$(ls /boot | grep initramfs-genkernel | sort -rn | head -n1)"
 kdenlive="https://files.kde.org/kdenlive/release/$(wget -O - https://files.kde.org/kdenlive/release/ | grep -Eo kdenlive-[0-9][0-9].[0-9][0-9].[0-9][a-z]-x86_64.appimage | sort -rn | head -n1)"
 
 appimagelauncher_base=https://artifacts.assassinate-you.net/artifactory/AppImageLauncher
-appimagelauncher_var1=$(wget -O - $appimagelauncher_base | grep -Eo "travis-[0-9]{1,}" | sort -rn | head -n1)
+appimagelauncher_var1=$(wget -O - $appimagelauncher_base | grep -Eo travis-[0-9]{1,} | sort -rn | head -n1)
 appimagelauncher_var2=$(wget -O - $appimagelauncher_base/$appimagelauncher_var1 | grep appimagelauncher-lite | grep x86_64 | cut -d "\"" -f2)
 appimagelauncher=$appimagelauncher_base/$appimaglauncher_var1/$appimagelauncher_var2
 
