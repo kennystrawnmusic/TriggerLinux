@@ -2,6 +2,7 @@
 
 kernel="$(ls /boot | grep kernel-genkernel | sort -rn | head -n1)"
 initramfs="$(ls /boot | grep initramfs-genkernel | sort -rn | head -n1)"
+kdenlive="$(wget -O - https://files.kde.org/kdenlive/release/ | grep -Eo \"kdenlive-[0-9][0-9].[0-9][0-9].[0-9][a-z]-x86_64.appimage\" | sort -rn | head -n1)"
 
 #Overlays
 layman -L
@@ -183,7 +184,7 @@ done
 rm -rf squashfs-root
 
 #Install Kdenlive as AppImage
-wget -O /Applications/Kdenlive.AppImage https://files.kde.org/kdenlive/release/kdenlive-19.08.2b-x86_64.appimage
+wget -O /Applications/Kdenlive.AppImage https://files.kde.org/kdenlive/release/$kdenlive
 chmod a+x /Applications/Kdenlive.AppImage
 /Applications/Kdenlive.AppImage --appimage-extract
 cp squashfs-root/org.kde.kdenlive.desktop /usr/share/applications/kdenlive.desktop
