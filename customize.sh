@@ -7,8 +7,8 @@ kdenlive="https://files.kde.org/kdenlive/release/$(wget -O - https://files.kde.o
 
 appimagelauncher_base=https://artifacts.assassinate-you.net/artifactory/AppImageLauncher
 appimagelauncher_var1=$(wget -qO - https://artifacts.assassinate-you.net/artifactory/AppImageLauncher | grep -Eo "travis-[0-9]{1,}" | sort -rn | head -n1)
-appimagelauncher_var2=$(wget -O - $appimagelauncher_base/$appimagelauncher_var1 | grep appimagelauncher-lite | grep x86_64 | cut -d "\"" -f2)
-appimagelauncher=$appimagelauncher_base/$(wget -O - $appimagelauncher_base | grep -Eo "travis-[0-9]{1,}" | sort -rn | head -n1)/$appimagelauncher_var2
+appimagelauncher_var2=$(wget -qO - $appimagelauncher_base/$appimagelauncher_var1 | grep appimagelauncher-lite | grep x86_64 | cut -d "\"" -f2)
+appimagelauncher=$appimagelauncher_base/$(wget -qO - $appimagelauncher_base | grep -Eo "travis-[0-9]{1,}" | sort -rn | head -n1)/$appimagelauncher_var2
 
 #Overlays
 layman -L
