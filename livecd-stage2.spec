@@ -6,7 +6,7 @@ profile: default/linux/amd64/17.1/desktop/gnome/systemd
 snapshot: latest
 source_subpath: default/livecd-stage1-amd64-installer-latest
 portage_confdir: /opt/TriggerLinux/portage
-portage_overlay: /var/lib/layman/snapd
+portage_overlay: /var/lib/layman/brave-overlay
 
 livecd/bootargs: dokeymap
 livecd/cdtar: /opt/TriggerLinux/livecd-stage2-cdtar.tar.bz2
@@ -46,6 +46,7 @@ boot/kernel/gentoo/packages:
 	sys-apps/pcmciautils
 	sys-kernel/linux-firmware
 	sys-fs/ntfs3g
+	www-client/brave-bin
 	x11-drivers/xf86-video-amdgpu
 
 livecd/empty:

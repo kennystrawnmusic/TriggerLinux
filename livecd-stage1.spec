@@ -6,7 +6,7 @@ profile: default/linux/amd64/17.1/desktop/gnome/systemd
 snapshot: latest
 source_subpath: default/livecd-stage1-amd64-installer-latest
 portage_confdir: /opt/TriggerLinux/portage
-portage_overlay: /var/lib/layman/brave-overlay
+portage_overlay: /var/lib/layman/triggerlinux-overlay
 
 livecd/use:
 	-bindist
@@ -351,6 +351,7 @@ livecd/packages:
 	dev-python/fixtures
 	dev-python/idna
 	dev-python/ipaddress
+	dev-python/jade-application-kit
 	dev-python/linecache2
 	dev-python/lxml
 	dev-python/m2crypto
@@ -859,7 +860,6 @@ livecd/packages:
 	virtual/w3m
 	virtual/yacc
 	www-apache/mod_dnssd
-	www-client/brave-bin
 	www-client/w3m
 	www-servers/apache
 	x11-apps/iceauth

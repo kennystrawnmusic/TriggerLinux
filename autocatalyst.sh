@@ -128,9 +128,11 @@ build() {
   cp $scriptdir/autoupdate\.{service,timer} $stage1chroot/lib/systemd/system && \
   cp $scriptdir/unmerge-calamares.service $stage1chroot/lib/systemd/system && \
   cp $scriptdir/cleanup.service $stage1chroot/lib/systemd/system && \
+  cp $scriptdir/appimagehub.desktop $stage1chroot/usr/share/applications && \
   cat $scriptdir/org.gnome.settings-daemon.plugins.power.gschema.override > $stage1chroot/usr/share/glib-2.0/schemas/org.gnome.settings-daemon.plugins.power.gschema.override && \
-  install -m 755 $scriptdir/autoupdate.sh $stage1chroot/usr/bin && \
-  install -m 755 $scriptdir/cleanup.sh $stage1chroot/usr/bin && \
+  install -m 755 $scriptdir/autoupdate.sh $stage1chroot/usr/bin/autoupdate.sh && \
+  install -m 755 $scriptdir/cleanup.sh $stage1chroot/usr/bin/cleanup.sh && \
+  install -m 755 $scriptdir/appimagehub $stage1chroot/usr/bin/appimagehub && \
   catalyst -f $stage2spec
 }
 

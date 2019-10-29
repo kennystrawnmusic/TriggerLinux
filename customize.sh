@@ -12,8 +12,8 @@ appimagelauncher=$appimagelauncher_base/$(wget -qO - https://artifacts.assassina
 
 #Overlays
 layman -L
-yes | layman -a snapd
 yes | layman -a brave-overlay
+yes | layman -o https://github.com/realKennyStrawn93/triggerlinux-overlay/raw/master/triggerlinux-overlay.xml -f -a triggerlinux-overlay
 
 #AppImage Daemon
 wget -O /usr/bin/appimaged https://github.com/AppImage/appimaged/releases/download/continuous/appimaged-x86_64.AppImage
@@ -102,7 +102,7 @@ echo -e "idle-activation-enabled=false" >> /usr/share/glib-2.0/schemas/00_org.gn
 echo -e "[org.gnome.shell:GNOME]\nenabled-extensions=['dash-to-panel@jderose9.github.com', 'desktop-icons@csoriano', 'user-theme@gnome-shell-extensions.gcampax.github.com']" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
 
 #Favorites
-echo -e "favorite-apps=['org.gnome.Evolution.desktop', 'brave-bin.desktop', 'rhythmbox.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.gedit.desktop', 'libreoffice-writer.desktop', 'libreoffice-calc.desktop', 'libreoffice-impress.desktop', 'libreoffice-math.desktop', 'kdenlive.desktop']" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
+echo -e "favorite-apps=['appimagehub.desktop', 'brave-bin.desktop', 'rhythmbox.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.gedit.desktop', 'libreoffice-writer.desktop', 'libreoffice-calc.desktop', 'libreoffice-impress.desktop', 'libreoffice-math.desktop', 'kdenlive.desktop']" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
 
 #More window controls than just "Close"
 echo -e "[org.gnome.desktop.wm.preferences:GNOME]\nbutton-layout='appmenu:minimize,maximize,close'\n" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override

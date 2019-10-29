@@ -89,42 +89,44 @@
 =app-emulation/snapd-9999 **
 # required by dev-python/pyside-tools (argument)
 =dev-python/pyside-tools-9999 **
-# required by dev-python/pyside-9999::qt
-# required by dev-python/pyside-tools-9999::qt
+# required by dev-python/pyside-9999::triggerlinux-overlay
+# required by dev-python/pyside-tools-9999::triggerlinux-overlay
 # required by dev-python/pyside-tools (argument)
-=dev-python/shiboken-9999 ~amd64
+=dev-python/shiboken-5.12.4 ~amd64
 # required by dev-qt/qtxml-9999::qt
-# required by dev-python/pyside-9999::qt
-# required by dev-python/pyside-tools-9999::qt
+# required by dev-python/pyside-9999::triggerlinux-overlay
+# required by dev-python/pyside-tools-9999::triggerlinux-overlay
 # required by dev-python/pyside-tools (argument)
 =dev-qt/qtcore-9999 ~amd64
 # required by dev-qt/qtxmlpatterns-9999::qt
-# required by dev-python/shiboken-9999::qt[docstrings]
-# required by dev-python/pyside-9999::qt
-# required by dev-python/pyside-tools-9999::qt
+# required by dev-python/shiboken-5.12.4::triggerlinux-overlay[docstrings]
+# required by dev-python/pyside-9999::triggerlinux-overlay
+# required by dev-python/pyside-tools-9999::triggerlinux-overlay
 # required by dev-python/pyside-tools (argument)
 =dev-qt/qtnetwork-9999 ~amd64
 # required by dev-qt/qtnetwork-9999::qt[-connman,networkmanager]
 # required by dev-qt/qtxmlpatterns-9999::qt
-# required by dev-python/shiboken-9999::qt[docstrings]
-# required by dev-python/pyside-9999::qt
-# required by dev-python/pyside-tools-9999::qt
+# required by dev-python/shiboken-5.12.4::triggerlinux-overlay[docstrings]
+# required by dev-python/pyside-9999::triggerlinux-overlay
+# required by dev-python/pyside-tools-9999::triggerlinux-overlay
 # required by dev-python/pyside-tools (argument)
 =dev-qt/qtdbus-9999 ~amd64
-# required by dev-python/shiboken-9999::qt[docstrings]
-# required by dev-python/pyside-9999::qt
-# required by dev-python/pyside-tools-9999::qt
+# required by dev-python/shiboken-5.12.4::triggerlinux-overlay[docstrings]
+# required by dev-python/pyside-9999::triggerlinux-overlay
+# required by dev-python/pyside-tools-9999::triggerlinux-overlay
 # required by dev-python/pyside-tools (argument)
 =dev-qt/qtxml-9999 ~amd64
-# required by dev-python/pyside-tools-9999::qt
+# required by dev-python/pyside-tools-9999::triggerlinux-overlay
 # required by dev-python/pyside-tools (argument)
-=dev-python/pyside-9999 **
-# required by dev-python/shiboken-9999::qt[docstrings]
-# required by dev-python/pyside-9999::qt
-# required by dev-python/pyside-tools-9999::qt
+=dev-python/pyside-9999 ~amd64
+# required by dev-python/shiboken-5.12.4::triggerlinux-overlay[docstrings]
+# required by dev-python/pyside-9999::triggerlinux-overlay
+# required by dev-python/pyside-tools-9999::triggerlinux-overlay
 # required by dev-python/pyside-tools (argument)
 =dev-qt/qtxmlpatterns-9999 ~amd64
 # required by www-client/brave-bin (argument)
 =www-client/brave-bin-0.69.135 ~amd64
 # required by app-admin/calamares (argument)
 =app-admin/calamares-3.2.12 ~amd64
+# required by dev-python/jade-application-kit (argument)	
+=dev-python/jade-application-kit-9999 **

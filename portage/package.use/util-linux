@@ -14,9 +14,9 @@ sys-apps/util-linux build static-libs
 # required by net-wireless/wpa_supplicant-2.8-r1::gentoo[-libressl]
 # required by @__auto_slot_operator_replace_installed__ (argument)
 >=sys-libs/libseccomp-2.4.0 static-libs
-# required by dev-python/pyside-tools-9999::qt
+# required by dev-python/pyside-tools-9999::triggerlinux-overlay
 # required by dev-python/pyside-tools (argument)
->=dev-python/pyside-9999 gui widgets
+>=dev-python/pyside-9999 gui widgets sql multimedia network testlib concurrent sockets webchannel webengine webkit websockets x11extras
 # required by app-admin/calamares-3.2.12::gentoo
 # required by app-admin/calamares (argument)
 >=dev-qt/qtwebengine-5.12.3 widgets jumbo-build
@@ -39,3 +39,7 @@ sys-apps/util-linux build static-libs
 # required by virtual/service-manager-0::gentoo
 # required by sys-apps/systemd-242-r7::gentoo
 >=dev-util/meson-0.46 python_targets_python3_6
+# required by dev-python/pyside-9999::triggerlinux-overlay[multimedia]
+# required by dev-python/jade-application-kit-9999::triggerlinux-overlay
+# required by dev-python/jade-application-kit (argument)
+>=dev-qt/qtmultimedia-5.12.5 widgets
