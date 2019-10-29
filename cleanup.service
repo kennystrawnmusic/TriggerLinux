@@ -1,0 +1,14 @@
+[Unit]
+Description=Clean up after calamares
+Before=graphical.target
+
+[Service]
+Type=simple
+SyslogIdentifier=cleanup
+ExecStart=/usr/bin/cleanup.sh
+TimeoutStopSec=300
+KillMode=process
+KillSignal=SIGINT
+
+[Install]
+WantedBy=multi-user.target

@@ -125,10 +125,12 @@ build() {
   sed -i "s/.*PLYMOUTH=.*/PLYMOUTH=\"yes\"/" $stage1chroot/etc/genkernel.conf && \
   sed -i "s/.*PLYMOUTH_THEME=.*/PLYMOUTH_THEME=\"bgrt\"/" $stage1chroot/etc/genkernel.conf && \
   cp -r $scriptdir/calamares-config $stage1chroot/etc/calamares && \
-  cp autoupdate\.{service,timer} $stage1chroot/lib/systemd/system && \
-  cp unmerge-calamares.service $stage1chroot/lib/systemd/system && \
+  cp $scriptdir/autoupdate\.{service,timer} $stage1chroot/lib/systemd/system && \
+  cp $scriptdir/unmerge-calamares.service $stage1chroot/lib/systemd/system && \
+  cp $scriptdir/cleanup.service $stage1chroot/lib/systemd/system && \
   cat $scriptdir/org.gnome.settings-daemon.plugins.power.gschema.override > $stage1chroot/usr/share/glib-2.0/schemas/org.gnome.settings-daemon.plugins.power.gschema.override && \
   install -m 755 $scriptdir/autoupdate.sh $stage1chroot/usr/bin && \
+  install -m 755 $scriptdir/cleanup.sh $stage1chroot/usr/bin && \
   catalyst -f $stage2spec
 }
 
