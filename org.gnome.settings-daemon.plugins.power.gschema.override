@@ -1,5 +1,5 @@
 [org.gnome.settings-daemon.plugins.power]
 sleep-inactive-ac-type='nothing'
-sleep-inactive-ac-timeout=0
+sleep-inactive-ac-timeout=3600
 idle-dim=false
 idle-brightness=100
