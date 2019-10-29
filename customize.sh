@@ -3,7 +3,7 @@
 kernel="$(ls /boot | grep kernel-genkernel | sort -rn | head -n1)"
 initramfs="$(ls /boot | grep initramfs-genkernel | sort -rn | head -n1)"
 
-kdenlive="https://files.kde.org/kdenlive/release/$(wget -O - https://files.kde.org/kdenlive/release/ | grep -Eo kdenlive-[0-9][0-9].[0-9][0-9].[0-9][a-z]-x86_64.appimage | sort -rn | head -n1)"
+kdenlive="https://files.kde.org/kdenlive/release/$(wget -qO - https://files.kde.org/kdenlive/release/ | grep -Eo kdenlive-[0-9][0-9].[0-9][0-9].[0-9][a-z]-x86_64.appimage | sort -rn | head -n1)"
 
 appimagelauncher_base=https://artifacts.assassinate-you.net/artifactory/AppImageLauncher
 appimagelauncher_var1=$(wget -qO - https://artifacts.assassinate-you.net/artifactory/AppImageLauncher | grep -Eo "travis-[0-9]{1,}" | sort -rn | head -n1)
@@ -13,7 +13,7 @@ appimagelauncher=$appimagelauncher_base/$(wget -qO - https://artifacts.assassina
 #Overlays
 layman -L
 yes | layman -a brave-overlay
-yes | layman -o https://github.com/realKennyStrawn93/triggerlinux-overlay/raw/master/triggerlinux-overlay.xml -f -a triggerlinux-overlay
+yes | layman -o https://raw.githubusercontent.com/realKennyStrawn93/triggerlinux-overlay/master/triggerlinux-overlay.xml -f -a triggerlinux-overlay
 
 #AppImage Daemon
 wget -O /usr/bin/appimaged https://github.com/AppImage/appimaged/releases/download/continuous/appimaged-x86_64.AppImage
@@ -29,6 +29,7 @@ wget -O /usr/share/applications/AppImageUpdate.desktop https://raw.githubusercon
 #AppImageLauncher
 wget -O /usr/bin/appimagelauncher-lite $appimagelauncher
 chmod a+x /usr/bin/appimagelauncher-lite
+appimagelauncher-lite --install
 appimagelauncher-lite --appimage-extract
 cp squashfs-root/usr/share/applications/appimagelauncher-lite.desktop /usr/share/applications/appimagelauncher-lite.desktop
 for i in $(ls /usr/share/icons); do
