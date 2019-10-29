@@ -1,0 +1,14 @@
+[Unit]
+Description=Unmerge Calamares post-install
+After=network-online.target
+
+[Service]
+Type=simple
+SyslogIdentifier=unmerge-calamares
+ExecStart=/bin/bash -c "emerge -C app-admin/calamares && systemctl disable unmerge-calamares.service"
+TimeoutStopSec=300
+KillMode=process
+KillSignal=SIGINT
+
+[Install]
+WantedBy=multi-user.target
