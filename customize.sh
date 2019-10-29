@@ -110,6 +110,10 @@ echo -e "[org.gnome.desktop.wm.preferences:GNOME]\nbutton-layout='appmenu:minimi
 #Arc Theme + Clock Prefs
 echo -e "[org.gnome.desktop.interface:GNOME]\ngtk-theme='Arc'\nicon-theme='Arc'\nclock-show-date=true\nclock-show-seconds=true" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
 
+#Allow execution of text (.desktop) files in Nautilus
+echo -e "[org.gnome.nautilus.preferences]" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
+echo -e "executable-text-activation='launch'" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
+
 #Recompile Schemas
 glib-compile-schemas /usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/schemas
 glib-compile-schemas /usr/share/glib-2.0/schemas
