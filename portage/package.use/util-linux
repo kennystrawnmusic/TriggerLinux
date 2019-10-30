@@ -16,7 +16,7 @@ sys-apps/util-linux build static-libs
 >=sys-libs/libseccomp-2.4.0 static-libs
 # required by dev-python/pyside-tools-9999::triggerlinux-overlay
 # required by dev-python/pyside-tools (argument)
->=dev-python/pyside-9999 gui widgets sql multimedia network printsupport testlib concurrent sockets webchannel webengine webkit websockets x11extras
+>=dev-python/pyside2-5.12.5 gui widgets sql multimedia network printsupport testlib concurrent sockets webchannel webengine webkit websockets x11extras
 # required by app-admin/calamares-3.2.12::gentoo
 # required by app-admin/calamares (argument)
 >=dev-qt/qtwebengine-5.12.3 widgets jumbo-build
@@ -43,3 +43,7 @@ sys-apps/util-linux build static-libs
 # required by dev-python/jade-application-kit-9999::triggerlinux-overlay
 # required by dev-python/jade-application-kit (argument)
 >=dev-qt/qtmultimedia-5.12.5 widgets
+# required by dev-python/shiboken2-5.12.5::triggerlinux-overlay
+# required by dev-python/jade-application-kit-9999::triggerlinux-overlay
+# required by dev-python/jade-application-kit (argument)
+>=dev-python/pyside2-5.12.5 gui widgets sql multimedia network printsupport testlib concurrent sockets webchannel webengine webkit websockets x11extras svg xml python_targets_python3_6
