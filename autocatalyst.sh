@@ -29,8 +29,7 @@ kconffile=$scriptdir/livecd-stage2.config
 portageconf=$scriptdir/portage
 
 cdtar=$scriptdir/livecd-stage2-cdtar.tar.bz2
-remotefilename=$(wget -O - http://distfiles.gentoo.org/releases/amd64/autobuilds/current-stage3-amd64-systemd/ | grep -Eo "stage3-amd64-systemd-[0-9]{1,}.tar.bz2" | head -n1)
-url=http://distfiles.gentoo.org/releases/amd64/autobuilds/current-stage3-amd64-systemd/$remotefilename
+url=http://distfiles.gentoo.org/releases/amd64/autobuilds/current-stage3-amd64-systemd/$(wget -qO - http://distfiles.gentoo.org/releases/amd64/autobuilds/current-stage3-amd64-systemd/ | grep -Eo "stage3-amd64-systemd-[0-9]{1,}.tar.bz2" | head -n1)
 cpucores=$(nproc --all)
 
 tmpbuilddir=/var/tmp/catalyst/tmp/default
