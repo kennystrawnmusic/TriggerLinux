@@ -1,0 +1,12 @@
+#!/bin/bash
+# This is an example catalystrc. As such, it doesn't actually *do* anything.
+
+# Uncomment the following to increase the number of threads used to compile.
+
+shopt -s extglob
+
+export MAKEOPTS="-j$(nproc --all)"
+export NINJAFLAGS="-j$(nproc --all)"
+export EMERGE_DEFAULT_OPTS="-1UND --autounmask=n --verbose-conflicts"
+export ACCEPT_LICENSE="*"
+export CONFIG_PROTECT="/etc/!(portage) /usr/share/gnupg/qualified.txt"

@@ -1,0 +1,53 @@
+#!/usr/bin/sudo /bin/bash
+
+basenames=$(wget -qO - https://appimage.github.io/apps | grep -Eo "<a href=\".*\">" | grep -v "github.com" | grep -v "twitter" | grep -v "opensuse" | grep -v "feed.xml" | cut -d "\"" -f2 | cut -d '/' -f2 | sed "/apps/d" | sed "/wishlist/d" | sed "/help/d" | sed "/^$/d" | tail -n+2)
+
+#AppImage database directory
+if [ ! -d /var/db/imgmerge ]; then
+  mkdir -p /var/db/imgmerge
+fi
+
+#AppImage install directory
+if [ ! -d /Applications ]; then
+  mkdir /Applications
+fi
+
+if [ "$1" == "sync" ]; then
+  #Build AppImage database
+  for i in $basenames; do
+    wget -qO - https://appimage.github.io/$i | grep "button green" | cut -d "\"" -f2
+  done | tee /var/db/imgmerge/appimagelist.txt
+elif [ "$1" == "search" ]; then
+  shift
+  pkgs="$(for i in $@; do grep "$i" /var/db/imgmerge/appimagelist.txt; done)"
+  echo $pkgs
+elif [ "$1" == "install" ]; then
+  shift
+  pkgs="$(for i in $@; do grep "$i" /var/db/imgmerge/appimagelist.txt; done)"
+  if [ -z "$pkgs" ]; then
+    echo "Error: empty package list" && exit 137
+  else
+    for i in $pkgs; do
+      domain=$(echo $i | cut -d "/" -f3)
+      if [ "$domain" == "download.opensuse.org" ]; then
+        appimage="https://$domain$(wget -qO - $i | grep \"mirrorbrain-btn\" | cut -d\" -f2 )"
+      else
+        appimage="https://$domain$(wget -qO - $i | grep 'd-flex flex-items-center min-width-0' | grep AppImage | sort -rn | head -n1 | cut -d\" -f2)"
+      fi
+      wget -O /Applications/$(echo $i | cut -d / -f5).AppImage $appimage
+      chmod a+x /Applications/$(echo $i | cut -d / -f5).AppImage
+    done
+  fi
+elif [ "$1" == "remove" ]; then
+  todel="$(ls /Applications | grep $2)"
+  rm -f /Applications/$todel
+else
+  echo "Usage: imgmerge [sync|search|install <packagename>|remove <packagename>]"
+  echo "    sync: Build database of AppImages"
+  echo "    search: Search for an AppImage in the database"
+  echo "    install <packagename>: Install AppImage by name"
+  echo "    remove <packagename>: Delete AppImage"
+fi
+    
+      
+    

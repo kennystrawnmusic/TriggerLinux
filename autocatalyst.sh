@@ -29,7 +29,7 @@ kconffile=$scriptdir/livecd-stage2.config
 portageconf=$scriptdir/portage
 
 cdtar=$scriptdir/livecd-stage2-cdtar.tar.bz2
-url=https://github.com/realKennyStrawn93/TriggerLinux/releases/download/continuous/triggerlinux-livedvd-stage1-latest.tar.bz2
+url=https://gentoo.osuosl.org/releases/amd64/autobuilds/current-stage3-amd64-systemd/$(wget -qO - https://gentoo.osuosl.org/releases/amd64/autobuilds/current-stage3-amd64-systemd/ | grep -Eo "stage3-amd64-systemd-[0-9]{1,}.tar.bz2" | head -n1)
 cpucores=$(nproc --all)
 
 tmpbuilddir=/var/tmp/catalyst/tmp/default
@@ -78,12 +78,7 @@ else
 fi
 
 if [ -z "$catalystrc_ischanged" ]; then
-  echo "Making necessary catalystrc changes..."
-  sed -i "s/#export MAKEOPTS.*/export MAKEOPTS=\"-j$cpucores\"/" $configfile
-  echo "export NINJAFLAGS=\"-j$cpucores\"" >> $configfile
-  echo "export EMERGE_DEFAULT_OPTS=\"--autounmask-write=y --update --deep --newuse --complete-graph\"" >> $configfile
-  echo "export ACCEPT_LICENSE=\"*\"" >> $configfile
-  echo "export CONFIG_PROTECT=\"/etc/!(portage) /usr/share/gnupg/qualified.txt\"" >> $configfile
+  cat $scriptdir/catalystrc > /etc/catalyst/catalystrc
 else
   echo "Skipping catalystrc as it already has the necessary changes"
 fi
@@ -132,6 +127,7 @@ build() {
   install -m 755 $scriptdir/autoupdate.sh $stage1chroot/usr/bin/autoupdate.sh && \
   install -m 755 $scriptdir/cleanup.sh $stage1chroot/usr/bin/cleanup.sh && \
   install -m 755 $scriptdir/appimagehub $stage1chroot/usr/bin/appimagehub && \
+  install -m 755 $scriptdir/imgmerge $stage1chroot/usr/bin/imgmerge && \
   mkdir -p $stage1chroot/etc/pip && \
   cp $scriptdir/portage-2.3.78-py3.b-none-any.whl $stage1chroot/etc/pip && \
   catalyst -f $stage2spec

@@ -55,6 +55,26 @@ for i in $(ls /usr/share/icons); do
 done
 rm -rf squashfs-root
 
+#Install LibreOffice as AppImage
+wget -O /Applications/LibreOffice.AppImage https://libreoffice.soluzioniopen.com/stable/full/LibreOffice-fresh.full-x86_64.AppImage
+chmod a+x /Applications/LibreOffice.AppImage
+/Applications/LibreOffice.AppImage --appimage-extract
+for i in $(ls squashfs-root/opt/libreoffice6.3/share/xdg); do
+  cp $i /usr/share/applications/libreoffice6.3-$i
+  sed -i "s/Exec=.*/Exec=\/Applications\/LibreOffice.AppImage\ \-\-$(echo $i | cut -d '.' -f1)/" $i
+done
+for i in $(ls /usr/share/icons); do
+  if [ ! -d /usr/share/icons/$i/scalable ]; then
+    mkdir -p /usr/share/icons/$i/scalable/apps
+  fi
+  for j in $(ls usr/share/icons/$i/*/apps | grep ':' | cut -d ':' -f1); do
+    for k in $j/*; do
+      cp -f $k /$j
+    done
+  done
+done
+rm -rf squashfs-root
+
 #Install JAK using pip
 pip install -I jade-application-kit
 

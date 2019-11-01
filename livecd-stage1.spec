@@ -125,7 +125,6 @@ livecd/packages:
 	app-portage/gemato
 	app-portage/layman
 	app-portage/portage-utils
-	app-office/libreoffice-bin
 	app-shells/bash
 	app-shells/push
 	app-shells/quoter
