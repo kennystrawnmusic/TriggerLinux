@@ -351,7 +351,6 @@ livecd/packages:
 	dev-python/fixtures
 	dev-python/idna
 	dev-python/ipaddress
-	dev-python/jade-application-kit
 	dev-python/linecache2
 	dev-python/lxml
 	dev-python/m2crypto
@@ -361,6 +360,7 @@ livecd/packages:
 	dev-python/olefile
 	dev-python/pbr
 	dev-python/pillow
+	=dev-python/pip-9999
 	dev-python/ply
 	dev-python/pyblake2
 	dev-python/pycairo

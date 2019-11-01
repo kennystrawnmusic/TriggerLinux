@@ -1,7 +1,7 @@
 #!/usr/bin/sudo /bin/bash
 
-remotefilename=$(wget -O - http://distfiles.gentoo.org/releases/amd64/autobuilds/current-stage3-amd64-systemd/ | grep -Eo "stage3-amd64-systemd-[0-9]{1,}.tar.bz2" | head -n1)
-url=http://distfiles.gentoo.org/releases/amd64/autobuilds/current-stage3-amd64-systemd/$remotefilename
+url=https://github.com/realKennyStrawn93/TriggerLinux/releases/download/continuous/triggerlinux-livedvd-stage1-latest.tar.bz2
+scriptdir=$PWD
 
 echo "Welcome to the TriggerLinux Gentoo Edition bootstrap script!"
 
@@ -32,6 +32,8 @@ chroot /tmp/triggerlinux-chroot emerge app-portage/layman
 chroot /tmp/triggerlinux-chroot layman -L
 chroot /tmp/triggerlinux-chroot bash -c "yes | layman -a brave-overlay"
 chroot /tmp/triggerlinux-chroot bash -c "yes | layman -o https://raw.githubusercontent.com/realKennyStrawn93/triggerlinux-overlay/master/triggerlinux-overlay.xml -f -a triggerlinux-overlay"
+# Needed to avoid "permission denied" errors when building
+chroot /tmp/triggerlinux-chroot chmod -R 777 /var/cache
 
 echo "Cloning git repo inside the chroot"
 chroot /tmp/triggerlinux-chroot emerge dev-util/triggerlinux-autobuilder
@@ -40,7 +42,8 @@ echo "Running autocatalyst.sh inside the chroot"
 chroot /tmp/triggerlinux-chroot bash -c "cd /opt/TriggerLinux && ./autocatalyst.sh && cd /"
 
 echo "Copying ISO image out of the chroot"
-cp -r /tmp/triggerlinux-chroot/var/tmp/catalyst/builds/default/*.iso ./triggerlinux-livedvd-$(date +%Y%m%d)-x86_64.iso
+cp /tmp/triggerlinux-chroot/var/tmp/catalyst/builds/default/*.tar.bz2 $scriptdir/triggerlinux-livedvd-stage1-latest.tar.bz2
+cp /tmp/triggerlinux-chroot/var/tmp/catalyst/builds/default/*.iso $scriptdir/triggerlinux-livedvd-latest-x86_64.iso
 
 echo "Removing the chroot"
 umount -lf /tmp/triggerlinux-chroot/{etc/resolv.conf,dev/shm,dev/pts,dev,sys,proc}

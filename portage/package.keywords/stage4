@@ -129,4 +129,4 @@
 # required by app-admin/calamares (argument)
 =app-admin/calamares-3.2.12 ~amd64
 # required by dev-python/jade-application-kit (argument)	
-=dev-python/jade-application-kit-9999 **
+=dev-python/jade-application-kit-9999 ~amd64
