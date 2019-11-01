@@ -130,3 +130,7 @@
 =app-admin/calamares-3.2.12 ~amd64
 # required by dev-python/jade-application-kit (argument)	
 =dev-python/jade-application-kit-9999 ~amd64
+=dev-python/pip-9999 ~amd64
+>=app-text/hunspell-1.7.0 ~amd64
+>=dev-util/boost-build-1.70.0 ~amd64
+>=dev-libs/boost-1.70.0 ~amd64

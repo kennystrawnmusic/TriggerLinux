@@ -55,9 +55,8 @@ for i in $(ls /usr/share/icons); do
 done
 rm -rf squashfs-root
 
-#Install JAK using pip, then unmerge pip
+#Install JAK using pip
 pip install -I jade-application-kit
-emerge -C dev-python/pip
 
 #Live media hostname
 echo "livecd" > /etc/hostname
