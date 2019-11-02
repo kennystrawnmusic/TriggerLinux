@@ -80,6 +80,7 @@ elif [ "$1" == "remove" ]; then
   shift
   for i in $(ls /Applications | grep $@); do
     rm -f /Applications/$i
+    rm -f $(grep -r "\.AppImage" /usr/share/applications | cut -d ':' -f1 | grep "$i")
   done
 else
   echo "Usage: imgmerge [sync|search|install <packagenames>|remove <packagenames>]"
