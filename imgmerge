@@ -69,7 +69,7 @@ elif [ "$1" == "install" ]; then
         else
           file=$k
         fi
-        icon_dir_scalable="/$(echo $j | rev | cut -d\/ -f2- | rev)"
+        icon_dir_scalable="/$(echo $k | rev | cut -d\/ -f2- | rev)"
         if [ ! -d $icon_dir_scalable ]; then
           mkdir -p $icon_dir_scalable
           cp squashfs-root/$file /$file
