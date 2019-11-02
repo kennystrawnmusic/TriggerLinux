@@ -39,14 +39,16 @@ elif [ "$1" == "install" ]; then
     done
   fi
 elif [ "$1" == "remove" ]; then
-  todel="$(ls /Applications | grep $2)"
-  rm -f /Applications/$todel
+  shift
+  for i in $(ls /Applications | grep $@)
+    rm -f /Applications/$i
+  done
 else
-  echo "Usage: imgmerge [sync|search|install <packagename>|remove <packagename>]"
+  echo "Usage: imgmerge [sync|search|install <packagenames>|remove <packagenames>]"
   echo "    sync: Build database of AppImages"
   echo "    search: Search for an AppImage in the database"
-  echo "    install <packagename>: Install AppImage by name"
-  echo "    remove <packagename>: Delete AppImage"
+  echo "    install <packagenames>: Install AppImage by name"
+  echo "    remove <packagenames>: Delete AppImage"
 fi
     
       
