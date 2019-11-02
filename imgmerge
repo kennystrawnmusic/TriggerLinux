@@ -38,9 +38,9 @@ elif [ "$1" == "install" ]; then
       chmod a+x /Applications/$(echo $i | cut -d\/ -f5).AppImage
       cd /tmp
       /Applications/$(echo $i | cut -d\/ -f5).AppImage --appimage-extract
-      icons_static=$(find squashfs-root -iname "*.png" | cut -d\/ -f2-)
-      icons_scalable=$(find squashfs-root -iname "*.svg" | cut -d\/ -f2-)
-      desktop_files=$(find squashfs-root -iname "*.desktop" | cut -d\/ -f2-)
+      icons_static=$(find -L squashfs-root/usr/share/icons -iname "*.png" | cut -d\/ -f2-)
+      icons_scalable=$(find -L squashfs-root/usr/share/icons -iname "*.svg" | cut -d\/ -f2-)
+      desktop_files=$(find -L squashfs-root/usr/share/applications -iname "*.desktop" | cut -d\/ -f2-)
       echo "Copying icons..."
       for j in $icons_static; do
         icon_dir_static="/$(echo $j | rev | cut -d\/ -f2- | rev)"
@@ -66,13 +66,6 @@ elif [ "$1" == "install" ]; then
         sed -i "s/Exec=.*/Exec=\/Applications\/$(echo $i | cut -d\/ -f5).AppImage/" /$l
       done
       rm -rf squashfs-root
-      cd /
-      if [ -d *.png ]; then
-        rm -rf *.png
-      fi
-      if [ -f *.desktop ]; then
-        rm -f *.desktop
-      fi
       echo "Successfully installed $i"
     done
   fi
