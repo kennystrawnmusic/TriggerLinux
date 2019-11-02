@@ -50,6 +50,3 @@ else
   echo "    install <packagenames>: Install AppImage by name"
   echo "    remove <packagenames>: Delete AppImage"
 fi
-    
-      
-    
