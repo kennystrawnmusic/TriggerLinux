@@ -66,6 +66,13 @@ elif [ "$1" == "install" ]; then
         sed -i "s/Exec=.*/Exec=\/Applications\/$(echo $i | cut -d\/ -f5).AppImage/" /$l
       done
       rm -rf squashfs-root
+      cd /
+      if [ -d *.png ]; then
+        rm -rf *.png
+      fi
+      if [ -f *.desktop ]; then
+        rm -f *.desktop
+      fi
       echo "Successfully installed $i"
     done
   fi
