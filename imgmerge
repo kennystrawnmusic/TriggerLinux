@@ -41,17 +41,20 @@ elif [ "$1" == "install" ]; then
       icons_static=$(find squashfs-root -iname "*.png" | cut -c14-)
       icons_scalable=$(find squashfs-root -iname "*.svg" | cut -c14-)
       desktop_files=$(find squashfs-root -iname "*.desktop" | cut -c14-)
+      echo "Copying icons..."
       for j in $icons_static; do
         cp squashfs-root$j $j
       done
       for k in $icons_scalable; do
         cp squashfs-root$k $k
       done
+      echo "Copying and configuring .desktop files..."
       for l in $desktop_files; do
         cp squashfs-root$l $l
         sed -i "s/Exec=.*/Exec=\/Applications\/$(echo $i | cut -d \/ -f5).AppImage/" $l
       done
       rm -rf squashfs-root
+      echo "Successfully installed $i"
     done
   fi
 elif [ "$1" == "remove" ]; then
