@@ -90,7 +90,7 @@ imgmerge install $(ls /Applications | cut -d '.' -f1 | grep -v "Kdenlive" | grep
 
 #Pip
 pip install $(pip list --outdated | awk '{ print $1 }') --upgrade
-pip install /etc/pip/portage-2.3.78.b-py3-none-any.whl
+pip install /etc/pip/portage*.whl
 /usr/lib64/python3.6/site-packages/usr/bin/emerge -av portage
 
 #Portage
