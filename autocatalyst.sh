@@ -129,7 +129,7 @@ build() {
   install -m 755 $scriptdir/appimagehub $stage1chroot/usr/bin/appimagehub && \
   install -m 755 $scriptdir/imgmerge $stage1chroot/usr/bin/imgmerge && \
   mkdir -p $stage1chroot/etc/pip && \
-  cp $scriptdir/portage-2.3.78-py3.b-none-any.whl $stage1chroot/etc/pip && \
+  cp $scriptdir/*.whl $stage1chroot/etc/pip && \
   catalyst -f $stage2spec
 }
 
