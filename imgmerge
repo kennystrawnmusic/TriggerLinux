@@ -30,9 +30,9 @@ elif [ "$1" == "install" ]; then
     for i in $pkgs; do
       domain=$(echo $i | cut -d "/" -f3)
       if [ "$domain" == "download.opensuse.org" ]; then
-        appimage="https://$domain$(wget -qO - $i | grep \"mirrorbrain-btn\" | cut -d\" -f2 )"
+        appimage=https://$domain$(wget -qO - $i | grep "mirrorbrain-btn" | cut -d\" -f2 )
       else
-        appimage="https://$domain$(wget -qO - $i | grep 'd-flex flex-items-center min-width-0' | grep AppImage | sort -rn | head -n1 | cut -d\" -f2)"
+        appimage=https://$domain$(wget -qO - $i | grep -v "\.com" | grep -v "\.org" | grep -Eo "/.*\.AppImage" | head -n1)
       fi
       wget -O /Applications/$(echo $i | cut -d / -f5).AppImage $appimage
       chmod a+x /Applications/$(echo $i | cut -d / -f5).AppImage
@@ -40,7 +40,7 @@ elif [ "$1" == "install" ]; then
   fi
 elif [ "$1" == "remove" ]; then
   shift
-  for i in $(ls /Applications | grep $@)
+  for i in $(ls /Applications | grep $@); do
     rm -f /Applications/$i
   done
 else
