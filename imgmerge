@@ -36,6 +36,22 @@ elif [ "$1" == "install" ]; then
       fi
       wget -qO /Applications/$(echo $i | cut -d / -f5).AppImage --show-progress $appimage
       chmod a+x /Applications/$(echo $i | cut -d / -f5).AppImage
+      cd /tmp
+      /Applications/$(echo $i | cut -d / -f5).AppImage --appimage-extract
+      icons_static=$(find squashfs-root -iname "*.png" | cut -c14-)
+      icons_scalable=$(find squashfs-root -iname "*.svg" | cut -c14-)
+      desktop_files=$(find squashfs-root -iname "*.desktop" | cut -c14-)
+      for j in $icons_static; do
+        cp squashfs-root$j $j
+      done
+      for k in $icons_scalable; do
+        cp squashfs-root$k $k
+      done
+      for l in $desktop_files; do
+        cp squashfs-root$l $l
+        sed -i "s/Exec=.*/Exec=/Applications/$(echo $i | cut -d / -f5).AppImage/" $l
+      done
+      rm -rf squashfs-root
     done
   fi
 elif [ "$1" == "remove" ]; then
