@@ -44,10 +44,11 @@ elif [ "$1" == "install" ]; then
       echo "Copying icons..."
       for j in $icons_static; do
         if [ -L $j ]; then
-          file=$(file $j | cut -d' ' -f5)
+          file=squashfs-root$(readlink $j)
           unlink $j
           mv $file $j
           file=$j
+        fi
         else
           file=$j
         fi
@@ -61,7 +62,7 @@ elif [ "$1" == "install" ]; then
       done
       for k in $icons_scalable; do
         if [ -L $k ]; then
-          file=$(file $k | cut -d' ' -f5)
+          file=squashfs-root$(readlink $k)
           unlink $k
           mv $file $k
           file=$k
@@ -79,7 +80,7 @@ elif [ "$1" == "install" ]; then
       echo "Copying and configuring .desktop files..."
       for l in $desktop_files; do
         if [ -L $l ]; then
-          file=$(file $l | cut -d' ' -f5)
+          file=squashfs-root$(readlink $l)
           unlink $l
           mv $file $l
           file=$l
