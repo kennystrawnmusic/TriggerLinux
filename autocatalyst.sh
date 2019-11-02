@@ -130,6 +130,7 @@ build() {
   install -m 755 $scriptdir/imgmerge $stage1chroot/usr/bin/imgmerge && \
   mkdir -p $stage1chroot/etc/pip && \
   cp $scriptdir/*.whl $stage1chroot/etc/pip && \
+  cat $scriptdir/os-release > $stage1chroot/etc/os-release && \
   catalyst -f $stage2spec
 }
 

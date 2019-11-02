@@ -1,0 +1,7 @@
+NAME=TriggerLinux
+ID=triggerlinux
+PRETTY_NAME="TriggerLinux"
+ANSI_COLOR="1;32"
+HOME_URL="https://github.com/realKennyStrawn93/TriggerLinux"
+SUPPORT_URL="https://github.com/realKennyStrawn93/TriggerLinux/wiki"
+BUG_REPORT_URL="https://github.com/realKennyStrawn93/TriggerLinux/issues"
