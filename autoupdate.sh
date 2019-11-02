@@ -75,7 +75,7 @@ else
     if [ ! -d /usr/share/icons/$i/scalable/apps ]; then
       mkdir -p /usr/share/icons/$i/scalable/apps
     fi
-    for j in $(ls squashfs-root/usr/share/icons/$i/*/apps | grep ':' | cut -d ':' -f1); do
+    for j in $(ls squashfs-root/usr/share/icons/$i/*/apps | grep ':' | cut -d ':' -f1 | cut -d '/' -f2-); do
       for k in $j/*; do
         cp -f $k /$j
       done
