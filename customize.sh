@@ -15,6 +15,10 @@ layman -L
 yes | layman -a brave-overlay
 yes | layman -o https://raw.githubusercontent.com/realKennyStrawn93/triggerlinux-overlay/master/triggerlinux-overlay.xml -f -a triggerlinux-overlay
 
+#Initialize imgmerge and use it to install zsync
+imgmerge sync
+imgmerge install zsync2
+
 #AppImage Daemon
 wget -O /usr/bin/appimaged https://github.com/AppImage/appimaged/releases/download/continuous/appimaged-x86_64.AppImage
 chmod a+x /usr/bin/appimaged
@@ -64,7 +68,7 @@ for i in $(ls squashfs-root/opt/libreoffice6.3/share/xdg); do
   sed -i "s/Exec=.*/Exec=\/Applications\/LibreOffice.AppImage\ \-\-$(echo $i | cut -d '.' -f1)/" $i
 done
 for i in $(ls /usr/share/icons); do
-  if [ ! -d /usr/share/icons/$i/scalable ]; then
+  if [ ! -d /usr/share/icons/$i/scalable/apps ]; then
     mkdir -p /usr/share/icons/$i/scalable/apps
   fi
   for j in $(ls usr/share/icons/$i/*/apps | grep ':' | cut -d ':' -f1); do
@@ -126,7 +130,7 @@ echo -e "idle-activation-enabled=false" >> /usr/share/glib-2.0/schemas/00_org.gn
 echo -e "[org.gnome.shell:GNOME]\nenabled-extensions=['dash-to-panel@jderose9.github.com', 'desktop-icons@csoriano', 'user-theme@gnome-shell-extensions.gcampax.github.com']" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
 
 #Favorites
-echo -e "favorite-apps=['org.gnome.Software.desktop', 'brave-bin.desktop', 'rhythmbox.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.gedit.desktop', 'libreoffice-writer.desktop', 'libreoffice-calc.desktop', 'libreoffice-impress.desktop', 'libreoffice-math.desktop', 'kdenlive.desktop']" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
+echo -e "favorite-apps=['appimagehub.desktop', 'brave-bin.desktop', 'rhythmbox.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.gedit.desktop', 'libreoffice-writer.desktop', 'libreoffice-calc.desktop', 'libreoffice-impress.desktop', 'libreoffice-math.desktop', 'kdenlive.desktop']" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
 
 #More window controls than just "Close"
 echo -e "[org.gnome.desktop.wm.preferences:GNOME]\nbutton-layout='appmenu:minimize,maximize,close'\n" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
