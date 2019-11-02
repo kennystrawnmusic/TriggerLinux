@@ -16,14 +16,14 @@ if [ "$1" == "sync" ]; then
   #Build AppImage database
   for i in $basenames; do
     wget -qO - https://appimage.github.io/$i | grep "button green" | cut -d "\"" -f2
-  done | tee /var/db/imgmerge/appimagelist.txt
+  done | tee /var/db/imgmerge/appimagelist
 elif [ "$1" == "search" ]; then
   shift
-  pkgs="$(for i in $@; do grep "$i" /var/db/imgmerge/appimagelist.txt; done)"
+  pkgs="$(for i in $@; do grep "$i" /var/db/imgmerge/appimagelist; done)"
   echo $pkgs
 elif [ "$1" == "install" ]; then
   shift
-  pkgs="$(for i in $@; do grep "$i" /var/db/imgmerge/appimagelist.txt; done)"
+  pkgs="$(for i in $@; do grep "$i" /var/db/imgmerge/appimagelist; done)"
   if [ -z "$pkgs" ]; then
     echo "Error: empty package list" && exit 137
   else
