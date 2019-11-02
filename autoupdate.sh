@@ -40,19 +40,8 @@ if [ "$new_version" == "$current_version" ]; then
   echo "Kdenlive already up-to-date; cleaning up"
   rm -f /tmp/Kdenlive.AppImage
 else
-  rm -f /Applications/Kdenlive.AppImage
-  mv /tmp/Kdenlive.AppImage /Applications/
-  chmod a+x /Applications/Kdenlive.AppImage
-  /Applications/Kdenlive.AppImage --appimage-extract
-  cp squashfs-root/org.kde.kdenlive.desktop /usr/share/applications/kdenlive.desktop
-  sed -i "s/Exec\=.*/Exec\=\/Applications\/Kdenlive.AppImage\ \%F/" /usr/share/applications/kdenlive.desktop
-  for i in $(ls /usr/share/icons); do
-    if [ ! -d /usr/share/icons/$i/scalable ]; then
-      mkdir -p /usr/share/icons/$i/scalable/apps
-    fi
-    cp squashfs-root/kdenlive.svg /usr/share/icons/$i/scalable/apps/kdenlive.svg
-  done
-  rm -rf squashfs-root
+  cd /tmp
+  imgmerge sideload Kdenlive
 fi
 
 #Update LibreOffice AppImage
@@ -63,25 +52,8 @@ if [ "$new_version" == "$current_version" ]; then
   echo "LibreOffice already up-to-date; cleaning up"
   rm -f /tmp/LibreOffice.AppImage
 else
-  rm -f /Applications/LibreOffice.AppImage
-  mv /tmp/LibreOffice.AppImage /Applications/
-  chmod a+x /Applications/LibreOffice.AppImage
-  /Applications/LibreOffice.AppImage --appimage-extract
-  for i in $(ls squashfs-root/opt/libreoffice6.3/share/xdg); do
-    cp $i /usr/share/applications/libreoffice-$i
-    sed -i "s/Exec=.*/Exec=\/Applications\/LibreOffice.AppImage\ \-\-$(echo $i | cut -d '.' -f1)/" $i
-  done
-  for i in $(ls /usr/share/icons); do
-    if [ ! -d /usr/share/icons/$i/scalable/apps ]; then
-      mkdir -p /usr/share/icons/$i/scalable/apps
-    fi
-    for j in $(ls squashfs-root/usr/share/icons/$i/*/apps | grep ':' | cut -d ':' -f1 | cut -d '/' -f2-); do
-      for k in $j/*; do
-        cp -f squashfs-root/$k /$j
-      done
-    done
-  done
-rm -rf squashfs-root
+  cd /tmp
+  imgmerge sideload LibreOffice
 fi
 
 #Packages installed with imgmerge

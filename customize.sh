@@ -45,42 +45,17 @@ done
 rm -rf squashfs-root
 
 #Install Kdenlive as AppImage
-mkdir /Applications
-wget -O /Applications/Kdenlive.AppImage $kdenlive
-chmod a+x /Applications/Kdenlive.AppImage
-/Applications/Kdenlive.AppImage --appimage-extract
-cp squashfs-root/org.kde.kdenlive.desktop /usr/share/applications/kdenlive.desktop
-sed -i "s/Exec\=.*/Exec\=\/Applications\/Kdenlive.AppImage\ \%F/" /usr/share/applications/kdenlive.desktop
-for i in $(ls /usr/share/icons); do
-  if [ ! -d /usr/share/icons/$i/scalable ]; then
-    mkdir -p /usr/share/icons/$i/scalable/apps
-  fi
-  cp squashfs-root/kdenlive.svg /usr/share/icons/$i/scalable/apps/kdenlive.svg
-done
-rm -rf squashfs-root
+wget $kdenlive
+imgmerge sideload kdenlive
 
 #Install LibreOffice as AppImage
-wget -O /Applications/LibreOffice.AppImage https://libreoffice.soluzioniopen.com/stable/full/LibreOffice-fresh.full-x86_64.AppImage
-chmod a+x /Applications/LibreOffice.AppImage
-/Applications/LibreOffice.AppImage --appimage-extract
-for i in $(ls squashfs-root/opt/libreoffice6.3/share/xdg); do
-  cp $i /usr/share/applications/libreoffice6.3-$i
-  sed -i "s/Exec=.*/Exec=\/Applications\/LibreOffice.AppImage\ \-\-$(echo $i | cut -d '.' -f1)/" $i
-done
-for i in $(ls /usr/share/icons); do
-  if [ ! -d /usr/share/icons/$i/scalable/apps ]; then
-    mkdir -p /usr/share/icons/$i/scalable/apps
-  fi
-  for j in $(ls squashfs-root/usr/share/icons/$i/*/apps | grep ':' | cut -d ':' -f1 | cut -d '/' -f2-); do
-    for k in $j/*; do
-      cp -f squashfs-root/$k /$j
-    done
-  done
-done
-rm -rf squashfs-root
+wget https://libreoffice.soluzioniopen.com/stable/full/LibreOffice-fresh.full-x86_64.AppImage
+imgmerge sideload LibreOffice
 
-#Install JAK using pip, then unmerge pip
+#Install JAK using pip, then reinstall and re-emerge Portage
 pip install -I jade-application-kit
+pip install -I /etc/pip/portage*.whl
+/usr/lib64/python3.6/site-packages/usr/bin/emerge -av portage
 
 #Live media hostname
 echo "livecd" > /etc/hostname

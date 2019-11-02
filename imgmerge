@@ -12,11 +12,15 @@ if [ ! -d /Applications ]; then
   mkdir /Applications
 fi
 
-if [ "$1" == "sync" ]; then
+if [ "$1" == "build" ]; then
   #Build AppImage database
   for i in $basenames; do
     wget -qO - https://appimage.github.io/$i | grep "button green" | cut -d "\"" -f2
   done | tee /var/db/imgmerge/appimagelist
+elif [ "$1" == "sync" ]; then
+  for entry in $(cat /etc/imgmerge/fetch.conf); do
+    wget -qO /var/db/imgmerge/appimagelist --show-progress $entry
+  done
 elif [ "$1" == "search" ]; then
   shift
   pkgs="$(for i in $@; do grep "$i" /var/db/imgmerge/appimagelist; done)"
@@ -37,16 +41,17 @@ elif [ "$1" == "install" ]; then
       wget -qO /Applications/$(echo $i | cut -d\/ -f5).AppImage --show-progress $appimage
       chmod a+x /Applications/$(echo $i | cut -d\/ -f5).AppImage
       cd /tmp
-      /Applications/$(echo $i | cut -d\/ -f5).AppImage --appimage-extract
-      icons_static=$(find -L squashfs-root/usr/share/icons -iname "*.png" | cut -d\/ -f2-)
-      icons_scalable=$(find -L squashfs-root/usr/share/icons -iname "*.svg" | cut -d\/ -f2-)
-      desktop_files=$(find -L squashfs-root/usr/share/applications -iname "*.desktop" | cut -d\/ -f2-)
+      /Applications/$(echo $i | cut -d\/ -f5).AppImage --appimage-extract &>/dev/null
+      icons_static=$(find squashfs-root/usr/share/icons -iname "*.png" | cut -d\/ -f2-)
+      icons_scalable=$(find squashfs-root/usr/share/icons -iname "*.svg" | cut -d\/ -f2-)
+      desktop_files=$(find squashfs-root/usr/share/applications -iname "*.desktop" | cut -d\/ -f2-)
       echo "Copying icons..."
       for j in $icons_static; do
-        if [ -L $j ]; then
-          file="squashfs-root$(readlink $j)"
+        filebase=$(readlink squashfs-root/$j)
+        if [ -n "$filebase" ]; then
+          file="squashfs-root$filebase"
           unlink $j
-          mv $file $j
+          cp $file $j
           icon_dir_static="/$(echo $j | rev | cut -d\/ -f2- | rev)"
           if [ ! -d $icon_dir_static ]; then
             mkdir -p $icon_dir_static
@@ -65,10 +70,11 @@ elif [ "$1" == "install" ]; then
         fi
       done
       for k in $icons_scalable; do
-        if [ -L $k ]; then
-          file="squashfs-root$(readlink $k)"
+        filebase=$(readlink squashfs-root/$k)
+        if [ -n "$filebase" ]; then
+          file="squashfs-root$filebase"
           unlink $k
-          mv $file $k
+          cp $file $k
           icon_dir_scalable="/$(echo $k | rev | cut -d\/ -f2- | rev)"
           if [ ! -d $icon_dir_scalable ]; then
             mkdir -p $icon_dir_scalable
@@ -78,8 +84,8 @@ elif [ "$1" == "install" ]; then
           fi
         else
           icon_dir_scalable="/$(echo $k | rev | cut -d\/ -f2- | rev)"
-          if [ ! -d $icon_dir_static ]; then
-            mkdir -p $icon_dir_static
+          if [ ! -d $icon_dir_scalable ]; then
+            mkdir -p $icon_dir_scalable
             cp squashfs-root/$k /$k
           else
             cp squashfs-root/$k /$k
@@ -88,25 +94,12 @@ elif [ "$1" == "install" ]; then
       done
       echo "Copying and configuring .desktop files..."
       for l in $desktop_files; do
-        if [ -L $l ] || [ ! -f $l ]; then
-          #Fix broken symlinks
-          cd squashfs-root
-          file="$(readlink $l | cut -d '/' -f2-)"
-          unlink $l
-          mv $file  $l
-          cp $l /$l
-          cd ..
-          sed -i "s/Exec=.*/Exec=\/Applications\/$(echo $i | cut -d'-' -f1).AppImage/" /$l
-        else
-          cd squashfs-root
-          cp $l /$l
-          sed -i "s/Exec=.*/Exec=\/Applications\/$(echo $i | cut -d'-' -f1).AppImage/" /$l
-          cd ..
-        fi
+        cp squashfs-root$(readlink squashfs-root/$l) /$l || cp squashfs-root/$l /$l 2>/dev/null
+        sed -i "s/Exec=.*/Exec=\/Applications\/$(echo $i | cut -d'-' -f1).AppImage/" /$l
       done
-      rm -rf squashfs-root
       echo "Successfully installed $i"
     done
+    rm -rf squashfs-root
   fi
 elif [ "$1" == "sideload" ]; then
   shift
@@ -119,16 +112,17 @@ elif [ "$1" == "sideload" ]; then
       cp $appimage /Applications/$(echo $i | cut -d'-' -f1).AppImage
       chmod a+x /Applications/$(echo $i | cut -d'-' -f1).AppImage
       cd /tmp
-      /Applications/$(echo $i | cut -d'-' -f1).AppImage --appimage-extract
+      /Applications/$(echo $i | cut -d'-' -f1).AppImage --appimage-extract &>/dev/null
       icons_static=$(find -L squashfs-root/usr/share/icons -iname "*.png" | cut -d\/ -f2-)
       icons_scalable=$(find -L squashfs-root/usr/share/icons -iname "*.svg" | cut -d\/ -f2-)
       desktop_files=$(find -L squashfs-root/usr/share/applications -iname "*.desktop" | cut -d\/ -f2-)
       echo "Copying icons..."
       for j in $icons_static; do
-        if [ -L $j ]; then
-          file="squashfs-root$(readlink $j)"
+        filebase=$(readlink squashfs-root/$j)
+        if [ -n "$filebase" ]; then
+          file="squashfs-root$filebase"
           unlink $j
-          mv $file $j
+          cp $file $j
           icon_dir_static="/$(echo $j | rev | cut -d\/ -f2- | rev)"
           if [ ! -d $icon_dir_static ]; then
             mkdir -p $icon_dir_static
@@ -147,10 +141,11 @@ elif [ "$1" == "sideload" ]; then
         fi
       done
       for k in $icons_scalable; do
-        if [ -L $k ]; then
-          file="squashfs-root$(readlink $k)"
+        filebase=$(readlink squashfs-root/$k)
+        if [ -n "$filebase" ]; then
+          file="squashfs-root$filebase"
           unlink $k
-          mv $file $k
+          cp $file $k
           icon_dir_scalable="/$(echo $k | rev | cut -d\/ -f2- | rev)"
           if [ ! -d $icon_dir_scalable ]; then
             mkdir -p $icon_dir_scalable
@@ -160,8 +155,8 @@ elif [ "$1" == "sideload" ]; then
           fi
         else
           icon_dir_scalable="/$(echo $k | rev | cut -d\/ -f2- | rev)"
-          if [ ! -d $icon_dir_static ]; then
-            mkdir -p $icon_dir_static
+          if [ ! -d $icon_dir_scalable ]; then
+            mkdir -p $icon_dir_scalable
             cp squashfs-root/$k /$k
           else
             cp squashfs-root/$k /$k
@@ -170,24 +165,12 @@ elif [ "$1" == "sideload" ]; then
       done
       echo "Copying and configuring .desktop files..."
       for l in $desktop_files; do
-        if [ -L $l ] || [ ! -f $l ]; then
-          #Fix broken symlinks
-          cd squashfs-root
-          file="$(readlink $l | cut -d '/' -f2-)"
-          unlink $l
-          mv $file  $l
-          cp $l /$l
-          cd ..
-          sed -i "s/Exec=.*/Exec=\/Applications\/$(echo $i | cut -d'-' -f1).AppImage/" /$l
-        else
-          cd squashfs-root
-          cp $l /$l
-          sed -i "s/Exec=.*/Exec=\/Applications\/$(echo $i | cut -d'-' -f1).AppImage/" /$l
-          cd ..
-        fi
+        cp squashfs-root$(readlink squashfs-root/$l) /$l || cp squashfs-root/$l /$l 2>/dev/null
+        sed -i "s/Exec=.*/Exec=\/Applications\/$(echo $i | cut -d'-' -f1).AppImage/" /$l
       done
       echo "Successfully installed $i"
     done
+    rm -rf squashfs-root
   fi
 elif [ "$1" == "remove" ]; then
   shift
@@ -197,7 +180,8 @@ elif [ "$1" == "remove" ]; then
   done
 else
   echo "Usage: imgmerge [sync|search|install <packagenames>|remove <packagenames>]"
-  echo "    sync: Build database of AppImages"
+  echo "    build: Build database of AppImages"
+  echo "    sync: Download database of AppImages"
   echo "    search: Search for an AppImage in the database"
   echo "    install <packagenames>: Install AppImages by name from the AppImageHub"
   echo "    sideload <packagenames>: Install AppImages by name from current working directory"
