@@ -77,7 +77,7 @@ else
     fi
     for j in $(ls squashfs-root/usr/share/icons/$i/*/apps | grep ':' | cut -d ':' -f1 | cut -d '/' -f2-); do
       for k in $j/*; do
-        cp -f $k /$j
+        cp -f squashfs-root/$k /$j
       done
     done
   done
