@@ -49,7 +49,7 @@ elif [ "$1" == "install" ]; then
       done
       for l in $desktop_files; do
         cp squashfs-root$l $l
-        sed -i "s/Exec=.*/Exec=/Applications/$(echo $i | cut -d / -f5).AppImage/" $l
+        sed -i "s/Exec=.*/Exec='\/Applications'\/$(echo $i | cut -d \/ -f5).AppImage/" $l
       done
       rm -rf squashfs-root
     done
