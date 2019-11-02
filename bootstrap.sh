@@ -23,27 +23,32 @@ rm -rf /tmp/triggerlinux-chroot/var/db/repos/gentoo
 mkdir -p /tmp/triggerlinux-chroot/var/db/repos/gentoo
 
 echo "Binding DNS resolver configuration files to the chroot"
-mount --bind /etc/resolv.conf /tmp/triggerlinux-chroot/etc/resolv.conf
+if [ ! -f /tmp/triggerlinux-chroot/etc/resolv.conf ]; then
+  touch /tmp/triggerlinux-chroot/etc/resolv.conf
+  mount --bind /etc/resolv.conf /tmp/triggerlinux-chroot/etc/resolv.conf
+else
+  mount --bind /etc/resolv.conf /tmp/triggerlinux-chroot/etc/resolv.conf
+fi
 
 echo "Emerging necessary packages inside the chroot"
-chroot /tmp/triggerlinux-chroot mount -t proc none /proc
-chroot /tmp/triggerlinux-chroot mount -t sysfs none /sys
-chroot /tmp/triggerlinux-chroot mount -t devtmpfs none /dev
-chroot /tmp/triggerlinux-chroot mount -t devpts none /dev/pts
-chroot /tmp/triggerlinux-chroot mount -t tmpfs none /dev/shm
-chroot /tmp/triggerlinux-chroot emerge --sync
-chroot /tmp/triggerlinux-chroot emerge app-portage/layman
-chroot /tmp/triggerlinux-chroot layman -L
-chroot /tmp/triggerlinux-chroot bash -c "yes | layman -a brave-overlay"
-chroot /tmp/triggerlinux-chroot bash -c "yes | layman -o https://raw.githubusercontent.com/realKennyStrawn93/triggerlinux-overlay/master/triggerlinux-overlay.xml -f -a triggerlinux-overlay"
+chroot /tmp/triggerlinux-chroot /bin/mount -t proc none /proc
+chroot /tmp/triggerlinux-chroot /bin/mount -t sysfs none /sys
+chroot /tmp/triggerlinux-chroot /bin/mount -t devtmpfs none /dev
+chroot /tmp/triggerlinux-chroot /bin/mount -t devpts none /dev/pts
+chroot /tmp/triggerlinux-chroot /bin/mount -t tmpfs none /dev/shm
+chroot /tmp/triggerlinux-chroot /usr/bin/emerge --sync
+chroot /tmp/triggerlinux-chroot /usr/bin/emerge app-portage/layman
+chroot /tmp/triggerlinux-chroot /usr/bin/layman -L
+chroot /tmp/triggerlinux-chroot /bin/bash -c "source /etc/profile && yes | layman -a brave-overlay"
+chroot /tmp/triggerlinux-chroot /bin/bash -c "source /etc/profile && yes | layman -o https://raw.githubusercontent.com/realKennyStrawn93/triggerlinux-overlay/master/triggerlinux-overlay.xml -f -a triggerlinux-overlay"
 # Needed to avoid "permission denied" errors when building
-chroot /tmp/triggerlinux-chroot chmod -R 777 /var/cache
+chroot /tmp/triggerlinux-chroot /bin/chmod -R 777 /var/cache
 
 echo "Instaling the TriggerLinux build scripts inside the chroot"
-chroot /tmp/triggerlinux-chroot emerge dev-util/triggerlinux-autobuilder
+chroot /tmp/triggerlinux-chroot /usr/bin/emerge dev-util/triggerlinux-autobuilder
 
 echo "Running autocatalyst.sh inside the chroot"
-chroot /tmp/triggerlinux-chroot bash -c "cd /opt/TriggerLinux && ./autocatalyst.sh && cd /"
+chroot /tmp/triggerlinux-chroot /bin/bash -c "cd /opt/TriggerLinux && ./autocatalyst.sh && cd /"
 
 echo "Copying ISO image and stage tarball out of the chroot"
 cp /tmp/triggerlinux-chroot/var/tmp/catalyst/builds/default/*.tar.bz2 $scriptdir/triggerlinux-livedvd-stage1-latest.tar.bz2
