@@ -43,26 +43,50 @@ elif [ "$1" == "install" ]; then
       desktop_files=$(find -L squashfs-root/usr/share/applications -iname "*.desktop" | cut -d\/ -f2-)
       echo "Copying icons..."
       for j in $icons_static; do
+        if [ -L $j ]; then
+          file=$(file $j | cut -d' ' -f5)
+          unlink $j
+          mv $file $j
+          file=$j
+        else
+          file=$j
+        fi
         icon_dir_static="/$(echo $j | rev | cut -d\/ -f2- | rev)"
         if [ ! -d $icon_dir_static ]; then
           mkdir -p $icon_dir_static
-          cp squashfs-root/$j /$j
+          cp squashfs-root/$file /$file
         else
-          cp squashfs-root/$j /$j
+          cp squashfs-root/$file /$file
         fi
       done
       for k in $icons_scalable; do
+        if [ -L $k ]; then
+          file=$(file $k | cut -d' ' -f5)
+          unlink $k
+          mv $file $k
+          file=$k
+        else
+          file=$k
+        fi
         icon_dir_scalable="/$(echo $j | rev | cut -d\/ -f2- | rev)"
         if [ ! -d $icon_dir_scalable ]; then
           mkdir -p $icon_dir_scalable
-          cp squashfs-root/$k /$k
+          cp squashfs-root/$file /$file
         else
-          cp squashfs-root/$k /$k
+          cp squashfs-root/$file /$file
         fi
       done
       echo "Copying and configuring .desktop files..."
       for l in $desktop_files; do
-        cp squashfs-root/$l /$l
+        if [ -L $l ]; then
+          file=$(file $l | cut -d' ' -f5)
+          unlink $l
+          mv $file $l
+          file=$l
+        else
+          file=$l
+        fi
+        cp squashfs-root/$file /$file
         sed -i "s/Exec=.*/Exec=\/Applications\/$(echo $i | cut -d\/ -f5).AppImage/" /$l
       done
       rm -rf squashfs-root
