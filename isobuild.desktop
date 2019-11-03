@@ -17,7 +17,7 @@ Actions=new-window;preferences;
 
 [Desktop Action new-window]
 Name=New Window
-Exec=gnome-terminal -- /opt/TriggerLinux/autocatalyst.sh --window
+Exec=gnome-terminal --window -- /opt/TriggerLinux/autocatalyst.sh
 
 [Desktop Action preferences]
 Exec=gnome-terminal --preferences
