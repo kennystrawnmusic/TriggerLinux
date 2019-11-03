@@ -46,6 +46,7 @@ boot/kernel/gentoo/packages:
 	sys-apps/pcmciautils
 	sys-kernel/linux-firmware
 	sys-fs/ntfs3g
+	dev-util/triggerlinux-autobuilder
 	=gnome-extra/gnome-software-3.34.1
 	x11-drivers/xf86-video-amdgpu
 
