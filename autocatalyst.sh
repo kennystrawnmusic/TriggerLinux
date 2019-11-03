@@ -133,6 +133,7 @@ build() {
   mkdir -p $stage1chroot/etc/pip && \
   cp $scriptdir/*.whl $stage1chroot/etc/pip && \
   cat $scriptdir/os-release > $stage1chroot/etc/os-release && \
+  cp $scriptdir/isobuild.desktop $stage1chroot/usr/share/applications/isobuild.desktop && \
   catalyst -f $stage2spec
 }
 
