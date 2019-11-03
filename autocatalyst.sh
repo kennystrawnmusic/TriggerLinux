@@ -122,16 +122,12 @@ build() {
   cp $scriptdir/autoupdate\.{service,timer} $stage1chroot/lib/systemd/system && \
   cp $scriptdir/unmerge-calamares.service $stage1chroot/lib/systemd/system && \
   cp $scriptdir/cleanup.service $stage1chroot/lib/systemd/system && \
-  cp $scriptdir/appimagehub.desktop $stage1chroot/usr/share/applications && \
   cat $scriptdir/org.gnome.settings-daemon.plugins.power.gschema.override > $stage1chroot/usr/share/glib-2.0/schemas/org.gnome.settings-daemon.plugins.power.gschema.override && \
   install -m 755 $scriptdir/autoupdate.sh $stage1chroot/usr/bin/autoupdate.sh && \
   install -m 755 $scriptdir/cleanup.sh $stage1chroot/usr/bin/cleanup.sh && \
-  install -m 755 $scriptdir/appimagehub $stage1chroot/usr/bin/appimagehub && \
   mkdir -p $stage1chroot/etc/imgmerge && \
   cp $scriptdir/fetch.conf $stage1chroot/etc/imgmerge && \
   install -m 755 $scriptdir/imgmerge $stage1chroot/usr/bin/imgmerge && \
-  mkdir -p $stage1chroot/etc/pip && \
-  cp $scriptdir/*.whl $stage1chroot/etc/pip && \
   cat $scriptdir/os-release > $stage1chroot/etc/os-release && \
   cp $scriptdir/isobuild.desktop $stage1chroot/usr/share/applications/isobuild.desktop && \
   catalyst -f $stage2spec

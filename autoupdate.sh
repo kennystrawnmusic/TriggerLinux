@@ -62,11 +62,6 @@ fi
 imgmerge sync
 imgmerge install $(ls /Applications | cut -d '.' -f1 | grep -v "Kdenlive" | grep -v "LibreOffice")
 
-#Pip
-pip install $(pip list --outdated | awk '{ print $1 }') --upgrade
-pip install -I /etc/pip/portage*.whl
-/usr/lib64/python3.6/site-packages/usr/bin/emerge -av portage
-
 #Portage
 emerge --sync
 layman -S

@@ -360,7 +360,6 @@ livecd/packages:
 	dev-python/olefile
 	dev-python/pbr
 	dev-python/pillow
-	=dev-python/pip-9999
 	dev-python/ply
 	dev-python/pyblake2
 	dev-python/pycairo

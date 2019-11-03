@@ -51,11 +51,6 @@ imgmerge install kdenlive
 wget https://libreoffice.soluzioniopen.com/stable/full/LibreOffice-fresh.full-x86_64.AppImage
 imgmerge sideload LibreOffice
 
-#Install JAK using pip, then reinstall and re-emerge Portage
-pip install -I jade-application-kit
-pip install -I /etc/pip/portage*.whl
-/usr/lib64/python3.6/site-packages/usr/bin/emerge -av portage
-
 #More branding manipulation
 grep -lERZ /etc/grub.d "Gentoo\ GNU\/Linux" | xargs -0l sed -i -e "s/Gentoo\ GNU\/Linux/TriggerLinux/g"
 
@@ -107,7 +102,7 @@ echo -e "idle-activation-enabled=false" >> /usr/share/glib-2.0/schemas/00_org.gn
 echo -e "[org.gnome.shell:GNOME]\nenabled-extensions=['dash-to-panel@jderose9.github.com', 'desktop-icons@csoriano', 'user-theme@gnome-shell-extensions.gcampax.github.com']" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
 
 #Favorites
-echo -e "favorite-apps=['appimagehub.desktop', 'brave-bin.desktop', 'rhythmbox.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.gedit.desktop', 'libreoffice-writer.desktop', 'libreoffice-calc.desktop', 'libreoffice-impress.desktop', 'libreoffice-math.desktop', 'kdenlive.desktop']" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
+echo -e "favorite-apps=['org.gnome.Software.desktop', 'brave-bin.desktop', 'rhythmbox.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.gedit.desktop', 'libreoffice-writer.desktop', 'libreoffice-calc.desktop', 'libreoffice-impress.desktop', 'libreoffice-math.desktop', 'kdenlive.desktop']" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
 
 #More window controls than just "Close"
 echo -e "[org.gnome.desktop.wm.preferences:GNOME]\nbutton-layout='appmenu:minimize,maximize,close'\n" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
