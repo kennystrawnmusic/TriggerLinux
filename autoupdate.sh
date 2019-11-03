@@ -42,6 +42,7 @@ if [ "$new_version" == "$current_version" ]; then
 else
   cd /tmp
   imgmerge sideload Kdenlive
+  rm -f /tmp/Kdenlive.AppImage
 fi
 
 #Update LibreOffice AppImage
@@ -54,6 +55,7 @@ if [ "$new_version" == "$current_version" ]; then
 else
   cd /tmp
   imgmerge sideload LibreOffice
+  rm -f /tmp/LibreOffice.AppImage
 fi
 
 #Packages installed with imgmerge

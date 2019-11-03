@@ -135,3 +135,4 @@
 >=dev-util/boost-build-1.70.0 ~amd64
 >=dev-libs/boost-1.70.0 ~amd64
 =dev-util/triggerlinux-autobuilder-9999 ~amd64
+=app-emulation/snapd-glib-9999 ~amd64
