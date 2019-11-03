@@ -36,70 +36,134 @@ elif [ "$1" == "install" ]; then
       if [ "$domain" == "download.opensuse.org" ]; then
         appimage=https://$domain$(wget -qO - $i | grep "mirrorbrain-btn" | cut -d\" -f2 )
       elif [ "$domain" == "files.kde.org" ]; then
-        appimage="https://$domain/$i/release/$(wget -qO - https://files.kde.org/kdenlive/release/ | grep -Eo \"href=.*\.AppImage\" | cut -d\" -f2 | sort -Vr)"
+        filename=$(wget -qO - $i | grep -Eo "href=\".*\.[Aa]pp[Ii]mage\"" | cut -d\" -f2 | sort -Vr | head -n1)
+        appimage=$i/$(echo $filename)
       else
         appimage=https://$domain$(wget -qO - $i | grep -v "\.com" | grep -v "\.org" | grep -Eo "/.*\.[Aa]pp[Ii]mage" | grep "$(uname -m)" | head -n1)
       fi
-      wget -qO /Applications/$(echo $i | cut -d\/ -f5).AppImage --show-progress $appimage
-      chmod a+x /Applications/$(echo $i | cut -d\/ -f5).AppImage
-      cd /tmp
-      /Applications/$(echo $i | cut -d\/ -f5).AppImage --appimage-extract &>/dev/null
-      icons_static=$(find squashfs-root/usr/share/icons -iname "*.png" | cut -d\/ -f2-)
-      icons_scalable=$(find squashfs-root/usr/share/icons -iname "*.svg" | cut -d\/ -f2-)
-      desktop_files=$(find squashfs-root/usr/share/applications -iname "*.desktop" | cut -d\/ -f2-)
-      echo "Copying icons..."
-      for j in $icons_static; do
-        filebase=$(readlink squashfs-root/$j)
-        if [ -n "$filebase" ]; then
-          file="squashfs-root$filebase"
-          unlink $j
-          cp $file $j
-          icon_dir_static="/$(echo $j | rev | cut -d\/ -f2- | rev)"
-          if [ ! -d $icon_dir_static ]; then
-            mkdir -p $icon_dir_static
-            cp squashfs-root/$j /$j
+      if [[ "$i" == *"kdenlive"* ]]; then
+        wget -qO /Applications/$(echo $i | cut -d\/ -f4).AppImage --show-progress $appimage
+        chmod a+x /Applications/$(echo $i | cut -d\/ -f4).AppImage
+        cd /tmp
+        /Applications/$(echo $i | cut -d\/ -f4).AppImage --appimage-extract &>/dev/null
+        icons_static=$(find squashfs-root/usr/share/icons -iname "*.png" | cut -d\/ -f2-)
+        icons_scalable=$(find squashfs-root/usr/share/icons -iname "*.svg" | cut -d\/ -f2-)
+        desktop_files=$(find squashfs-root/usr/share/applications -iname "*.desktop" | cut -d\/ -f2-)
+        echo "Copying icons..."
+        for j in $icons_static; do
+          filebase=$(readlink squashfs-root/$j)
+          if [ -n "$filebase" ]; then
+            file="squashfs-root$filebase"
+            unlink $j
+            cp $file $j
+            icon_dir_static="/$(echo $j | rev | cut -d\/ -f2- | rev)"
+            if [ ! -d $icon_dir_static ]; then
+              mkdir -p $icon_dir_static
+              cp squashfs-root/$j /$j
+            else
+              cp squashfs-root/$j /$j
+            fi
           else
-            cp squashfs-root/$j /$j
+            icon_dir_static="/$(echo $j | rev | cut -d\/ -f2- | rev)"
+            if [ ! -d $icon_dir_static ]; then
+              mkdir -p $icon_dir_static
+              cp squashfs-root/$j /$j
+            else
+              cp squashfs-root/$j /$j
+            fi
           fi
-        else
-          icon_dir_static="/$(echo $j | rev | cut -d\/ -f2- | rev)"
-          if [ ! -d $icon_dir_static ]; then
-            mkdir -p $icon_dir_static
-            cp squashfs-root/$j /$j
+        done
+        for k in $icons_scalable; do
+          filebase=$(readlink squashfs-root/$k)
+          if [ -n "$filebase" ]; then
+            file="squashfs-root$filebase"
+            unlink $k
+            cp $file $k
+            icon_dir_scalable="/$(echo $k | rev | cut -d\/ -f2- | rev)"
+            if [ ! -d $icon_dir_scalable ]; then
+              mkdir -p $icon_dir_scalable
+              cp squashfs-root/$k /$k
+            else
+              cp squashfs-root/$k /$k
+            fi
           else
-            cp squashfs-root/$j /$j
+            icon_dir_scalable="/$(echo $k | rev | cut -d\/ -f2- | rev)"
+            if [ ! -d $icon_dir_scalable ]; then
+              mkdir -p $icon_dir_scalable
+              cp squashfs-root/$k /$k
+            else
+              cp squashfs-root/$k /$k
+            fi
           fi
-        fi
-      done
-      for k in $icons_scalable; do
-        filebase=$(readlink squashfs-root/$k)
-        if [ -n "$filebase" ]; then
-          file="squashfs-root$filebase"
-          unlink $k
-          cp $file $k
-          icon_dir_scalable="/$(echo $k | rev | cut -d\/ -f2- | rev)"
-          if [ ! -d $icon_dir_scalable ]; then
-            mkdir -p $icon_dir_scalable
-            cp squashfs-root/$k /$k
+        done
+        echo "Copying and configuring .desktop files..."
+        for l in $desktop_files; do
+          cp squashfs-root$(readlink squashfs-root/$l) /$l || cp squashfs-root/$l /$l 2>/dev/null
+          sed -i "s/Exec=.*/Exec=\/Applications\/$(echo $i | cut -d'/' -f4).AppImage/" /$l
+        done
+        echo "Successfully installed $i"
+      else
+        wget -qO /Applications/$(echo $i | cut -d\/ -f5).AppImage --show-progress $appimage
+        chmod a+x /Applications/$(echo $i | cut -d\/ -f5).AppImage
+        cd /tmp
+        /Applications/$(echo $i | cut -d\/ -f5).AppImage --appimage-extract &>/dev/null
+        icons_static=$(find squashfs-root/usr/share/icons -iname "*.png" | cut -d\/ -f2-)
+        icons_scalable=$(find squashfs-root/usr/share/icons -iname "*.svg" | cut -d\/ -f2-)
+        desktop_files=$(find squashfs-root/usr/share/applications -iname "*.desktop" | cut -d\/ -f2-)
+        echo "Copying icons..."
+        for j in $icons_static; do
+          filebase=$(readlink squashfs-root/$j)
+          if [ -n "$filebase" ]; then
+            file="squashfs-root$filebase"
+            unlink $j
+            cp $file $j
+            icon_dir_static="/$(echo $j | rev | cut -d\/ -f2- | rev)"
+            if [ ! -d $icon_dir_static ]; then
+              mkdir -p $icon_dir_static
+              cp squashfs-root/$j /$j
+            else
+              cp squashfs-root/$j /$j
+            fi
           else
-            cp squashfs-root/$k /$k
+            icon_dir_static="/$(echo $j | rev | cut -d\/ -f2- | rev)"
+            if [ ! -d $icon_dir_static ]; then
+              mkdir -p $icon_dir_static
+              cp squashfs-root/$j /$j
+            else
+              cp squashfs-root/$j /$j
+            fi
           fi
-        else
-          icon_dir_scalable="/$(echo $k | rev | cut -d\/ -f2- | rev)"
-          if [ ! -d $icon_dir_scalable ]; then
-            mkdir -p $icon_dir_scalable
-            cp squashfs-root/$k /$k
+        done
+        for k in $icons_scalable; do
+          filebase=$(readlink squashfs-root/$k)
+          if [ -n "$filebase" ]; then
+            file="squashfs-root$filebase"
+            unlink $k
+            cp $file $k
+            icon_dir_scalable="/$(echo $k | rev | cut -d\/ -f2- | rev)"
+            if [ ! -d $icon_dir_scalable ]; then
+              mkdir -p $icon_dir_scalable
+              cp squashfs-root/$k /$k
+            else
+              cp squashfs-root/$k /$k
+            fi
           else
-            cp squashfs-root/$k /$k
+            icon_dir_scalable="/$(echo $k | rev | cut -d\/ -f2- | rev)"
+            if [ ! -d $icon_dir_scalable ]; then
+              mkdir -p $icon_dir_scalable
+              cp squashfs-root/$k /$k
+            else
+              cp squashfs-root/$k /$k
+            fi
           fi
-        fi
-      done
-      echo "Copying and configuring .desktop files..."
-      for l in $desktop_files; do
-        cp squashfs-root$(readlink squashfs-root/$l) /$l || cp squashfs-root/$l /$l 2>/dev/null
-        sed -i "s/Exec=.*/Exec=\/Applications\/$(echo $i | cut -d'-' -f1).AppImage/" /$l
-      done
-      echo "Successfully installed $i"
+        done
+        echo "Copying and configuring .desktop files..."
+        for l in $desktop_files; do
+          cp squashfs-root$(readlink squashfs-root/$l) /$l || cp squashfs-root/$l /$l 2>/dev/null
+          sed -i "s/Exec=.*/Exec=\/Applications\/$(echo $i | cut -d'/' -f5).AppImage/" /$l
+        done
+        echo "Successfully installed $i"
+      fi
     done
     rm -rf squashfs-root
   fi

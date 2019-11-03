@@ -45,8 +45,7 @@ done
 rm -rf squashfs-root
 
 #Install Kdenlive as AppImage
-wget $kdenlive
-imgmerge sideload kdenlive
+imgmerge install kdenlive
 
 #Install LibreOffice as AppImage
 wget https://libreoffice.soluzioniopen.com/stable/full/LibreOffice-fresh.full-x86_64.AppImage
@@ -56,6 +55,9 @@ imgmerge sideload LibreOffice
 pip install -I jade-application-kit
 pip install -I /etc/pip/portage*.whl
 /usr/lib64/python3.6/site-packages/usr/bin/emerge -av portage
+
+#More branding manipulation
+grep -lERZ /etc/grub.d "Gentoo\ GNU\/Linux" | xargs -0l sed -i -e "s/Gentoo\ GNU\/Linux/TriggerLinux/g"
 
 #Live media hostname
 echo "livecd" > /etc/hostname
