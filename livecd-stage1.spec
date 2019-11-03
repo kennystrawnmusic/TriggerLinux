@@ -471,7 +471,6 @@ livecd/packages:
 	gnome-extra/gnome-shell-extension-dash-to-panel
 	gnome-extra/gnome-shell-extension-desktop-icons
 	gnome-extra/gnome-shell-extensions
-	gnome-extra/gnome-software
 	gnome-extra/gnome-system-monitor
 	gnome-extra/gnome-tweaks
 	gnome-extra/gnome-user-docs
