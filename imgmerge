@@ -35,6 +35,8 @@ elif [ "$1" == "install" ]; then
       domain=$(echo $i | cut -d "/" -f3)
       if [ "$domain" == "download.opensuse.org" ]; then
         appimage=https://$domain$(wget -qO - $i | grep "mirrorbrain-btn" | cut -d\" -f2 )
+      elif [ "$domain" == "files.kde.org" ]; then
+        appimage="https://$domain/$i/release/$(wget -qO - https://files.kde.org/kdenlive/release/ | grep -Eo \"href=.*\.AppImage\" | cut -d\" -f2 | sort -Vr)"
       else
         appimage=https://$domain$(wget -qO - $i | grep -v "\.com" | grep -v "\.org" | grep -Eo "/.*\.[Aa]pp[Ii]mage" | grep "$(uname -m)" | head -n1)
       fi
