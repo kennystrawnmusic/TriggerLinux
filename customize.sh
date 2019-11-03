@@ -52,7 +52,7 @@ wget https://libreoffice.soluzioniopen.com/stable/full/LibreOffice-fresh.full-x8
 imgmerge sideload LibreOffice
 
 #More branding manipulation
-grep -lERZ /etc/grub.d "Gentoo\ GNU\/Linux" | xargs -0l sed -i -e "s/Gentoo\ GNU\/Linux/TriggerLinux/g"
+egrep -ZlR "Gentoo\ GNU\/Linux" /etc/grub.d | xargs -0l sed -i -e "s/Gentoo\ GNU\/Linux/TriggerLinux/g"
 
 #Live media hostname
 echo "livecd" > /etc/hostname
@@ -85,14 +85,14 @@ echo -e "animate-show-apps=false" >> /usr/share/gnome-shell/extensions/dash-to-p
 
 #Desktop Background
 echo -e "[org.gnome.desktop.background:GNOME]" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
-echo -e "picture-options='str/etched'" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
+echo -e "picture-options='stretched'" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
 echo -e "picture-uri='file:///usr/share/backgrounds/gnome/SeaSunset.jpg'" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
 echo -e "primary-color='#ffffff'" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
 echo -e "secondary-color='#000000'" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
 
 #Lock screen background
 echo -e "[org.gnome.desktop.screensaver:GNOME]" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
-echo -e "picture-options='str/etched'" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
+echo -e "picture-options='stretched'" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
 echo -e "picture-uri='file:///usr/share/backgrounds/gnome/SeaSunset.jpg'" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
 echo -e "primary-color='#ffffff'" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
 echo -e "secondary-color='#000000'" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
