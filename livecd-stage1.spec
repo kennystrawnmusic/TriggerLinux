@@ -283,6 +283,7 @@ livecd/packages:
 	dev-lua/luaexpat
 	dev-lua/luajson
 	dev-lua/luasocket
+	dev-util/triggerlinux-autobuilder
 	dev-perl/Authen-SASL
 	dev-perl/Canary-Stability
 	dev-perl/common-sense
