@@ -20,6 +20,7 @@ else
   chmod a+x /usr/bin/appimaged
   wget -O /lib/systemd/system/appimaged.service https://raw.githubusercontent.com/AppImage/appimaged/master/resources/appimaged.service
 systemctl enable appimaged.service
+  rm -f /tmp/appimaged
 fi
 
 #AppImage Updater
@@ -33,7 +34,9 @@ if [ "$new_version" == "$current_version" ]; then
 else
   cat /tmp/AppImageUpdate > /usr/bin/AppImageUpdate
   chmod a+x /usr/bin/AppImageUpdate
-wget -O /usr/share/applications/AppImageUpdate.desktop https://raw.githubusercontent.com/AppImage/AppImageUpdate/rewrite/resources/AppImageUpdate.desktop
+  wget -O /usr/share/applications/AppImageUpdate.desktop https://raw.githubusercontent.com/AppImage/AppImageUpdate/rewrite/resources/AppImageUpdate.desktop
+  rm -f /tmp/AppImageUpdate
+fi
 
 #AppImageLauncher
 current_version=$(appimagelauncher-lite --version)
