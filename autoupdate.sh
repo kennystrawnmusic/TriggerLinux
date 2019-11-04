@@ -66,5 +66,5 @@ imgmerge install $(ls /Applications | cut -d '.' -f1 | grep -v "Kdenlive" | grep
 emerge --sync
 layman -S
 emerge -uDNU --with-bdeps=y @world
-emerge sys-kernel/git-sources
+eselect kernel set $(eselect kernel list | sort -Vr | cut -d\] -f1 | cut -d\[ -f2 | head -n1)
 genkernel --kernel-config=/proc/config.gz all
