@@ -10,6 +10,7 @@ appimagelauncher=$appimagelauncher_base/$(wget -qO - https://artifacts.assassina
 #AppImage Daemon
 current_version=$(appimaged --version)
 wget -O /tmp/appimaged https://github.com/AppImage/appimaged/releases/download/continuous/appimaged-x86_64.AppImage
+chmod a+x /tmp/appimaged
 new_version=$(/tmp/appimaged --version)
 if [ "$new_version" == "$current_version" ]; then
   echo "appimaged already up-to-date; cleaning up"
@@ -24,6 +25,7 @@ fi
 #AppImage Updater
 current_version=$(AppImageUpdate --version)
 wget -O /tmp/AppImageUpdate https://github.com/AppImage/AppImageUpdate/releases/download/continuous/AppImageUpdate-x86_64.AppImage
+chmod a+x /tmp/AppImageUpdate
 new_version=$(/tmp/AppImageUpdate --version)
 if [ "$new_version" == "$current_version" ]; then
   echo "AppImageUpdate already up-to-date; cleaning up"
