@@ -95,4 +95,6 @@ emerge --sync
 layman -S
 emerge -uDNU --with-bdeps=y @world
 eselect kernel set $(eselect kernel list | sort -Vr | cut -d\] -f1 | cut -d\[ -f2 | head -n1)
-genkernel --kernel-config=/proc/config.gz all
+zcat /proc/config.gz > /tmp/config
+genkernel --kernel-config=/tmp/config all
+rm -f /tmp/config
