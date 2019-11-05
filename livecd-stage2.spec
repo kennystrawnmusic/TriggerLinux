@@ -8,11 +8,12 @@ source_subpath: default/livecd-stage1-amd64-installer-latest
 portage_confdir: /opt/TriggerLinux/portage
 portage_overlay: /var/lib/layman/triggerlinux-overlay
 
-livecd/bootargs: dokeymap
+livecd/bootargs: quiet splash zram.num_devices=1 apparmor=1 security=apparmor
 livecd/cdtar: /opt/TriggerLinux/livecd-stage2-cdtar.tar.bz2
 livecd/fsscript: /opt/TriggerLinux/customize.sh
 livecd/fstype: squashfs
 livecd/fsops: -comp xz
+livecd/gk_mainargs: --plymouth --plymouth-theme=bgrt
 livecd/iso: livecd-amd64-installer-latest.iso
 livecd/type: gentoo-release-livecd
 livecd/volid: Gentoo amd64 LiveCD latest
@@ -51,6 +52,7 @@ boot/kernel/gentoo/packages:
 	x11-drivers/xf86-video-amdgpu
 
 livecd/empty:
+	/var/db/repos
 	/var/tmp
 	/var/empty
 	/var/run
