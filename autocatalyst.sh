@@ -132,6 +132,7 @@ build() {
   cat $scriptdir/grubrc > $stage1chroot/etc/default/grub && \
   rm -rf $stage1chroot/etc/grub.d && \
   cp -r grub.d $stage1chroot/etc/ && \
+  cat genkernel.conf > $stage1chroot/etc/genkernel.conf && \
   cp $scriptdir/isobuild.desktop $stage1chroot/usr/share/applications/isobuild.desktop && \
   catalyst -f $stage2spec
 }
