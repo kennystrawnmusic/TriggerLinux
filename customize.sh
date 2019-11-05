@@ -51,9 +51,6 @@ imgmerge install kdenlive
 wget https://libreoffice.soluzioniopen.com/stable/full/LibreOffice-fresh.full-x86_64.AppImage
 imgmerge sideload LibreOffice
 
-#More branding manipulation
-egrep -ZlR "Gentoo\ GNU\/Linux" /etc/grub.d | xargs -0l sed -i -e "s/Gentoo\ GNU\/Linux/TriggerLinux/g"
-
 #Live media hostname
 echo "livecd" > /etc/hostname
 
@@ -62,11 +59,6 @@ sed -i "s/calamares-pkexec/pkexec\ \/usr\/bin\/calamares/g" /usr/share/applicati
 
 #Extended globbing by default
 echo "shopt -s extglob" >> /etc/profile
-
-#GRUB Plymouth entry
-sed -i "s/.*GRUB_CMDLINE_LINUX_DEFAULT.*/GRUB_CMDLINE_LINUX_DEFAULT=\"quiet splash zram.num_devices=1\"/" /etc/default/grub
-sed -i "s/.*GRUB_TIMEOUT.*/GRUB_TIMEOUT=0/" /etc/default/grub
-sed -i "s/GRUB_TIMEOUT.*/GRUB_TIMEOUT=0/" /etc/calamares/modules/grubcfg.conf
 
 #Root password
 echo -e "triggerlinux\ntriggerlinux" | passwd
