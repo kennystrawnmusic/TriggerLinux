@@ -124,7 +124,6 @@ glib-compile-schemas /usr/share/glib-2.0/schemas
 
 #Don't disadvantage those with slower hardware
 sed -i "s/MAKEOPTS/\#MAKEOPTS/" /etc/portage/make.conf
-sed -i "s/MAKEOPTS/\#MAKEOPTS/" /etc/genkernel.conf
 
 #NetworkManager
 systemctl enable systemd-resolved.service
