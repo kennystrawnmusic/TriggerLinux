@@ -50,7 +50,7 @@ elif [ "$1" == "install" ]; then
         /Applications/$(echo $i | cut -d\/ -f4).AppImage --appimage-extract &>/dev/null
         icons_static=$(find squashfs-root/usr/share/icons -iname "*.png" | cut -d\/ -f2-)
         icons_scalable=$(find squashfs-root/usr/share/icons -iname "*.svg" | cut -d\/ -f2-)
-        desktop_files=$(find squashfs-root/usr/share/applications -iname "*.desktop" | cut -d\/ -f2-)
+        desktop_files=$(find squashfs-root -iname "*.desktop" | cut -d\/ -f2-)
         echo "Copying icons..."
         for j in $icons_static; do
           filebase=$(readlink squashfs-root/$j)
@@ -100,8 +100,15 @@ elif [ "$1" == "install" ]; then
         done
         echo "Copying and configuring .desktop files..."
         for l in $desktop_files; do
-          cp squashfs-root$(readlink squashfs-root/$l) /$l || cp squashfs-root/$l /$l 2>/dev/null
-          sed -i "s/Exec=.*/Exec=\/Applications\/$(echo $i | cut -d'/' -f4).AppImage/" /$l
+          if [ -n "$(readlink $l)" ]; then
+            cp -f squashfs-root$(readlink $l) /$l
+          else
+            if [ ! -d $(echo /$l | rev | cut -d\/ -f2- | rev) ]; then
+              mkdir -p $(echo /$l | rev | cut -d\/ -f2- | rev)
+            fi
+            cp -rf squashfs-root/$l /$l
+            sed -i "s/Exec=.*/Exec=\/Applications\/$(echo $i | cut -d'/' -f4).AppImage/" /$l 2>/dev/null
+          fi
         done
         echo "Successfully installed $i"
       elif [[ "$i" == *"libreoffice"* ]]; then
@@ -162,7 +169,7 @@ elif [ "$1" == "install" ]; then
         echo "Copying and configuring .desktop files..."
         for l in $desktop_files; do
           cp squashfs-root$(readlink squashfs-root/$l) /$l || cp squashfs-root/$l /$l 2>/dev/null
-          sed -i "s/Exec=.*/Exec=\/Applications\/LibreOffice.AppImage/" /$l
+          sed -i "s/Exec=.*/Exec=\/Applications\/LibreOffice.AppImage \-\-$(echo $l | cut -d\- -f2 | cut -d\. -f1)/" /$l
         done
         echo "Successfully installed $i"
       else
