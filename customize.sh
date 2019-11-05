@@ -130,7 +130,7 @@ systemctl enable NetworkManager.service
 systemctl enable cups.service
 
 #Make Brave work when run as any user, including root
-sed -i "s/Exec=.*/Exec=\/usr\/bin\/brave-bin\ \-\-no\-sandbox\ \%u/" /usr/share/applications/brave-bin.desktop
+sed -i "s/Exec=.*/Exec=\/usr\/bin\/brave-bin\ \-\-test\-type \-\-no\-sandbox\ \%u/" /usr/share/applications/brave-bin.desktop
 
 #Self-explanatory
 cp /usr/share/applications/calamares.desktop /root/Desktop
