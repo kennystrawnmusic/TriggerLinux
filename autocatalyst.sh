@@ -110,11 +110,12 @@ echo "Ensuring that the squashed system is itself bootable (no calamares if it i
 sed -i "s/mv/cp/g" $support/bootloader-setup.sh
 
 echo "Ensuring that Plymouth is recognized as a splash option on the live media"
-egrep -lRZ "default_append_line\=" $support | xargs -0 -l sed -i -e "s/default_append_line\=.*/default_append_line\=\"root\=\/dev\/ram0 init\=\/linuxrc log_buf_len\=4M ${cmdline_opts} ${custom_kopts} cdroot/"
+egrep -lRZ "default_append_line\=" $support | xargs -0 -l sed -i -e "s/default_append_line\=.*/default_append_line\=\"root\=\/dev\/ram0 init\=\/linuxrc log_buf_len\=4M \${cmdline_opts} \${custom_kopts} cdroot/"
 
 build() {
   echo "Building..." && \
   catalyst -f $stage1spec && \
+  cat profile > $stage1chroot/etc/profile && \
   sed -i "s/.MAKEOPTS=.*/MAKEOPTS=\"-j$cpucores\"/" $stage1chroot/etc/genkernel.conf && \
   sed -i "s/.*PLYMOUTH=.*/PLYMOUTH=\"yes\"/" $stage1chroot/etc/genkernel.conf && \
   sed -i "s/.*PLYMOUTH_THEME=.*/PLYMOUTH_THEME=\"bgrt\"/" $stage1chroot/etc/genkernel.conf && \

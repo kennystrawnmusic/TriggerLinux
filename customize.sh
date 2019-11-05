@@ -51,13 +51,10 @@ imgmerge install kdenlive
 imgmerge install libreoffice
 
 #Live media hostname
-echo "livecd" > /etc/hostname
+echo "triggerlinux" > /etc/hostname
 
 #Calamares-pkexec
 sed -i "s/calamares-pkexec/pkexec\ \/usr\/bin\/calamares/g" /usr/share/applications/calamares.desktop
-
-#Extended globbing by default
-echo "shopt -s extglob" >> /etc/profile
 
 #Root password
 echo -e "triggerlinux\ntriggerlinux" | passwd
