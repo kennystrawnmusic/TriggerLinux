@@ -130,7 +130,8 @@ build() {
   install -m 755 $scriptdir/imgmerge $stage1chroot/usr/bin/imgmerge && \
   cat $scriptdir/os-release > $stage1chroot/etc/os-release && \
   cat $scriptdir/grubrc > $stage1chroot/etc/default/grub && \
-  for i in $scriptdir/grub.d/*; do cat $i > $stage1chroot/etc/grub.d/$(echo $i | cut -d\/ -f14); done && \
+  rm -rf $stage1chroot/etc/grub.d && \
+  cp -r grub.d $stage1chroot/etc/ && \
   cp $scriptdir/isobuild.desktop $stage1chroot/usr/share/applications/isobuild.desktop && \
   catalyst -f $stage2spec
 }
