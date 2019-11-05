@@ -110,7 +110,7 @@ echo "Ensuring that the squashed system is itself bootable (no calamares if it i
 sed -i "s/mv/cp/g" $support/bootloader-setup.sh
 
 echo "Ensuring that Plymouth is recognized as a splash option on the live media"
-sed -i 's/default_append_line.*/default_append_line="root=\/dev\/ram0 init=\/linuxrc log_buf_len=4M ${cmdline_opts} ${custom_kopts} cdroot quiet splash"/'
+egrep -lRZ "default_append_line\=" $support | xargs -0 -l sed -i -e "s/default_append_line\=.*/default_append_line\=\"root\=\/dev\/ram0 init\=\/linuxrc log_buf_len\=4M ${cmdline_opts} ${custom_kopts} cdroot quiet splash zram.num_devices\=1 apparmor\=1 security\=apparmor\"/"
 
 build() {
   echo "Building..." && \

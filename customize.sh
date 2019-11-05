@@ -48,8 +48,7 @@ rm -rf squashfs-root
 imgmerge install kdenlive
 
 #Install LibreOffice as AppImage
-wget https://libreoffice.soluzioniopen.com/stable/full/LibreOffice-fresh.full-x86_64.AppImage
-imgmerge sideload LibreOffice
+imgmerge install libreoffice
 
 #Live media hostname
 echo "livecd" > /etc/hostname
@@ -94,7 +93,11 @@ echo -e "idle-activation-enabled=false" >> /usr/share/glib-2.0/schemas/00_org.gn
 echo -e "[org.gnome.shell:GNOME]\nenabled-extensions=['dash-to-panel@jderose9.github.com', 'desktop-icons@csoriano', 'user-theme@gnome-shell-extensions.gcampax.github.com']" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
 
 #Favorites
-echo -e "favorite-apps=['org.gnome.Software.desktop', 'brave-bin.desktop', 'rhythmbox.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.gedit.desktop', 'libreoffice-writer.desktop', 'libreoffice-calc.desktop', 'libreoffice-impress.desktop', 'libreoffice-math.desktop', 'kdenlive.desktop', 'isobuild.desktop']" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
+libreoffice_writer=libreoffice$(/Applications/LibreOffice.AppImage --version | cut -d' ' -f2 | cut -d\. -f1-2)-writer.desktop
+libreoffice_calc=libreoffice$(/Applications/LibreOffice.AppImage --version | cut -d' ' -f2 | cut -d\. -f1-2)-calc.desktop
+libreoffice_impress=libreoffice$(/Applications/LibreOffice.AppImage --version | cut -d' ' -f2 | cut -d\. -f1-2)-impress.desktop
+libreoffice_math=libreoffice$(/Applications/LibreOffice.AppImage --version | cut -d' ' -f2 | cut -d\. -f1-2)-math.desktop
+echo -e "favorite-apps=['org.gnome.Software.desktop', 'brave-bin.desktop', 'rhythmbox.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.gedit.desktop', '$libreoffice_writer', '$libreoffice_calc', '$libreoffice_impress', '$libreoffice_math', 'org.kde.kdenlive.desktop', 'isobuild.desktop']" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
 
 #More window controls than just "Close"
 echo -e "[org.gnome.desktop.wm.preferences:GNOME]\nbutton-layout='appmenu:minimize,maximize,close'\n" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
@@ -121,8 +124,15 @@ systemctl enable NetworkManager.service
 #Ensure that printing works out-of-the-box
 systemctl enable cups.service
 
+#Get GNOME-Software working
+systemctl enable snapd.service
+
 #Make Brave work when run as any user, including root
 sed -i "s/Exec=.*/Exec=\/usr\/bin\/brave-bin\ \-\-test\-type \-\-no\-sandbox\ \%u/" /usr/share/applications/brave-bin.desktop
 
-#Self-explanatory
-cp /usr/share/applications/calamares.desktop /root/Desktop
+#Add calamares to root user's desktop as a shortcut
+if [ ! -d /root/Desktop ]; then
+  mkdir -p /root/Desktop
+fi
+cp /usr/share/applications/calamares.desktop /root/Desktop/calamares.desktop
+chmod a+x /root/Desktop/calamares.desktop
