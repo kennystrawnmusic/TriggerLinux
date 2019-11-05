@@ -7,6 +7,6 @@ shopt -s extglob
 
 export MAKEOPTS="-j$(nproc --all)"
 export NINJAFLAGS="-j$(nproc --all)"
-export EMERGE_DEFAULT_OPTS="-1UND --autounmask=n --verbose-conflicts"
+export EMERGE_DEFAULT_OPTS="-uNDU --autounmask=n --verbose-conflicts"
 export ACCEPT_LICENSE="*"
 export CONFIG_PROTECT="/etc/!(portage) /usr/share/gnupg/qualified.txt"
