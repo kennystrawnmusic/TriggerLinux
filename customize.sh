@@ -122,9 +122,6 @@ echo -e "display-line-numbers=true" >> /usr/share/glib-2.0/schemas/org.gnome.ged
 glib-compile-schemas /usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/schemas
 glib-compile-schemas /usr/share/glib-2.0/schemas
 
-#Don't disadvantage those with slower hardware
-sed -i "s/MAKEOPTS/\#MAKEOPTS/" /etc/portage/make.conf
-
 #NetworkManager
 systemctl enable systemd-resolved.service
 systemctl enable NetworkManager.service
