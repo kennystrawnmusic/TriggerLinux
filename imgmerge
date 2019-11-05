@@ -38,6 +38,8 @@ elif [ "$1" == "install" ]; then
       elif [ "$domain" == "files.kde.org" ]; then
         filename=$(wget -qO - $i | grep -Eo "href=\".*\.[Aa]pp[Ii]mage\"" | cut -d\" -f2 | sort -Vr | head -n1)
         appimage=$i/$(echo $filename)
+      elif [ "$domain" == "libreoffice.soluzioniopen.com" ]; then
+        appimage=$i/LibreOffice-fresh.full-x86_64.AppImage
       else
         appimage=https://$domain$(wget -qO - $i | grep -v "\.com" | grep -v "\.org" | grep -Eo "/.*\.[Aa]pp[Ii]mage" | grep "$(uname -m)" | head -n1)
       fi
@@ -100,6 +102,67 @@ elif [ "$1" == "install" ]; then
         for l in $desktop_files; do
           cp squashfs-root$(readlink squashfs-root/$l) /$l || cp squashfs-root/$l /$l 2>/dev/null
           sed -i "s/Exec=.*/Exec=\/Applications\/$(echo $i | cut -d'/' -f4).AppImage/" /$l
+        done
+        echo "Successfully installed $i"
+      elif [[ "$i" == *"libreoffice"* ]]; then
+        wget -qO /Applications/LibreOffice.AppImage --show-progress $appimage
+        chmod a+x /Applications/LibreOffice.AppImage
+        cd /tmp
+        /Applications/LibreOffice.AppImage --appimage-extract &>/dev/null
+        icons_static=$(find squashfs-root/usr/share/icons -iname "*.png" | cut -d\/ -f2-)
+        icons_scalable=$(find squashfs-root/usr/share/icons -iname "*.svg" | cut -d\/ -f2-)
+        desktop_files=$(find squashfs-root/usr/share/applications -iname "*.desktop" | cut -d\/ -f2-)
+        echo "Copying icons..."
+        for j in $icons_static; do
+          filebase=$(readlink squashfs-root/$j)
+          if [ -n "$filebase" ]; then
+            file="squashfs-root$filebase"
+            unlink $j
+            cp $file $j
+            icon_dir_static="/$(echo $j | rev | cut -d\/ -f2- | rev)"
+            if [ ! -d $icon_dir_static ]; then
+              mkdir -p $icon_dir_static
+              cp squashfs-root/$j /$j
+            else
+              cp squashfs-root/$j /$j
+            fi
+          else
+            icon_dir_static="/$(echo $j | rev | cut -d\/ -f2- | rev)"
+            if [ ! -d $icon_dir_static ]; then
+              mkdir -p $icon_dir_static
+              cp squashfs-root/$j /$j
+            else
+              cp squashfs-root/$j /$j
+            fi
+          fi
+        done
+        for k in $icons_scalable; do
+          filebase=$(readlink squashfs-root/$k)
+          if [ -n "$filebase" ]; then
+            file="squashfs-root$filebase"
+            unlink $k
+            cp $file $k
+            icon_dir_scalable="/$(echo $k | rev | cut -d\/ -f2- | rev)"
+            if [ ! -d $icon_dir_scalable ]; then
+              mkdir -p $icon_dir_scalable
+              cp squashfs-root/$k /$k
+            else
+              cp squashfs-root/$k /$k
+            fi
+          else
+            icon_dir_scalable="/$(echo $k | rev | cut -d\/ -f2- | rev)"
+            if [ ! -d $icon_dir_scalable ]; then
+              mkdir -p $icon_dir_scalable
+              cp squashfs-root/$k /$k
+            else
+              cp squashfs-root/$k /$k
+            fi
+          fi
+        done
+        echo "Copying and configuring .desktop files..."
+        for l in $desktop_files; do
+          cp squashfs-root$(readlink squashfs-root/$l) /$l || cp squashfs-root/$l /$l 2>/dev/null
+          sed -i "s/Exec=.*/Exec=\/Applications\/LibreOffice.AppImage/" /$l
         done
         echo "Successfully installed $i"
       else
