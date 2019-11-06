@@ -316,8 +316,7 @@ elif [ "$1" == "remove" ]; then
   done
 else
   echo "Usage: imgmerge [sync|search|install <packagenames>|remove <packagenames>]"
-  echo "    build: Build database of AppImages"
-  echo "    sync: Download database of AppImages"
+  echo "    sync: Create database of AppImages to install"
   echo "    search: Search for an AppImage in the database"
   echo "    install <packagenames>: Install AppImages by name from the AppImageHub"
   echo "    sideload <packagenames>: Install AppImages by name from current working directory"
