@@ -106,17 +106,8 @@ sed -i "/app-misc\/livecd-tools/d" $python_targets/livecd_stage1.py
 echo "Changing genkernel dependency to genkernel-next"
 sed -i "s/genkernel.*/genkernel-next/g" $support/pre-kmerge.sh
 
-echo "Ensuring that the squashed system is itself bootable (no calamares if it isn't)"
-sed -i "s/mv/cp/g" $support/bootloader-setup.sh
-
-#Force bootloader-setup.sh to skip "boot:" prompt and boot immediately
-sed -i "s/timeout=.*/timeout=0/g" $support/bootloader-setup.sh
-#Force bootloader-setup.sh to use the custom cdtar value for ontimeout
-sed -i "/ontimeout/d" $support/bootloader-setup.sh
-sed -i "s/timeout\ .*/timeout\ 0/g" $support/bootloader-setup.sh
-
-#Force bootloader-setup.sh to actually boot instead of scrambling and failing to find a rootfs to mount
-sed -i "s/root=.*/root=\/image.squashfs\ rootfstype=squashfs\ rootflags=loop/g" $support/bootloader-setup.sh
+echo "Installing custom bootloader-setup script"
+cat bootloader-setup.sh > $support/bootloader-setup.sh
 
 build() {
   echo "Building..." && \
