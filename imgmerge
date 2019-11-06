@@ -12,14 +12,14 @@ if [ ! -d /Applications ]; then
   mkdir /Applications
 fi
 
-if [ "$1" == "build" ]; then
-  #Build AppImage database
+if [ "$1" == "sync" ]; then
+  echo "Building AppImage database…"
   for i in $basenames; do
     wget -qO - https://appimage.github.io/$i | grep "button green" | cut -d "\"" -f2
-  done | tee /var/db/imgmerge/appimagelist
-elif [ "$1" == "sync" ]; then
+  done > /var/db/imgmerge/appimagelist
+  echo "Appending custom entries…"
   for entry in $(cat /etc/imgmerge/fetch.conf); do
-    wget -qO ->> /var/db/imgmerge/appimagelist --show-progress $entry
+    wget --show-progress $entry -qO ->> /var/db/imgmerge/appimagelist
   done
 elif [ "$1" == "search" ]; then
   shift
