@@ -35,7 +35,7 @@ case ${clst_hostarch} in
 		for x in ${clst_boot_kernel}
 		do
 			echo -n "${bctr}:/boot/${x} " >> ${acfg}
-			echo -n "initrd=/boot/${x}.igz root=/dev/ram0 " >> ${acfg}
+			echo -n "initrd=/boot/${x}.igz root=/image.squashfs rootfstype=squashfs rootflags=loop " >> ${acfg}
 			echo "init=/linuxrc ${cmdline_opts} cdroot" >> ${acfg}
 			((bctr=${bctr}+1))
 		done
@@ -44,7 +44,7 @@ case ${clst_hostarch} in
 		for x in ${clst_boot_kernel}
 		do
 			echo -n "${bctr}:/boot/${x} " >> ${acfg}
-			echo -n "initrd=/boot/${x}.igz root=/dev/ram0 " >> ${acfg}
+			echo -n "initrd=/boot/${x}.igz root=/image.squashfs rootfstype=squashfs rootflags=loop " >> ${acfg}
 			echo "init=/linuxrc ${cmdline_opts} cdroot" >> ${acfg}
 			((bctr=${bctr}+1))
 		done
@@ -132,7 +132,7 @@ case ${clst_hostarch} in
 			echo >> ${icfg}
 			echo "image=\"/boot/${x}\"" >> ${scfg}
 			echo -e "\tlabel=\"${x}\"" >> ${scfg}
-			echo -e "\tappend=\"initrd=/boot/${x}.igz root=/dev/ram0 init=/linuxrc ${cmdline_opts} cdroot\"" >> ${scfg}
+			echo -e "\tappend=\"initrd=/boot/${x}.igz root=/image.squashfs rootfstype=squashfs rootflags=loop init=/linuxrc ${cmdline_opts} cdroot\"" >> ${scfg}
 
 		done
 
