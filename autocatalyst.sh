@@ -115,6 +115,9 @@ sed -i "s/timeout=.*/timeout=0/g" $support/bootloader-setup.sh
 sed -i "/ontimeout/d" $support/bootloader-setup.sh
 sed -i "s/timeout\ .*/timeout\ 0/g" $support/bootloader-setup.sh
 
+#Force bootloader-setup.sh to actually boot instead of scrambling and failing to find a rootfs to mount
+sed -i "s/root=.*/root=\/image.squashfs\ rootfstype=squashfs\ rootflags=loop/g" $support/bootloader-setup.sh
+
 build() {
   echo "Building..." && \
   catalyst -f $stage1spec && \

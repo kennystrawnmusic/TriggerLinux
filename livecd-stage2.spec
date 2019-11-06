@@ -16,16 +16,16 @@ livecd/fsops: -comp xz
 livecd/gk_mainargs: --plymouth --plymouth-theme=bgrt
 livecd/iso: livecd-amd64-installer-latest.iso
 livecd/motd: ""
-livecd/type: gentoo-release-livecd
+livecd/type: generic-livecd
 livecd/volid: TriggerLinux LiveDVD latest
 livecd/xsession: gnome
 livecd/xdm: gdm
 
-boot/kernel: gentoo
-boot/kernel/gentoo/sources: git-sources
-boot/kernel/gentoo/config: /opt/TriggerLinux/livecd-stage2.config
-boot/kernel/gentoo/use: atm png truetype usb
-boot/kernel/gentoo/packages:
+boot/kernel: triggerlinux
+boot/kernel/triggerlinux/sources: git-sources
+boot/kernel/triggerlinux/config: /opt/TriggerLinux/livecd-stage2.config
+boot/kernel/triggerlinux/use: atm png truetype usb
+boot/kernel/triggerlinux/packages:
 	media-libs/alsa-oss
 	media-sound/alsa-utils
 	media-sound/pulseaudio

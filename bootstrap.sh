@@ -48,7 +48,7 @@ echo "Instaling the TriggerLinux build scripts inside the chroot"
 chroot /tmp/triggerlinux-chroot /usr/bin/emerge dev-util/triggerlinux-autobuilder
 
 echo "Running autocatalyst.sh inside the chroot"
-chroot /tmp/triggerlinux-chroot /bin/bash -c "cd /opt/TriggerLinux && ./autocatalyst.sh && cd /"
+chroot /tmp/triggerlinux-chroot /bin/bash -c "source /etc/profile && cd /opt/TriggerLinux && ./autocatalyst.sh && cd /"
 
 echo "Copying ISO image and stage tarball out of the chroot"
 cp /tmp/triggerlinux-chroot/var/tmp/catalyst/builds/default/*.tar.bz2 $scriptdir/triggerlinux-livedvd-stage1-latest.tar.bz2
