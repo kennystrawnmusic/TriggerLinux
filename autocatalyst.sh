@@ -109,13 +109,17 @@ sed -i "s/genkernel.*/genkernel-next/g" $support/pre-kmerge.sh
 echo "Ensuring that the squashed system is itself bootable (no calamares if it isn't)"
 sed -i "s/mv/cp/g" $support/bootloader-setup.sh
 
+#Force bootloader-setup.sh to skip "boot:" prompt and boot immediately
+sed -i "s/timeout=.*/timeout=0/g" $support/bootloader-setup.sh
+#Force bootloader-setup.sh to use the custom cdtar value for ontimeout
+sed -i "/ontimeout/d" $support/bootloader-setup.sh
+sed -i "s/timeout\ .*/timeout\ 0/g" $support/bootloader-setup.sh
+
 build() {
   echo "Building..." && \
   catalyst -f $stage1spec && \
   cat profile > $stage1chroot/etc/profile && \
-  sed -i "s/.MAKEOPTS=.*/MAKEOPTS=\"-j$cpucores\"/" $stage1chroot/etc/genkernel.conf && \
-  sed -i "s/.*PLYMOUTH=.*/PLYMOUTH=\"yes\"/" $stage1chroot/etc/genkernel.conf && \
-  sed -i "s/.*PLYMOUTH_THEME=.*/PLYMOUTH_THEME=\"bgrt\"/" $stage1chroot/etc/genkernel.conf && \
+  sed -i "s/MAKEOPTS=.*/MAKEOPTS=\"-j$cpucores\"/" $stage1chroot/etc/genkernel.conf && \
   cp -r $scriptdir/calamares-config $stage1chroot/etc/calamares && \
   cp $scriptdir/autoupdate\.{service,timer} $stage1chroot/lib/systemd/system && \
   cp $scriptdir/unmerge-calamares.service $stage1chroot/lib/systemd/system && \

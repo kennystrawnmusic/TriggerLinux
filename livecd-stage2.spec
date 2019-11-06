@@ -15,6 +15,7 @@ livecd/fstype: squashfs
 livecd/fsops: -comp xz
 livecd/gk_mainargs: --plymouth --plymouth-theme=bgrt
 livecd/iso: livecd-amd64-installer-latest.iso
+livecd/motd: ""
 livecd/type: gentoo-release-livecd
 livecd/volid: TriggerLinux LiveDVD latest
 livecd/xsession: gnome
