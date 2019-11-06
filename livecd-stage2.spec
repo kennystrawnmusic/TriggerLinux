@@ -8,7 +8,7 @@ source_subpath: default/livecd-stage1-amd64-installer-latest
 portage_confdir: /opt/TriggerLinux/portage
 portage_overlay: /var/lib/layman/triggerlinux-overlay
 
-livecd/bootargs: dodetect dousb quiet splash zram.num_devices=1 apparmor=1 security=apparmor
+livecd/bootargs: dokeymap dodetect dousb quiet splash zram.num_devices=1 apparmor=1 security=apparmor
 livecd/cdtar: /opt/TriggerLinux/livecd-stage2-cdtar.tar.bz2
 livecd/fsscript: /opt/TriggerLinux/customize.sh
 livecd/fstype: squashfs
