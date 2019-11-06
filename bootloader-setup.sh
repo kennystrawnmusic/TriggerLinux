@@ -284,8 +284,8 @@ case ${clst_hostarch} in
 		[ ! -d "${scratch}/arcload" ] && mkdir ${scratch}/arcload
 		echo "" > ${scratch}/arc.cf
 
-		# Move kernel binaries to ${scratch}/kernels, and
-		# move everything else to ${scratch}/kernels/misc
+		# Copy kernel binaries to ${scratch}/kernels, and
+		# Copy everything else to ${scratch}/kernels/misc
 		for x in ${clst_boot_kernel}; do
 			[ -e "${1}/boot/${x}" ] && cp ${1}/boot/${x} ${scratch}/kernels
 			[ -e "${1}/boot/${x}.igz" ] && cp ${1}/boot/${x}.igz ${scratch}/kernels/misc
@@ -326,7 +326,7 @@ case ${clst_hostarch} in
 		# Finish off the config
 		echo -e "${cmt2}" >> ${scratch}/arc.cf
 
-		# Move the bootloader binaries & config to their destination
+		# Copy the bootloader binaries & config to their destination
 		[ -e "${1}/sashARCS" ] && cp ${1}/sashARCS ${scratch}/arcload
 		[ -e "${1}/sash64" ] && cp ${1}/sash64 ${scratch}/arcload
 		[ -e "${1}/arc.cf" ] && cp ${1}/arc.cf ${scratch}/arcload
