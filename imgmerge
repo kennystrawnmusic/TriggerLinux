@@ -19,7 +19,7 @@ if [ "$1" == "build" ]; then
   done | tee /var/db/imgmerge/appimagelist
 elif [ "$1" == "sync" ]; then
   for entry in $(cat /etc/imgmerge/fetch.conf); do
-    wget -qO /var/db/imgmerge/appimagelist --show-progress $entry
+    wget -qO ->> /var/db/imgmerge/appimagelist --show-progress $entry
   done
 elif [ "$1" == "search" ]; then
   shift
