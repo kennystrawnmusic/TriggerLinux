@@ -16,7 +16,7 @@ livecd/fsops: -comp xz
 livecd/gk_mainargs: --plymouth --plymouth-theme=bgrt
 livecd/iso: livecd-amd64-installer-latest.iso
 livecd/type: gentoo-release-livecd
-livecd/volid: Gentoo amd64 LiveCD latest
+livecd/volid: TriggerLinux LiveDVD latest
 livecd/xsession: gnome
 livecd/xdm: gdm
 

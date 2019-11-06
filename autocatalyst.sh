@@ -109,9 +109,6 @@ sed -i "s/genkernel.*/genkernel-next/g" $support/pre-kmerge.sh
 echo "Ensuring that the squashed system is itself bootable (no calamares if it isn't)"
 sed -i "s/mv/cp/g" $support/bootloader-setup.sh
 
-echo "Ensuring that Plymouth is recognized as a splash option on the live media"
-egrep -lRZ "default_append_line\=" $support | xargs -0 -l sed -i -e "s/default_append_line\=.*/default_append_line\=\"root\=\/dev\/ram0 init\=\/linuxrc log_buf_len\=4M \${cmdline_opts} \${custom_kopts} cdroot/"
-
 build() {
   echo "Building..." && \
   catalyst -f $stage1spec && \
