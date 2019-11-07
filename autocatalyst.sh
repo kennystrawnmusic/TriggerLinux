@@ -130,6 +130,18 @@ build() {
   cp -r grub.d $stage1chroot/etc/ && \
   cat genkernel.conf > $stage1chroot/etc/genkernel.conf && \
   cp $scriptdir/isobuild.desktop $stage1chroot/usr/share/applications/isobuild.desktop && \
+  cp /etc/resolv.conf $stage1chroot/etc/resolv.conf && \
+  chroot $stage1chroot mount -t proc none /proc && \
+  chroot $stage1chroot mount -t sysfs none /sys && \
+  chroot $stage1chroot mount -t devtmpfs none /dev && \
+  chroot $stage1chroot mount -t devpts none /dev/pts && \
+  chroot $stage1chroot mount -t tmpfs none /dev/shm && \
+  chroot $stage1chroot imgmerge sync && \
+  chroot $stage1chroot imgmerge install zsync2 kdenlive libreoffice && \
+  chroot $stage1chroot umount -lf /{dev/{shm,pts},dev,proc,sys} && \
+  rm -f $stage1chroot/etc/resolv.conf && \
+  rm -f $stage1chroot/org.kde.kdenlive.desktop && \
+  rm -rf $stage1chroot/var/db/repos/gentoo && \
   catalyst -f $stage2spec
 }
 

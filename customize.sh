@@ -15,12 +15,8 @@ layman -L
 yes | layman -a brave-overlay
 yes | layman -o https://raw.githubusercontent.com/realKennyStrawn93/triggerlinux-overlay/master/triggerlinux-overlay.xml -f -a triggerlinux-overlay
 
-#Ensure that build scripts are up-to-date, brave-bin is installed properly, and a copy of git-sources exists on the squashfs
-emerge dev-util/triggerlinux-autobuilder www-client/brave-bin sys-kernel/git-sources
-
-#Initialize imgmerge and use it to install zsync
-imgmerge sync
-imgmerge install zsync2
+#Ensure that a copy of git-sources exists on the squashfs
+emerge sys-kernel/git-sources
 
 #AppImage Daemon
 wget -O /usr/bin/appimaged https://github.com/AppImage/appimaged/releases/download/continuous/appimaged-x86_64.AppImage
@@ -46,15 +42,6 @@ for i in $(ls /usr/share/icons); do
   cp squashfs-root/usr/share/icons/hicolor/192x192/apps/AppImageLauncher.png /usr/share/icons/$i/192x192/apps/AppImageLauncher.png
 done
 rm -rf squashfs-root
-
-#Install Kdenlive as AppImage
-imgmerge install kdenlive
-
-#Don't need .desktop file in '/' root directory, only in /usr/share/applications
-rm -f /org.kde.kdenlive.desktop
-
-#Install LibreOffice as AppImage
-imgmerge install libreoffice
 
 #Live media hostname
 echo "triggerlinux" > /etc/hostname

@@ -99,6 +99,9 @@ elif [ "$1" == "install" ]; then
           fi
         done
         echo "Reconfiguring icon themes..."
+        if [ ! -d /var/db/repos/gentoo ]; then
+          emerge --sync -q
+        fi
         emerge -q kde-frameworks/breeze-icons
         echo "Copying and configuring .desktop files..."
         for l in $desktop_files; do
@@ -169,6 +172,9 @@ elif [ "$1" == "install" ]; then
           fi
         done
         echo "Reconfiguring icon themes..."
+        if [ ! -d /var/db/repos/gentoo ]; then
+          emerge --sync -q
+        fi
         emerge -q kde-frameworks/breeze-icons
         echo "Copying and configuring .desktop files..."
         for l in $desktop_files; do
@@ -232,6 +238,9 @@ elif [ "$1" == "install" ]; then
           fi
         done
         echo "Reconfiguring icon themes..."
+        if [ ! -d /var/db/repos/gentoo ]; then
+          emerge --sync -q
+        fi
         emerge -q kde-frameworks/breeze-icons
         echo "Copying and configuring .desktop files..."
         for l in $desktop_files; do
@@ -306,6 +315,9 @@ elif [ "$1" == "sideload" ]; then
         fi
       done
       echo "Reconfiguring icon themes..."
+      if [ ! -d /var/db/repos/gentoo ]; then
+        emerge --sync -q
+      fi
       emerge -q kde-frameworks/breeze-icons
       echo "Copying and configuring .desktop files..."
       for l in $desktop_files; do

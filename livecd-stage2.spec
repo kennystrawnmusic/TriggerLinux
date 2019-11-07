@@ -53,7 +53,6 @@ boot/kernel/triggerlinux/packages:
 	x11-drivers/xf86-video-amdgpu
 
 livecd/empty:
-	/var/db/repos
 	/var/tmp
 	/var/empty
 	/var/run
