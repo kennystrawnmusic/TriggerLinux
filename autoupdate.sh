@@ -71,6 +71,7 @@ else
   cd /tmp
   imgmerge sideload Kdenlive
   rm -f /tmp/Kdenlive.AppImage
+  rm -f /org.kde.kdenlive.desktop
 fi
 
 #Update LibreOffice AppImage

@@ -98,6 +98,8 @@ elif [ "$1" == "install" ]; then
             fi
           fi
         done
+        echo "Reconfiguring icon themes..."
+        emerge -q kde-frameworks/breeze-icons
         echo "Copying and configuring .desktop files..."
         for l in $desktop_files; do
           if [ -n "$(readlink $l)" ]; then
@@ -166,6 +168,8 @@ elif [ "$1" == "install" ]; then
             fi
           fi
         done
+        echo "Reconfiguring icon themes..."
+        emerge -q kde-frameworks/breeze-icons
         echo "Copying and configuring .desktop files..."
         for l in $desktop_files; do
           cp squashfs-root$(readlink squashfs-root/$l) /$l || cp squashfs-root/$l /$l 2>/dev/null
@@ -227,6 +231,8 @@ elif [ "$1" == "install" ]; then
             fi
           fi
         done
+        echo "Reconfiguring icon themes..."
+        emerge -q kde-frameworks/breeze-icons
         echo "Copying and configuring .desktop files..."
         for l in $desktop_files; do
           cp squashfs-root$(readlink squashfs-root/$l) /$l || cp squashfs-root/$l /$l 2>/dev/null
@@ -245,8 +251,8 @@ elif [ "$1" == "sideload" ]; then
   else
     for i in $pkgs; do
       appimage=$i
-      cp $appimage /Applications/$(echo $i | cut -d'-' -f1).AppImage
-      chmod a+x /Applications/$(echo $i | cut -d'-' -f1).AppImage
+      cp $appimage /Applications/$(echo $i | cut -d'-' -f1)
+      chmod a+x /Applications/$(echo $i | cut -d'-' -f1)
       cd /tmp
       /Applications/$(echo $i | cut -d'-' -f1).AppImage --appimage-extract &>/dev/null
       icons_static=$(find -L squashfs-root/usr/share/icons -iname "*.png" | cut -d\/ -f2-)
@@ -299,6 +305,8 @@ elif [ "$1" == "sideload" ]; then
           fi
         fi
       done
+      echo "Reconfiguring icon themes..."
+      emerge -q kde-frameworks/breeze-icons
       echo "Copying and configuring .desktop files..."
       for l in $desktop_files; do
         cp squashfs-root$(readlink squashfs-root/$l) /$l || cp squashfs-root/$l /$l 2>/dev/null

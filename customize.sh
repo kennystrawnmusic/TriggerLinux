@@ -50,6 +50,9 @@ rm -rf squashfs-root
 #Install Kdenlive as AppImage
 imgmerge install kdenlive
 
+#Don't need .desktop file in '/' root directory, only in /usr/share/applications
+rm -f /org.kde.kdenlive.desktop
+
 #Install LibreOffice as AppImage
 imgmerge install libreoffice
 
