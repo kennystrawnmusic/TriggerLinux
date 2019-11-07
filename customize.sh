@@ -59,9 +59,6 @@ imgmerge install libreoffice
 #Live media hostname
 echo "triggerlinux" > /etc/hostname
 
-#Calamares-pkexec
-sed -i "s/calamares-pkexec/pkexec\ \/usr\/bin\/calamares/g" /usr/share/applications/calamares.desktop
-
 #Root password
 echo -e "triggerlinux\ntriggerlinux" | passwd
 
@@ -128,6 +125,8 @@ systemctl enable NetworkManager.service
 systemctl enable cups.service
 
 #Get GNOME-Software working
+systemctl enable apparmor.service
+systemctl enable snapd.apparmor.service
 systemctl enable snapd.service
 
 #Make Brave work when run as any user, including root
