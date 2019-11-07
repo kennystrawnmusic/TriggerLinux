@@ -15,8 +15,8 @@ layman -L
 yes | layman -a brave-overlay
 yes | layman -o https://raw.githubusercontent.com/realKennyStrawn93/triggerlinux-overlay/master/triggerlinux-overlay.xml -f -a triggerlinux-overlay
 
-#Ensure that build scripts are up-to-date and brave-bin is installed properly
-emerge dev-util/triggerlinux-autobuilder www-client/brave-bin
+#Ensure that build scripts are up-to-date, brave-bin is installed properly, and a copy of git-sources exists on the squashfs
+emerge dev-util/triggerlinux-autobuilder www-client/brave-bin sys-kernel/git-sources
 
 #Initialize imgmerge and use it to install zsync
 imgmerge sync
