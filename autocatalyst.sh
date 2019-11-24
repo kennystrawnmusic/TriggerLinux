@@ -59,10 +59,6 @@ echo "Adding necessary overlays"
 if [ ! -d /var/lib/layman/triggerlinux-overlay ]; then
   layman -L
   yes | layman -o https://raw.githubusercontent.com/realKennyStrawn93/triggerlinux-overlay/master/triggerlinux-overlay.xml -f -a triggerlinux-overlay
-  yes | layman -a brave-overlay
-elif [ ! -d /var/lib/layman/snapd ]; then
-  layman -L
-  yes | layman -a brave-overlay
 else
   echo "Overlays already added, skipping"
 fi
