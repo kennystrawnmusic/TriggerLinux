@@ -95,7 +95,6 @@ livecd/packages:
 	app-doc/xmltoman
 	app-editors/gedit
 	app-editors/nano
-	app-eselect/eselect-cblas
 	app-eselect/eselect-cdparanoia
 	app-eselect/eselect-fontconfig
 	app-eselect/eselect-gnome-shell-extensions
@@ -444,7 +443,6 @@ livecd/packages:
 	gnome-base/gnome
 	gnome-base/gnome-common
 	gnome-base/gnome-control-center
-	gnome-base/gnome-core-apps
 	gnome-base/gnome-core-libs
 	gnome-base/gnome-desktop
 	gnome-base/gnome-extra-apps
@@ -460,8 +458,6 @@ livecd/packages:
 	gnome-base/librsvg
 	gnome-base/nautilus
 	gnome-extra/chrome-gnome-shell
-	gnome-extra/evolution-data-server
-	gnome-extra/evolution-ews
 	gnome-extra/gnome-calculator
 	gnome-extra/gnome-calendar
 	gnome-extra/gnome-characters
@@ -484,7 +480,7 @@ livecd/packages:
 	gnome-extra/yelp
 	gnome-extra/yelp-xsl
 	gnome-extra/zenity
-	mail-client/evolution
+	mail-client/thunderbird-bin
 	mail-filter/bogofilter
 	mail-mta/nullmailer
 	media-fonts/cantarell
