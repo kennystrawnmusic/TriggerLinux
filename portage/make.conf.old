@@ -15,6 +15,7 @@ USE="bindist"
 PORTDIR="/var/db/repos/gentoo"
 DISTDIR="/var/cache/distfiles"
 PKGDIR="/var/cache/binpkgs"
+PORTDIR_OVERLAY="/var/gentoo/repos/local"
 
 # This sets the language of build output to English.
 # Please keep this setting intact when reporting bugs.

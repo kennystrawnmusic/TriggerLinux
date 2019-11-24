@@ -136,3 +136,11 @@
 >=dev-libs/boost-1.70.0 ~amd64
 =dev-util/triggerlinux-autobuilder-9999 ~amd64
 =app-emulation/snapd-glib-9999 ~amd64
+# required by app-emulation/snapd-9999::triggerlinux-overlay
+# required by app-emulation/snapd-glib-9999::triggerlinux-overlay
+# required by gnome-extra/gnome-software-3.34.1::triggerlinux-overlay
+# required by @selected
+# required by @world (argument)
+=dev-go/govendor-1.0.9 ~amd64
+# required by www-client/dissenter (argument)
+=www-client/dissenter-0.70.122 ~amd64

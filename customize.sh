@@ -12,7 +12,7 @@ appimagelauncher=$appimagelauncher_base/$(wget -qO - https://artifacts.assassina
 
 #Overlays
 layman -L
-yes | layman -a brave-overlay
+yes | layman -a awesome
 yes | layman -o https://raw.githubusercontent.com/realKennyStrawn93/triggerlinux-overlay/master/triggerlinux-overlay.xml -f -a triggerlinux-overlay
 
 #Ensure that a copy of git-sources exists on the squashfs
@@ -116,8 +116,8 @@ systemctl enable apparmor.service
 systemctl enable snapd.apparmor.service
 systemctl enable snapd.service
 
-#Make Brave work when run as any user, including root
-sed -i "s/Exec=.*/Exec=\/usr\/bin\/brave-bin\ \-\-test\-type \-\-no\-sandbox\ \%u/" /usr/share/applications/brave-bin.desktop
+#Make Dissenter work when run as any user, including root
+sed -i "s/Exec=.*/Exec=\/usr\/bin\/brave-bin\ \-\-test\-type \-\-no\-sandbox\ \%u/" /usr/share/applications/dissenter-browser.desktop
 
 #Add calamares to root user's desktop as a shortcut
 if [ ! -d /root/Desktop ]; then

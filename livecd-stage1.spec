@@ -858,8 +858,7 @@ livecd/packages:
 	virtual/w3m
 	virtual/yacc
 	www-apache/mod_dnssd
-	www-client/w3m
-	www-client/brave-bin
+	www-client/dissenter
 	www-servers/apache
 	x11-apps/iceauth
 	x11-apps/mkfontscale
