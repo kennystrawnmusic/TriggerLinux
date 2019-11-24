@@ -84,7 +84,7 @@ libreoffice_writer=libreoffice$(/Applications/LibreOffice.AppImage --version | c
 libreoffice_calc=libreoffice$(/Applications/LibreOffice.AppImage --version | cut -d' ' -f2 | cut -d\. -f1-2)-calc.desktop
 libreoffice_impress=libreoffice$(/Applications/LibreOffice.AppImage --version | cut -d' ' -f2 | cut -d\. -f1-2)-impress.desktop
 libreoffice_math=libreoffice$(/Applications/LibreOffice.AppImage --version | cut -d' ' -f2 | cut -d\. -f1-2)-math.desktop
-echo -e "favorite-apps=['org.gnome.Software.desktop', 'brave-bin.desktop', 'rhythmbox.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.gedit.desktop', '$libreoffice_writer', '$libreoffice_calc', '$libreoffice_impress', '$libreoffice_math', 'org.kde.kdenlive.desktop', 'isobuild.desktop']" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
+echo -e "favorite-apps=['org.gnome.Software.desktop', 'dissenter-browser.desktop', 'rhythmbox.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.gedit.desktop', '$libreoffice_writer', '$libreoffice_calc', '$libreoffice_impress', '$libreoffice_math', 'org.kde.kdenlive.desktop', 'isobuild.desktop']" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
 
 #More window controls than just "Close"
 echo -e "[org.gnome.desktop.wm.preferences:GNOME]\nbutton-layout='appmenu:minimize,maximize,close'\n" >> /usr/share/glib-2.0/schemas/00_org.gnome.shell.gschema.override
